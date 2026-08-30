@@ -519,59 +519,72 @@ input {
   pointer-events: none;
 }
 
-/* Interactive Cursor Trigger Zone below "Ready when you are" */
-.hero__cta-trigger-zone {
-  position: absolute;
-  left: 600px;
-  top: 755px;
-  width: 720px;
-  height: 380px;
-  z-index: 6;
-  pointer-events: auto;
-  cursor: pointer;
-  overflow: visible;
-}
-
-/* CTA button (Rectangle 30) — Motion Primitives Cursor attachToParent spring effect */
-.hero__cta {
+/* CTA buttons group below "Ready when you are" */
+.hero__cta-group {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 279px;
-  height: 68px;
+  top: 785px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
   z-index: 10;
+  pointer-events: auto;
+}
+
+/* CTA buttons (Rectangle 30) — Static, always visible */
+.hero__cta {
+  position: relative;
+  width: 230px;
+  height: 68px;
   border-radius: 48px;
   background: #FFBF00;
-  box-shadow: 3px 4px 25px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
   border: none;
   cursor: pointer;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transform: translate3d(-50%, -50%, 0) scale(0.3);
-  transform-origin: center center;
-  transition: opacity 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  pointer-events: none;
-}
-
-.hero__cta.is-active {
   opacity: 1;
-  transform: translate3d(-50%, -50%, 0) scale(1);
   pointer-events: auto;
+  transition: transform 0.2s ease;
 }
 
-/* "Get Started" — LAYER 1 (inside CTA, topmost)
-   Figma: 342×80, left: 787, top: 912 (on canvas),
+.hero__cta:hover {
+  transform: scale(1.04);
+}
+
+.hero__cta:active {
+  transform: scale(0.98);
+}
+
+/* Try Demo button — Stroke / Outline only in matching yellow */
+.hero__cta--demo {
+  background: transparent;
+  border: 1.5px solid #FFBF00;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.hero__cta--demo .hero__cta-label {
+  color: #FFBF00;
+}
+
+.hero__cta--demo:hover {
+  border-color: #FFBF00;
+  background: rgba(255, 191, 0, 0.08);
+}
+
+/* "Get Started" & "Try Demo" Labels — LAYER 1 (inside CTA, topmost)
    Apple Garamond Light 400, 64px,
-   line-height: 109.07%, letter-spacing: -0.04em, #121212 */
+   line-height: 109.07%, letter-spacing: -0.04em */
 .hero__cta-label {
   font-family: var(--font-apple-garamond-light);
   font-style: normal;
   font-weight: 400;
-  font-size: 64px;
+  font-size: 46px;
   line-height: 109.07%;
   letter-spacing: -0.04em;
   color: #121212;

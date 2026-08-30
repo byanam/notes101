@@ -410,7 +410,7 @@ function initAuthUI() {
             loginBtn.classList.remove('loading');
             loginBtn.disabled = false;
             if (loginBtnText) {
-                loginBtnText.textContent = 'Get Started';
+                loginBtnText.textContent = 'Sign In';
             }
         }
     }
@@ -442,6 +442,7 @@ function initAuthUI() {
         if (isRedirecting || isAuthenticating) return;
 
         sessionStorage.removeItem('justLoggedOut');
+        sessionStorage.removeItem('demoMode');
         isAuthenticating = true;
         setLoading(true, 'Signing in...');
 
@@ -468,28 +469,6 @@ function initAuthUI() {
 
     if (loginBtn && loginBtnText) {
         loginBtn.addEventListener('click', handleLoginAction);
-    }
-
-    // Motion Primitives Cursor attachToParent effect below "Ready when you are"
-    var ctaZone = document.getElementById('ctaZone');
-    if (ctaZone && loginBtn) {
-        ctaZone.addEventListener('mouseenter', function (e) {
-            loginBtn.classList.add('is-active');
-        });
-
-        ctaZone.addEventListener('mousemove', function (e) {
-            var rect = ctaZone.getBoundingClientRect();
-            if (rect.width === 0 || rect.height === 0) return;
-            var x = (e.clientX - rect.left) / (rect.width / 720);
-            var y = (e.clientY - rect.top) / (rect.height / 380);
-
-            loginBtn.style.left = Math.max(140, Math.min(580, x)) + 'px';
-            loginBtn.style.top = Math.max(34, Math.min(346, y)) + 'px';
-        });
-
-        ctaZone.addEventListener('mouseleave', function () {
-            loginBtn.classList.remove('is-active');
-        });
     }
 
     // Expose globally for inline onclick fallback

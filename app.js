@@ -10,12 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logoutBtn');
     const syncStatus = document.getElementById('cloud-sync-status');
 
+    const isDemoMode = new URLSearchParams(window.location.search).get('demo') === 'true' || sessionStorage.getItem('demoMode') === 'true';
+
     let currentUser = null;
     let saveDebounceTimer = null;
     let isInitialCloudLoad = true;
 
     function updateSyncStatus(text, type = 'success') {
         if (!syncStatus) return;
+        if (isDemoMode) {
+            syncStatus.style.color = '#FFBF00';
+            syncStatus.innerHTML = `<i class="fa-solid fa-flask"></i> Demo (Not Saved)`;
+            return;
+        }
         if (type === 'loading') {
             syncStatus.style.color = '#e6a23c';
             syncStatus.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${text}`;
@@ -28,8 +35,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    if (isDemoMode) {
+        console.log("[App] Running in Demo Mode (Guest, No Account, No Saving)");
+        if (userName) userName.textContent = 'Demo Mode';
+        if (userEmail) userEmail.textContent = 'No Account (Unsaved)';
+        updateSyncStatus('Demo (Not Saved)', 'demo');
+        if (logoutBtn) {
+            logoutBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Exit Demo`;
+            logoutBtn.title = 'Exit Demo Mode';
+        }
+    }
+
     // Listen to Firebase Auth state for active session & per-user cloud sync
     listenToAuthState(async (user) => {
+        if (isDemoMode) {
+            // In demo mode, do not connect or load real account
+            return;
+        }
+
         if (!user) {
             console.log("[App] No active session found. Redirecting to landing page...");
             if (typeof window.clearNotesData === 'function') {
@@ -125,6 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
     async function handleLogout(e) {
         if (e) e.preventDefault();
         
+        if (isDemoMode) {
+            sessionStorage.removeItem('demoMode');
+            if (typeof window.clearNotesData === 'function') {
+                window.clearNotesData();
+            }
+            window.location.href = '/';
+            return;
+        }
+
         if (logoutBtn) {
             logoutBtn.disabled = true;
             logoutBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Saving & Logging out...`;

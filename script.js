@@ -29,6 +29,9 @@ window.navigateToHome = function (e) {
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
+    const isDemoMode = new URLSearchParams(window.location.search).get('demo') === 'true' || sessionStorage.getItem('demoMode') === 'true';
+    window.isDemoMode = isDemoMode;
+
     // --- Utility: place caret at the start of a contenteditable page's content area ---
     function setCaretToStart(el) {
         if (!el) return;
@@ -557,6 +560,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 pages: pages
             });
         });
+
+        if (isDemoMode) {
+            if (typeof window.onNotesStateChanged === 'function') {
+                window.onNotesStateChanged(data);
+            }
+            return;
+        }
 
         localStorage.setItem('aiNoteData', JSON.stringify(data));
         if (typeof window.onNotesStateChanged === 'function') {
@@ -1653,7 +1663,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Init ---
-    if (!loadData()) {
+    if (isDemoMode) {
+        window.initializeFreshUserNotes();
+    } else if (!loadData()) {
         // First Run: Default 1 Book 1 Page
         const initialPageId = 'note-page-1';
         editor.createChapter(initialPageId, 'Page 1', '');

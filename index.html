@@ -222,11 +222,15 @@
         <!-- Layer 2: Ready when you are -->
         <p class="hero__ready">Ready when you are</p>
 
-        <!-- Interactive Cursor Trigger Zone below "Ready when you are" -->
-        <div class="hero__cta-trigger-zone" id="ctaZone" aria-label="Get started hover area">
-          <button class="hero__cta" id="loginBtn" type="button" aria-label="Get started — log in with Google"
+        <!-- CTA Buttons below "Ready when you are" -->
+        <div class="hero__cta-group">
+          <button class="hero__cta" id="loginBtn" type="button" aria-label="Sign in — log in with Google"
             onclick="if(window.triggerGoogleLogin){window.triggerGoogleLogin(event);}else{window.location.href='/editor.html';}">
-            <span class="hero__cta-label" id="loginBtnText">Get Started</span>
+            <span class="hero__cta-label" id="loginBtnText">Sign In</span>
+          </button>
+          <button class="hero__cta hero__cta--demo" id="demoBtn" type="button" aria-label="Try Demo"
+            onclick="sessionStorage.setItem('demoMode', 'true'); window.location.href='/editor.html?demo=true';">
+            <span class="hero__cta-label">Try Demo</span>
           </button>
         </div>
       </header>
