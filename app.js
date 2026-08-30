@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateSyncStatus(text, type = 'success') {
         if (!syncStatus) return;
         if (isDemoMode) {
-            syncStatus.style.color = '#FFBF00';
+            syncStatus.style.color = '#ded7ce';
             syncStatus.innerHTML = `<i class="fa-solid fa-flask"></i> Demo (Not Saved)`;
             return;
         }

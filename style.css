@@ -738,30 +738,24 @@ mark.doc-search-highlight.active-match {
    RIGHT SIDEBAR STUDIO CONSOLE DESIGN (Modern Spacing & Soft Cards)
    Minimal, rounded, spacing-driven panel. Same brand palette as the rest
 /* =========================================================================
-   RIGHT SIDEBAR STUDIO CONSOLE DESIGN (Single-Frame Zero-Scroll Fit)
-   Minimal, rounded, spacing-driven panel. Fits seamlessly in one frame
-   on both Windows & Mac without requiring any scrolling.
-   ========================================================================= */
-
-/* =========================================================================
-   RIGHT SIDEBAR STUDIO CONSOLE DESIGN (Full-Height Edge-to-Edge Frame)
-   Dynamically fills 100% of the right sidebar frame without squishing or
-   empty space, balanced across both Windows & Mac screens.
+   RIGHT SIDEBAR STUDIO CONSOLE DESIGN (Elevated Linear / Figma Inspector)
+   Refined dark matte studio console with crisp micro-borders, tactile controls,
+   and zero-scroll proportional frame.
    ========================================================================= */
 
 .sidebar.sidebar-right {
   width: 300px;
   border-right: none;
-  border-left: 3px solid #333333;
+  border-left: 1px solid rgba(226, 215, 202, 0.12);
   overflow-y: hidden;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #000000;
+  background-color: #0d0d0d;
   border-radius: 0 !important;
   user-select: none;
-  padding: 10px 12px 14px;
+  padding: 10px 12px 12px;
   gap: 8px;
   box-sizing: border-box;
   height: 100%;
@@ -780,39 +774,42 @@ mark.doc-search-highlight.active-match {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 8px 11px;
   margin: 0;
-  background: #141414;
-  border: 1px solid #202020;
-  border-radius: 12px;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
   box-sizing: border-box;
   width: 100%;
   flex-shrink: 0;
-  transition: border-color 0.12s ease, background-color 0.12s ease;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .sidebar-profile-card:hover {
-  background: #181818;
-  border-color: #2c2c2c;
+  background: #191919;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
 }
 
 .profile-left-wrap {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   overflow: hidden;
   min-width: 0;
   flex: 1;
 }
 
 .profile-avatar {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
   border: 1.5px solid #ded7ce;
   background: #000000;
   flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .profile-info {
@@ -821,12 +818,12 @@ mark.doc-search-highlight.active-match {
   overflow: hidden;
   min-width: 0;
   flex: 1;
-  gap: 2px;
+  gap: 1px;
 }
 
 .profile-name {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 11.5px;
   color: #FFFFFF;
   letter-spacing: -0.01em;
   text-overflow: ellipsis;
@@ -835,8 +832,8 @@ mark.doc-search-highlight.active-match {
 }
 
 .profile-last-edited {
-  font-size: 10px;
-  color: #7a7a7a;
+  font-size: 9.5px;
+  color: #888888;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -853,10 +850,10 @@ mark.doc-search-highlight.active-match {
 }
 
 .logout-btn {
-  background: transparent;
-  border: 1px solid #2d1e1e;
-  color: #e56060;
-  border-radius: 999px;
+  background: #1b1b1b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ded7ce;
+  border-radius: 6px;
   padding: 4px 8px;
   cursor: pointer;
   display: flex;
@@ -866,7 +863,7 @@ mark.doc-search-highlight.active-match {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+  transition: all 0.15s ease;
   flex-shrink: 0;
   white-space: nowrap;
 }
@@ -875,6 +872,7 @@ mark.doc-search-highlight.active-match {
   background: #c84040;
   border-color: #c84040;
   color: #ffffff;
+  box-shadow: 0 2px 8px rgba(200, 64, 64, 0.3);
 }
 
 /* ---- Search Header ---- */
@@ -892,63 +890,64 @@ mark.doc-search-highlight.active-match {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #141414;
-  border: 1px solid #202020;
-  border-radius: 999px !important;
-  padding: 6px 12px;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 5px 10px;
   width: 100%;
   box-sizing: border-box;
-  transition: border-color 0.12s ease, background-color 0.12s ease;
+  transition: all 0.15s ease;
 }
 
 .sidebar-search-container:focus-within {
-  border-color: #383838;
-  background: #161616;
+  border-color: rgba(226, 215, 202, 0.4);
+  background: #181818;
+  box-shadow: 0 0 0 1px rgba(226, 215, 202, 0.15);
 }
 
 .sidebar-search-input {
   background: transparent;
   border: none;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 11.5px;
   width: 100%;
   outline: none;
 }
 
 .sidebar-search-input::placeholder {
-  color: #6f6f6f;
+  color: #666666;
 }
 
 .search-icon {
-  color: #7a7a7a;
-  font-size: 11.5px;
+  color: #888888;
+  font-size: 11px;
 }
 
 .search-count-badge {
-  font-size: 9.5px;
+  font-size: 9px;
   color: #141414;
   font-weight: 700;
-  background: #e2d7ca;
-  padding: 2px 6px;
-  border-radius: 999px !important;
+  background: #ded7ce;
+  padding: 1px 5px;
+  border-radius: 4px;
 }
 
 .search-nav-btn,
 .search-clear-btn {
   background: transparent;
   border: none;
-  color: #8a8a8a;
+  color: #888888;
   cursor: pointer;
-  font-size: 11px;
-  padding: 3px 5px;
-  border-radius: 50%;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  font-size: 10.5px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
 }
 
 .search-nav-btn:hover,
 .search-clear-btn:hover {
   color: #ffffff;
-  background: #2a2a2a;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* =========================================================================
@@ -961,11 +960,17 @@ mark.doc-search-highlight.active-match {
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-  background-color: #141414;
-  border: 1px solid #202020;
-  border-radius: 12px;
+  background-color: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   overflow: visible;
   min-height: 0;
+  transition: border-color 0.15s ease;
+}
+
+.studio-section:hover {
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
 .studio-section:nth-of-type(1) {
@@ -980,28 +985,24 @@ mark.doc-search-highlight.active-match {
   flex: 0.9;
 }
 
-.studio-section:last-of-type {
-  border-bottom: 1px solid #202020;
-}
-
 .studio-section-title {
   font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: #6e6e6e;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: #888888;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 12px;
+  padding: 6px 11px;
   background: transparent;
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   flex-shrink: 0;
 }
 
 .studio-section-title i {
-  font-size: 9.5px;
-  color: #7a7a7a;
+  font-size: 9px;
+  color: #888888;
 }
 
 /* Studio Control Rows */
@@ -1011,10 +1012,10 @@ mark.doc-search-highlight.active-match {
   justify-content: space-between;
   gap: 8px;
   background: transparent;
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   flex: 1;
-  min-height: 34px;
-  padding: 4px 12px;
+  min-height: 32px;
+  padding: 3px 11px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -1026,8 +1027,8 @@ mark.doc-search-highlight.active-match {
 .studio-select-label,
 .studio-label {
   font-size: 9.5px;
-  color: #6c6c6c;
-  font-weight: 500;
+  color: #7a7a7a;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1042,16 +1043,16 @@ mark.doc-search-highlight.active-match {
   gap: 5px;
   margin-left: auto;
   align-self: center;
-  border: 1px solid #202020;
-  background: #0f0f0f;
-  border-radius: 7px;
-  padding: 4px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #1c1c1c;
+  border-radius: 6px;
+  padding: 3px 8px;
   cursor: pointer;
   width: 138px !important;
   min-width: 138px !important;
   max-width: 138px !important;
   flex: 0 0 138px !important;
-  height: 27px;
+  height: 26px;
   box-sizing: border-box;
   text-align: left;
   transition: all 0.15s ease;
@@ -1060,19 +1061,20 @@ mark.doc-search-highlight.active-match {
 }
 
 .studio-row .dropdown-menu:hover {
-  background: #181818;
-  border-color: #333333;
+  background: #222222;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .studio-row .dropdown-menu i,
 .dropdown-arrow {
   font-size: 8px;
-  color: #555555;
+  color: #777777;
   flex-shrink: 0;
+  transition: transform 0.15s ease;
 }
 
 .dropdown-text {
-  color: #cccccc;
+  color: #E2D7CA;
   font-weight: 500;
   font-size: 11px;
   white-space: nowrap;
@@ -1129,22 +1131,27 @@ mark.doc-search-highlight.active-match {
   max-width: 138px !important;
   flex: 0 0 138px !important;
   margin-left: auto;
-  height: 27px;
-  background: #0f0f0f;
-  border: 1px solid #202020;
+  height: 26px;
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 999px;
   padding: 2px 6px;
   box-sizing: border-box;
+  transition: border-color 0.15s ease;
+}
+
+.studio-swatch-group:hover {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .studio-swatch-ring {
   flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   outline: none;
   box-sizing: border-box;
   display: flex;
@@ -1153,12 +1160,12 @@ mark.doc-search-highlight.active-match {
 }
 
 .studio-swatch-ring:hover {
-  transform: scale(1.08);
-  border-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.12);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .studio-swatch-ring.active {
-  border: 1.5px solid #ffffff;
+  border: 2px solid #ffffff;
   box-shadow: none;
 }
 
@@ -1166,9 +1173,9 @@ mark.doc-search-highlight.active-match {
 .tool-pill-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 3px 12px;
-  width: calc(100% - 24px);
+  gap: 6px;
+  margin: 3px 11px;
+  width: calc(100% - 22px);
   box-sizing: border-box;
   flex: 1;
   min-height: 28px;
@@ -1187,13 +1194,13 @@ mark.doc-search-highlight.active-match {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: #0f0f0f;
-  border: 1px solid #1e1e1e;
-  border-radius: 999px;
-  margin: 3px 12px;
-  padding: 2px 3px;
+  background: #1c1c1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+  margin: 3px 11px;
+  padding: 2px;
   gap: 2px;
-  width: calc(100% - 24px);
+  width: calc(100% - 22px);
   box-sizing: border-box;
   flex: 1;
   min-height: 28px;
@@ -1204,8 +1211,8 @@ mark.doc-search-highlight.active-match {
 .tool-pill-btn {
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 999px;
-  color: #727272;
+  border-radius: 5px;
+  color: #888888;
   font-size: 11px;
   padding: 3px 5px;
   cursor: pointer;
@@ -1220,16 +1227,16 @@ mark.doc-search-highlight.active-match {
 }
 
 .tool-pill-btn:hover {
-  color: #e0e0e0;
-  background: #1c1c1c;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
 }
 
 .tool-pill-btn.active {
   color: #111111;
   background: #ded7ce;
   border-color: #ded7ce;
-  font-weight: 600;
-  box-shadow: none;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* Custom Font Dropdown Menu — solid dark popover */
@@ -1241,11 +1248,11 @@ mark.doc-search-highlight.active-match {
   width: 200px;
   max-height: 230px;
   overflow-y: auto;
-  background-color: #181818 !important;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
+  background-color: #1e1e1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
   z-index: 1000000 !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.85);
   box-sizing: border-box;
   padding: 5px;
 
@@ -1265,19 +1272,19 @@ mark.doc-search-highlight.active-match {
 }
 
 .font-menu-item {
-  padding: 6px 9px;
-  font-size: 11.5px;
-  color: #dcdcdc;
+  padding: 5px 8px;
+  font-size: 11px;
+  color: #E2D7CA;
   cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.12s ease, color 0.12s ease;
+  border-radius: 5px;
+  transition: all 0.12s ease;
 }
 
 .font-menu-item:hover,
 .font-menu-item.active {
   background-color: #ded7ce;
   color: #111111;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Custom Size Dropdown Menu */
@@ -1287,11 +1294,11 @@ mark.doc-search-highlight.active-match {
   top: calc(100% + 4px);
   right: 0;
   width: 136px;
-  background-color: #181818 !important;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
+  background-color: #1e1e1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
   z-index: 1000000 !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.85);
   box-sizing: border-box;
   padding: 5px;
 
@@ -1313,17 +1320,17 @@ mark.doc-search-highlight.active-match {
 .size-menu-item {
   padding: 5px 8px;
   font-size: 11px;
-  color: #dcdcdc;
+  color: #E2D7CA;
   cursor: pointer;
-  border-radius: 6px;
-  transition: background-color 0.12s ease, color 0.12s ease;
+  border-radius: 5px;
+  transition: all 0.12s ease;
 }
 
 .size-menu-item:hover,
 .size-menu-item.active {
   background-color: #ded7ce;
   color: #111111;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Custom Highlight Dropdown Menu */
@@ -1336,11 +1343,11 @@ mark.doc-search-highlight.active-match {
   right: 0;
   width: 140px;
   padding: 6px;
-  background-color: #181818 !important;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
+  background-color: #1e1e1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
   z-index: 1000000 !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.85);
   box-sizing: border-box;
 
   opacity: 0;
@@ -1362,17 +1369,18 @@ mark.doc-search-highlight.active-match {
   height: 20px;
   border-radius: 4px;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   box-sizing: border-box;
-  transition: border-color 0.12s ease;
+  transition: all 0.12s ease;
 }
 
 .highlight-menu-item:hover {
+  transform: scale(1.08);
   border-color: #ffffff;
 }
 
 .highlight-menu-item.active {
-  border: 1.5px solid #ffffff;
+  border: 2px solid #ffffff;
   box-shadow: none;
 }
 
@@ -1384,11 +1392,11 @@ mark.doc-search-highlight.active-match {
   right: 0;
   width: 180px;
   padding: 10px;
-  background-color: #181818 !important;
-  border: 1px solid #2e2e2e;
-  border-radius: 10px;
+  background-color: #1e1e1e !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
   z-index: 1000000 !important;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.85);
   box-sizing: border-box;
 
   opacity: 0;
@@ -1410,7 +1418,7 @@ mark.doc-search-highlight.active-match {
 .spectrum-header {
   font-size: 9.5px !important;
   font-weight: 700 !important;
-  color: #8a8a8a !important;
+  color: #888888 !important;
   letter-spacing: 0.08em !important;
   margin-bottom: 6px !important;
   text-transform: uppercase;
