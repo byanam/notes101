@@ -63,7 +63,7 @@
         <div class="hero__pages" id="heroPages" aria-label="Notebook page previews">
           <div class="hero__pages-track">
             <!-- Page 1: ConvNets Class Notes -->
-            <div class="hero__page hero__page--ruled" aria-hidden="true">
+            <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
                   <span class="hero__page-header-field">COURSE: <strong>CS 231n &middot; DEEP LEARNING</strong></span>
@@ -125,14 +125,14 @@
             </div>
 
             <!-- Page 2: Late Night Scratchpad & Studio Design -->
-            <div class="hero__page hero__page--grid" aria-hidden="true">
+            <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
                   <span class="hero__page-header-field">NOTEBOOK: <strong>STUDIO JOURNAL // 01</strong></span>
                   <span class="hero__page-header-field">ENTRY: <strong>#42 &middot; 2:40 AM</strong></span>
                 </div>
 
-                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--green">The Anatomy of a Quiet Workspace</mark></h3>
+                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--amber">The Anatomy of a Quiet Workspace</mark></h3>
                 <p class="hero__page-hand">Every modern application tries to be a corporate CRM with notifications, popups, and subscription locks.</p>
                 <p class="hero__page-hand">Physical paper has a quiet dignity. It never interrupts, pings, or demands your attention.</p>
                 
@@ -165,14 +165,14 @@
             </div>
 
             <!-- Page 3: Webnotes Architecture Notes -->
-            <div class="hero__page hero__page--engineering" aria-hidden="true">
+            <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
                   <span class="hero__page-header-field">SYSTEMS SPEC: <strong>RFC-104 // NOTES 101</strong></span>
                   <span class="hero__page-header-field">MODULE: <strong>SYNC PIPELINE &middot; REV 2.4</strong></span>
                 </div>
 
-                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--cyan">Local-First Optimistic Sync Pipeline</mark></h3>
+                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--amber">Local-First Optimistic Sync Pipeline</mark></h3>
 
                 <!-- Architecture Flow Diagram SVG -->
                 <div class="hero__page-sketch" aria-hidden="true">
@@ -180,11 +180,11 @@
                     <!-- Node 1: DOM Input -->
                     <rect x="8" y="10" width="94" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(0,0,0,0.5)"/>
                     <text x="18" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Caret / DOM</text>
-                    <text x="18" y="44" fill="#60a5fa" font-family="'Caveat', cursive" font-size="13" stroke="none">0ms latency</text>
+                    <text x="18" y="44" fill="#FFB600" font-family="'Caveat', cursive" font-size="13" stroke="none">0ms latency</text>
 
                     <!-- Arrow 1 -->
-                    <path d="M 106 31 L 136 31" stroke="#60a5fa" stroke-width="2"/>
-                    <path d="M 128 26 L 138 31 L 128 36" fill="#60a5fa"/>
+                    <path d="M 106 31 L 136 31" stroke="#FFB600" stroke-width="2"/>
+                    <path d="M 128 26 L 138 31 L 128 36" fill="#FFB600"/>
 
                     <!-- Node 2: Local Cache -->
                     <rect x="140" y="10" width="102" height="42" rx="5" stroke="#FFB600" fill="rgba(255,182,0,0.1)"/>
@@ -196,18 +196,18 @@
                     <path d="M 268 26 L 278 31 L 268 36" fill="#E2D7CA"/>
 
                     <!-- Node 3: Firestore Cloud -->
-                    <rect x="280" y="10" width="102" height="42" rx="5" stroke="#4ade80" fill="rgba(74,222,128,0.1)"/>
-                    <text x="290" y="28" fill="#4ade80" font-family="'Fira Code', monospace" font-size="11" stroke="none">Firestore DB</text>
+                    <rect x="280" y="10" width="102" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(255,255,255,0.05)"/>
+                    <text x="290" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Firestore DB</text>
                     <text x="290" y="44" fill="#E2D7CA" font-family="'Caveat', cursive" font-size="13" stroke="none">cloud persistence</text>
 
                     <!-- Arrow 3: Realtime stream -->
-                    <path d="M 386 31 L 416 31" stroke="#4ade80" stroke-width="1.8"/>
-                    <path d="M 408 26 L 418 31 L 408 36" fill="#4ade80"/>
+                    <path d="M 386 31 L 416 31" stroke="#E2D7CA" stroke-width="1.8"/>
+                    <path d="M 408 26 L 418 31 L 408 36" fill="#E2D7CA"/>
 
                     <!-- Node 4: Replicas -->
                     <rect x="420" y="10" width="64" height="42" rx="5" stroke="rgba(226,215,202,0.6)" fill="rgba(0,0,0,0.5)"/>
                     <text x="428" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Tabs</text>
-                    <text x="428" y="44" fill="#60a5fa" font-family="'Caveat', cursive" font-size="13" stroke="none">sync &check;</text>
+                    <text x="428" y="44" fill="#FFB600" font-family="'Caveat', cursive" font-size="13" stroke="none">sync &check;</text>
                   </svg>
                 </div>
 
@@ -218,12 +218,12 @@
                   <li><span class="note-bullet">&bull;</span> <strong>Offline Resilient:</strong> Editing never stutters during network dropouts; state automatically syncs when online.</li>
                 </ul>
 
-                <p class="hero__page-hand" style="margin-top: 16px; font-size: 19px; color: #60a5fa;">&starf; 60 FPS verified with complex ink paths and continuous text flow.</p>
+                <p class="hero__page-hand" style="margin-top: 16px; font-size: 19px; color: #FFB600;">&starf; 60 FPS verified with complex ink paths and continuous text flow.</p>
               </div>
             </div>
 
             <!-- Page 4: Loop repeat of Page 1 (for seamless -1998px infinite scroll) -->
-            <div class="hero__page hero__page--ruled" aria-hidden="true">
+            <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
                   <span class="hero__page-header-field">COURSE: <strong>CS 231n &middot; DEEP LEARNING</strong></span>
@@ -285,14 +285,14 @@
             </div>
 
             <!-- Page 5: Loop repeat of Page 2 -->
-            <div class="hero__page hero__page--grid" aria-hidden="true">
+            <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
                   <span class="hero__page-header-field">NOTEBOOK: <strong>STUDIO JOURNAL // 01</strong></span>
                   <span class="hero__page-header-field">ENTRY: <strong>#42 &middot; 2:40 AM</strong></span>
                 </div>
 
-                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--green">The Anatomy of a Quiet Workspace</mark></h3>
+                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--amber">The Anatomy of a Quiet Workspace</mark></h3>
                 <p class="hero__page-hand">Every modern application tries to be a corporate CRM with notifications, popups, and subscription locks.</p>
                 <p class="hero__page-hand">Physical paper has a quiet dignity. It never interrupts, pings, or demands your attention.</p>
                 
@@ -322,24 +322,24 @@
             </div>
 
             <!-- Page 6: Loop repeat of Page 3 -->
-            <div class="hero__page hero__page--engineering" aria-hidden="true">
+            <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
                   <span class="hero__page-header-field">SYSTEMS SPEC: <strong>RFC-104 // NOTES 101</strong></span>
                   <span class="hero__page-header-field">MODULE: <strong>SYNC PIPELINE &middot; REV 2.4</strong></span>
                 </div>
 
-                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--cyan">Local-First Optimistic Sync Pipeline</mark></h3>
+                <h3 class="hero__page-hand-title"><mark class="note-hl note-hl--amber">Local-First Optimistic Sync Pipeline</mark></h3>
 
                 <!-- Architecture Flow Diagram SVG -->
                 <div class="hero__page-sketch" aria-hidden="true">
                   <svg width="490" height="74" viewBox="0 0 490 74" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round">
                     <rect x="8" y="10" width="94" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(0,0,0,0.5)"/>
                     <text x="18" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Caret / DOM</text>
-                    <text x="18" y="44" fill="#60a5fa" font-family="'Caveat', cursive" font-size="13" stroke="none">0ms latency</text>
+                    <text x="18" y="44" fill="#FFB600" font-family="'Caveat', cursive" font-size="13" stroke="none">0ms latency</text>
 
-                    <path d="M 106 31 L 136 31" stroke="#60a5fa" stroke-width="2"/>
-                    <path d="M 128 26 L 138 31 L 128 36" fill="#60a5fa"/>
+                    <path d="M 106 31 L 136 31" stroke="#FFB600" stroke-width="2"/>
+                    <path d="M 128 26 L 138 31 L 128 36" fill="#FFB600"/>
 
                     <rect x="140" y="10" width="102" height="42" rx="5" stroke="#FFB600" fill="rgba(255,182,0,0.1)"/>
                     <text x="148" y="28" fill="#FFB600" font-family="'Fira Code', monospace" font-size="11" stroke="none">LocalStorage</text>
@@ -348,16 +348,16 @@
                     <path d="M 246 31 L 276 31" stroke="#E2D7CA" stroke-width="1.8"/>
                     <path d="M 268 26 L 278 31 L 268 36" fill="#E2D7CA"/>
 
-                    <rect x="280" y="10" width="102" height="42" rx="5" stroke="#4ade80" fill="rgba(74,222,128,0.1)"/>
-                    <text x="290" y="28" fill="#4ade80" font-family="'Fira Code', monospace" font-size="11" stroke="none">Firestore DB</text>
+                    <rect x="280" y="10" width="102" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(255,255,255,0.05)"/>
+                    <text x="290" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Firestore DB</text>
                     <text x="290" y="44" fill="#E2D7CA" font-family="'Caveat', cursive" font-size="13" stroke="none">cloud persistence</text>
 
-                    <path d="M 386 31 L 416 31" stroke="#4ade80" stroke-width="1.8"/>
-                    <path d="M 408 26 L 418 31 L 408 36" fill="#4ade80"/>
+                    <path d="M 386 31 L 416 31" stroke="#E2D7CA" stroke-width="1.8"/>
+                    <path d="M 408 26 L 418 31 L 408 36" fill="#E2D7CA"/>
 
                     <rect x="420" y="10" width="64" height="42" rx="5" stroke="rgba(226,215,202,0.6)" fill="rgba(0,0,0,0.5)"/>
                     <text x="428" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Tabs</text>
-                    <text x="428" y="44" fill="#60a5fa" font-family="'Caveat', cursive" font-size="13" stroke="none">sync &check;</text>
+                    <text x="428" y="44" fill="#FFB600" font-family="'Caveat', cursive" font-size="13" stroke="none">sync &check;</text>
                   </svg>
                 </div>
 
@@ -368,7 +368,7 @@
                   <li><span class="note-bullet">&bull;</span> <strong>Offline Resilient:</strong> Editing never stutters during network dropouts; state automatically syncs when online.</li>
                 </ul>
 
-                <p class="hero__page-hand" style="margin-top: 16px; font-size: 19px; color: #60a5fa;">&starf; 60 FPS verified with complex ink paths and continuous text flow.</p>
+                <p class="hero__page-hand" style="margin-top: 16px; font-size: 19px; color: #FFB600;">&starf; 60 FPS verified with complex ink paths and continuous text flow.</p>
               </div>
             </div>
           </div>

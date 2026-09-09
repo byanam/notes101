@@ -263,10 +263,6 @@ input {
   pointer-events: none;
   overflow: hidden;
   box-sizing: border-box;
-}
-
-/* Variant 1: College Ruled Notebook Paper */
-.hero__page--ruled {
   background-color: #161619;
   background-image: repeating-linear-gradient(
     to bottom,
@@ -279,30 +275,6 @@ input {
   box-shadow: 
     0 25px 60px rgba(0, 0, 0, 0.75),
     0 0 0 1px rgba(226, 215, 202, 0.12);
-}
-
-/* Variant 2: Moleskine Dot-Grid Notebook Paper */
-.hero__page--grid {
-  background-color: #151518;
-  background-image: radial-gradient(circle, rgba(226, 215, 202, 0.12) 1.2px, transparent 1.2px);
-  background-size: 24px 24px;
-  background-position: 12px 12px;
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(226, 215, 202, 0.12);
-}
-
-/* Variant 3: Technical Engineering Blueprint Grid Paper */
-.hero__page--engineering {
-  background-color: #121418;
-  background-image: 
-    linear-gradient(rgba(70, 130, 220, 0.075) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(70, 130, 220, 0.075) 1px, transparent 1px);
-  background-size: 24px 24px;
-  background-position: 0 0;
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(70, 130, 220, 0.2);
 }
 
 /* Main Content Layout */
@@ -499,7 +471,7 @@ input {
 }
 
 .note-bullet {
-  color: #4a9eff;
+  color: #FFB600;
   margin-right: 8px;
 }
 
