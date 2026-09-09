@@ -504,18 +504,7 @@ body {
   height: 100vh;
   overflow: hidden;
   background-color: #191919;
-  z-index: 99999;
-
-  /* Initial state: closed card at center of screen */
-  clip-path: inset(50% 50% 50% 50% round 52px);
-  -webkit-clip-path: inset(50% 50% 50% 50% round 52px);
-  transition: clip-path 0.85s cubic-bezier(0.76, 0, 0.24, 1), -webkit-clip-path 0.85s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-.transition-container.opening {
-  /* Final state: fully expanded to cover the whole screen */
-  clip-path: inset(0% 0% 0% 0% round 52px);
-  -webkit-clip-path: inset(0% 0% 0% 0% round 52px);
+  z-index: 1;
 }
 
 .sidebar {

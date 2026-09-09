@@ -2693,73 +2693,85 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         window.logHistoryAction = logHistoryAction;
 
-        // Dynamic Layers Stack Synchronizer
+        // Dynamic Layers Stack Synchronizer with recursion guard
+        let isSyncingLayers = false;
+        let lastPageCount = -1;
+
         function syncLayersList() {
-            if (!layersList) return;
-            const pages = document.querySelectorAll('.a4-page');
-            layersList.innerHTML = '';
+            if (!layersList || isSyncingLayers) return;
+            isSyncingLayers = true;
+            try {
+                const pages = document.querySelectorAll('#document-editor .a4-page');
+                layersList.innerHTML = '';
 
-            if (pages.length === 0) {
-                layersList.innerHTML = '<div class="ps-empty-note">No pages available.</div>';
-                return;
-            }
-
-            Array.from(pages).reverse().forEach((page, revIdx) => {
-                const actualIdx = pages.length - 1 - revIdx;
-                const pageNum = actualIdx + 1;
-                const pageId = page.id || `note-page-${pageNum}`;
-                const pageTitle = pageNum === 1 ? 'Background' : `Page ${pageNum}`;
-                const isActive = page.classList.contains('active-page') || revIdx === 0;
-
-                const layerRow = document.createElement('div');
-                layerRow.className = `ps-layer-item ${isActive ? 'active' : ''}`;
-                layerRow.setAttribute('data-page-id', pageId);
-
-                const computedBg = window.getComputedStyle(page).backgroundColor || '#ffffff';
-
-                layerRow.innerHTML = `
-                    <button type="button" class="ps-layer-eye" title="Toggle Visibility">
-                        <i class="fa-solid fa-eye"></i>
-                    </button>
-                    <div class="ps-layer-thumb" style="background-color: ${computedBg};">
-                        <div class="ps-thumb-preview"></div>
-                    </div>
-                    <span class="ps-layer-title">${pageTitle}</span>
-                    <i class="fa-solid fa-lock ps-layer-lock"></i>
-                `;
-
-                const eyeBtn = layerRow.querySelector('.ps-layer-eye');
-                if (eyeBtn) {
-                    eyeBtn.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const isHidden = page.style.visibility === 'hidden';
-                        page.style.visibility = isHidden ? 'visible' : 'hidden';
-                        eyeBtn.classList.toggle('hidden', !isHidden);
-                        const icon = eyeBtn.querySelector('i');
-                        if (icon) icon.className = isHidden ? 'fa-solid fa-eye' : 'fa-regular fa-eye-slash';
-                    });
+                if (pages.length === 0) {
+                    layersList.innerHTML = '<div class="ps-empty-note">No pages available.</div>';
+                    return;
                 }
 
-                layerRow.addEventListener('click', () => {
-                    layersList.querySelectorAll('.ps-layer-item').forEach(l => l.classList.remove('active'));
-                    layerRow.classList.add('active');
-                    pages.forEach(p => p.classList.remove('active-page'));
-                    page.classList.add('active-page');
-                    page.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    logHistoryAction(`Select ${pageTitle}`);
-                });
+                Array.from(pages).reverse().forEach((page, revIdx) => {
+                    const actualIdx = pages.length - 1 - revIdx;
+                    const pageNum = actualIdx + 1;
+                    const pageId = page.id || `note-page-${pageNum}`;
+                    const pageTitle = pageNum === 1 ? 'Background' : `Page ${pageNum}`;
+                    const isActive = page.classList.contains('active-page') || revIdx === 0;
 
-                layersList.appendChild(layerRow);
-            });
+                    const layerRow = document.createElement('div');
+                    layerRow.className = `ps-layer-item ${isActive ? 'active' : ''}`;
+                    layerRow.setAttribute('data-page-id', pageId);
+
+                    const computedBg = window.getComputedStyle(page).backgroundColor || '#ffffff';
+
+                    layerRow.innerHTML = `
+                        <button type="button" class="ps-layer-eye" title="Toggle Visibility">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                        <div class="ps-layer-thumb" style="background-color: ${computedBg};">
+                            <div class="ps-thumb-preview"></div>
+                        </div>
+                        <span class="ps-layer-title">${pageTitle}</span>
+                        <i class="fa-solid fa-lock ps-layer-lock"></i>
+                    `;
+
+                    const eyeBtn = layerRow.querySelector('.ps-layer-eye');
+                    if (eyeBtn) {
+                        eyeBtn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const isHidden = page.style.visibility === 'hidden';
+                            page.style.visibility = isHidden ? 'visible' : 'hidden';
+                            eyeBtn.classList.toggle('hidden', !isHidden);
+                            const icon = eyeBtn.querySelector('i');
+                            if (icon) icon.className = isHidden ? 'fa-solid fa-eye' : 'fa-regular fa-eye-slash';
+                        });
+                    }
+
+                    layerRow.addEventListener('click', () => {
+                        layersList.querySelectorAll('.ps-layer-item').forEach(l => l.classList.remove('active'));
+                        layerRow.classList.add('active');
+                        pages.forEach(p => p.classList.remove('active-page'));
+                        page.classList.add('active-page');
+                        page.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        logHistoryAction(`Select ${pageTitle}`);
+                    });
+
+                    layersList.appendChild(layerRow);
+                });
+            } finally {
+                isSyncingLayers = false;
+            }
         }
 
         syncLayersList();
-        const editorContainer = document.querySelector('.editor-sheet-container') || document.querySelector('.main-content');
-        if (editorContainer) {
+        const editorPagesContainer = document.getElementById('document-editor');
+        if (editorPagesContainer) {
             const observer = new MutationObserver(() => {
-                syncLayersList();
+                const currentCount = editorPagesContainer.querySelectorAll('.a4-page').length;
+                if (currentCount !== lastPageCount) {
+                    lastPageCount = currentCount;
+                    syncLayersList();
+                }
             });
-            observer.observe(editorContainer, { childList: true, subtree: true });
+            observer.observe(editorPagesContainer, { childList: true, subtree: false });
         }
 
         const addPageBtn = document.getElementById('add-page-btn');

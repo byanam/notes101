@@ -12,19 +12,9 @@ window.navigateToHome = function (e) {
 (function () {
     const container = document.getElementById('transition-container');
     if (container) {
-        setTimeout(() => {
-            container.classList.add('opening');
-        }, 150);
-
-        // Clean up clip-path styling after transition ends to ensure subpixel rendering and scrolling performance
-        container.addEventListener('transitionend', function handler(e) {
-            if (e.propertyName === 'clip-path' || e.propertyName === '-webkit-clip-path') {
-                container.style.clipPath = 'none';
-                container.style.webkitClipPath = 'none';
-                container.style.zIndex = '1';
-                container.removeEventListener('transitionend', handler);
-            }
-        });
+        container.style.clipPath = 'none';
+        container.style.webkitClipPath = 'none';
+        container.classList.add('opening');
     }
 })();
 
