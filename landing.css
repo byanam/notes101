@@ -336,34 +336,6 @@ input {
   font-weight: 500;
 }
 
-/* Realistic Highlighters */
-.note-hl {
-  display: inline;
-  padding: 2px 8px;
-  border-radius: 3px;
-  color: #FFFFFF;
-  font-weight: 700;
-}
-
-.note-hl--amber {
-  background: rgba(255, 182, 0, 0.28);
-  box-shadow: 0 0 14px rgba(255, 182, 0, 0.18);
-}
-
-.note-hl--yellow {
-  background: rgba(255, 214, 10, 0.24);
-  box-shadow: 0 0 14px rgba(255, 214, 10, 0.16);
-}
-
-.note-hl--green {
-  background: rgba(46, 204, 113, 0.25);
-  box-shadow: 0 0 14px rgba(46, 204, 113, 0.16);
-}
-
-.note-hl--cyan {
-  background: rgba(52, 152, 219, 0.26);
-  box-shadow: 0 0 14px rgba(52, 152, 219, 0.16);
-}
 
 .note-underline {
   border-bottom: 2px solid #FFB600;
