@@ -32,14 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
             acceptNode: (node) => {
                 if (!node.textContent || node.textContent.trim() === '') return NodeFilter.FILTER_REJECT;
                 const parent = node.parentNode;
-                if (parent && (
+                if (!parent || !parent.classList) return NodeFilter.FILTER_REJECT;
+                if (
                     parent.tagName === 'SCRIPT' ||
                     parent.tagName === 'STYLE' ||
                     parent.classList.contains('drawing-layer') ||
                     parent.classList.contains('doc-search-highlight') ||
                     parent.classList.contains('resizable-drag-handle') ||
                     parent.classList.contains('resize-handle')
-                )) {
+                ) {
                     return NodeFilter.FILTER_REJECT;
                 }
                 return NodeFilter.FILTER_ACCEPT;
