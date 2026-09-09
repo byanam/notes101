@@ -339,87 +339,155 @@ input {
   padding-bottom: 2px;
 }
 
-/* Authentic Human Lists */
-.hero__page-list {
-  list-style: none;
-  margin: 0 0 24px 0;
-  padding: 0;
-}
+/* =========================================================================
+   NOTE PATTERNS & DIVERSE LAYOUTS
+   ========================================================================= */
 
-.hero__page-list li {
-  font-family: 'Homemade Apple', cursive;
-  font-size: 15px;
-  line-height: 2.3;
-  color: #E2D7CA;
-  margin-bottom: 12px;
+/* --- PATTERN 1: CORNELL LECTURE NOTE (Dense Academic) --- */
+.note-cornell {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  gap: 16px;
+  margin-top: 4px;
 }
 
-.hero__page-bullet {
+.note-cornell__cues {
+  width: 95px;
+  flex-shrink: 0;
+  border-right: 1.5px solid rgba(226, 215, 202, 0.16);
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.note-cornell__cue {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 12.5px;
   color: #FFB600;
-  font-size: 14px;
-  line-height: 1;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
 
-/* Authentic Quotes */
-.hero__page-quote {
-  border-left: 2px solid rgba(255, 182, 0, 0.45);
-  padding: 8px 0 8px 18px;
-  margin: 24px 0 26px 0;
+.note-cornell__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.hero__page-quote p {
-  font-family: 'EB Garamond', serif;
-  font-style: italic;
-  font-size: 20px;
-  line-height: 1.6;
-  color: #FFF2E2;
+.note-cornell__p {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 13.5px;
+  line-height: 2.1;
+  color: #E2D7CA;
   margin: 0;
 }
 
-.hero__page-quote-cite {
-  font-family: 'Homemade Apple', cursive;
-  font-size: 13px;
-  color: #FFB600;
-  margin-top: 10px;
-  display: block;
+.note-cornell__sketch {
+  margin: 4px 0 6px 0;
 }
 
-/* Checkbox Items */
-.hero__page-check {
+.note-cornell__summary {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1.5px solid rgba(226, 215, 202, 0.2);
   font-family: 'Homemade Apple', cursive;
-  font-size: 15px;
-  line-height: 2.3;
-  color: #E2D7CA;
-  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 2.1;
+  color: #FFF2E2;
+}
+
+.note-cornell__summary strong {
+  color: #FFB600;
+  font-weight: 400;
+}
+
+/* --- PATTERN 2: ARCHITECTURAL CONCEPT (Airy Spatial Sketchnote) --- */
+.note-arch {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.note-arch__sketch-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.note-arch__palette {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  padding-left: 4px;
+}
+
+.note-arch__item {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 14px;
+  line-height: 2.1;
+  color: #E2D7CA;
+}
+
+.note-arch__item-bullet {
+  color: #FFB600;
+  margin-right: 8px;
+}
+
+/* --- PATTERN 3: FORMULA & TIMELINE LOG (Structured Tabular) --- */
+.note-baker {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
-.hero__page-check--done {
-  color: rgba(226, 215, 202, 0.55);
-  text-decoration: line-through;
-  text-decoration-color: rgba(255, 182, 0, 0.45);
+.note-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4px 0 10px 0;
+  font-family: 'Homemade Apple', cursive;
 }
 
-.hero__page-box {
+.note-table th {
+  text-align: left;
+  padding: 4px 8px;
+  font-size: 12px;
   color: #FFB600;
-  font-family: monospace;
-  font-size: 13px;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(226, 215, 202, 0.25);
+  letter-spacing: 0.03em;
 }
 
-/* Personal Scribbled Aside */
-.hero__page-scribble {
-  margin-top: 28px;
-  padding-top: 16px;
-  border-top: 1px dashed rgba(226, 215, 202, 0.15);
+.note-table td {
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #E2D7CA;
+  border-bottom: 1px dashed rgba(226, 215, 202, 0.08);
+  line-height: 1.8;
+}
+
+.note-baker__timeline-wrap {
+  margin: 8px 0;
+}
+
+.note-baker__obs {
   font-family: 'Homemade Apple', cursive;
   font-size: 13.5px;
-  line-height: 2.2;
+  line-height: 2.1;
+  color: #E2D7CA;
+  margin-top: 6px;
+}
+
+.note-baker__obs del {
+  color: rgba(226, 215, 202, 0.45);
+  text-decoration-color: #FFB600;
+  margin-right: 4px;
+}
+
+.note-baker__obs strong {
   color: #FFB600;
+  font-weight: 400;
 }
 
 /* "notes 101" Image Title — LAYER 6 (z:1, behind pages)

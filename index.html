@@ -62,72 +62,199 @@
         <!-- Layer 7 (bottom): moving pages track with authentic student notes & sketches -->
         <div class="hero__pages" id="heroPages" aria-label="Notebook page previews">
           <div class="hero__pages-track">
-            <!-- Page 1: Person 1 (Creative / Freelancer - Thoughts & Ideas) -->
+            <!-- Page 1: Person 1 (Biology Student — Cornell Academic Note, DENSE) -->
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">sunday morning &middot; blue bottle</span>
-                  <span class="hero__page-header-field">ideas // v2</span>
+                  <span class="hero__page-header-field">bio 102 &middot; neurobiology</span>
+                  <span class="hero__page-header-field">lecture 14 &middot; oct 22</span>
                 </div>
-                <h3 class="hero__page-hand-title">Things that actually matter</h3>
-                <ul class="hero__page-list">
-                  <li><span class="hero__page-bullet">&ndash;</span> completely distraction-free workspace</li>
-                  <li><span class="hero__page-bullet">&ndash;</span> zero popups, zero marketing notifications</li>
-                  <li><span class="hero__page-bullet">&ndash;</span> instant search that finds thoughts in &lt;10ms</li>
-                  <li><span class="hero__page-bullet">&ndash;</span> markdown &amp; plain text export whenever</li>
-                </ul>
-                <div class="hero__page-scribble">
-                  * call dad about his birthday dinner next weekend
+                <h3 class="hero__page-hand-title">Action Potential &amp; Synapse</h3>
+                <div class="note-cornell">
+                  <div class="note-cornell__cues">
+                    <span class="note-cornell__cue">resting V_m</span>
+                    <span class="note-cornell__cue">threshold?</span>
+                    <span class="note-cornell__cue">Na+/K+ flux</span>
+                    <span class="note-cornell__cue">synapse 20nm</span>
+                  </div>
+                  <div class="note-cornell__main">
+                    <p class="note-cornell__p">Resting potential maintained @ -70mV via Na+/K+ ATPase pump (3 Na+ out / 2 K+ in).</p>
+                    <div class="note-cornell__sketch">
+                      <svg width="380" height="130" viewBox="0 0 380 130" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Axes -->
+                        <line x1="35" y1="15" x2="35" y2="115" stroke="rgba(226,215,202,0.4)"/>
+                        <line x1="35" y1="100" x2="235" y2="100" stroke="rgba(226,215,202,0.4)"/>
+                        <text x="5" y="25" fill="rgba(226,215,202,0.7)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">+35</text>
+                        <text x="8" y="78" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">-55</text>
+                        <text x="8" y="103" fill="rgba(226,215,202,0.7)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">-70</text>
+                        <line x1="35" y1="75" x2="230" y2="75" stroke="#FFB600" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+                        <!-- Spike Curve -->
+                        <path d="M 35 100 L 65 100 Q 80 100 85 75 Q 100 15 108 20 Q 116 25 125 108 Q 135 115 150 100 L 225 100" stroke="#FFB600" stroke-width="2" fill="none"/>
+                        <path d="M 108 18 L 135 12" stroke="#E2D7CA" stroke-width="1"/>
+                        <text x="140" y="15" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Na+ influx</text>
+                        <path d="M 125 70 L 155 60" stroke="#E2D7CA" stroke-width="1"/>
+                        <text x="160" y="63" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">K+ efflux</text>
+                        <text x="60" y="122" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">0ms</text>
+                        <text x="130" y="122" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">2ms</text>
+                        <text x="210" y="122" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">4ms</text>
+                        <!-- Synaptic Cleft Doodle -->
+                        <path d="M 260 20 C 280 20 295 40 295 65 C 295 90 280 110 260 110" stroke="#E2D7CA" stroke-width="1.6"/>
+                        <circle cx="278" cy="45" r="5" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.2)"/>
+                        <circle cx="284" cy="62" r="5" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.2)"/>
+                        <circle cx="280" cy="80" r="5" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.2)"/>
+                        <path d="M 312 20 C 322 35 325 65 325 85 C 325 98 320 110 312 110" stroke="rgba(226,215,202,0.5)" stroke-width="1.6"/>
+                        <circle cx="302" cy="52" r="1.5" fill="#FFB600" stroke="none"/>
+                        <circle cx="305" cy="65" r="1.5" fill="#FFB600" stroke="none"/>
+                        <circle cx="303" cy="78" r="1.5" fill="#FFB600" stroke="none"/>
+                        <text x="270" y="124" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">20nm cleft</text>
+                      </svg>
+                    </div>
+                    <p class="note-cornell__p">Threshold reached at -55mV &rarr; all-or-none voltage spike. Inactivation gates close at peak.</p>
+                  </div>
+                </div>
+                <div class="note-cornell__summary">
+                  <strong>Summary:</strong> Rapid electrical pulse down axon &rarr; triggers Ca2+ channels at bouton &rarr; vesicle fusion &amp; chemical release across synapse.
                 </div>
               </div>
             </div>
 
-            <!-- Page 2: Person 2 (Book Lover / Philosophy - Reading Journal) -->
+            <!-- Page 2: Person 2 (Architect / Designer — Airy Concept Sketchnote, SPARSE) -->
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">oct 14 &middot; evening reading</span>
-                  <span class="hero__page-header-field">journal</span>
+                  <span class="hero__page-header-field">studio archive &middot; book 3</span>
+                  <span class="hero__page-header-field">kyoto pavilion &middot; p.88</span>
                 </div>
-                <h3 class="hero__page-hand-title">Notes from Calvino</h3>
-                <div class="hero__page-quote">
-                  <p>&ldquo;You take delight not in a city's seven or seventy wonders, but in the answer it gives to a question of yours.&rdquo;</p>
-                  <span class="hero__page-quote-cite">&mdash; Italo Calvino, Invisible Cities</span>
-                </div>
-                <p class="hero__page-hand">
-                  Good tools feel the same way. Not eighty cluttered features, just a quiet room where your thoughts have room to breathe.
-                </p>
-                <div class="hero__page-scribble">
-                  next up: A Month in the Country &middot; J.L. Carr
+                <h3 class="hero__page-hand-title">Tea Pavilion No. 4</h3>
+                <div class="note-arch">
+                  <div class="note-arch__sketch-wrap">
+                    <svg width="480" height="200" viewBox="0 0 480 200" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="40" y1="160" x2="440" y2="160" stroke="rgba(226,215,202,0.3)" stroke-dasharray="4 4"/>
+                      <polygon points="120,150 290,150 360,135 190,135" stroke="#E2D7CA" stroke-width="1.6" fill="rgba(255,182,0,0.06)"/>
+                      <line x1="120" y1="150" x2="120" y2="158" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="290" y1="150" x2="290" y2="158" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="360" y1="135" x2="360" y2="143" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="120" y1="158" x2="290" y2="158" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="290" y1="158" x2="360" y2="143" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="135" y1="148" x2="135" y2="60" stroke="#E2D7CA" stroke-width="2"/>
+                      <line x1="275" y1="148" x2="275" y2="60" stroke="#E2D7CA" stroke-width="2"/>
+                      <line x1="200" y1="135" x2="200" y2="50" stroke="#E2D7CA" stroke-width="1.8" stroke-dasharray="2 2"/>
+                      <line x1="345" y1="135" x2="345" y2="50" stroke="#E2D7CA" stroke-width="2"/>
+                      <polygon points="105,65 295,65 375,40 185,40" stroke="#FFB600" stroke-width="2" fill="rgba(255,182,0,0.12)"/>
+                      <line x1="145" y1="65" x2="225" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="185" y1="65" x2="265" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="225" y1="65" x2="305" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="265" y1="65" x2="345" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="275" y1="75" x2="345" y2="65" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="90" x2="345" y2="80" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="105" x2="345" y2="95" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="120" x2="345" y2="110" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="135" x2="345" y2="125" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <path d="M 420 15 L 360 70" stroke="#FFB600" stroke-width="1" stroke-dasharray="3 3"/>
+                      <path d="M 440 30 L 380 85" stroke="#FFB600" stroke-width="1" stroke-dasharray="3 3"/>
+                      <circle cx="435" cy="18" r="10" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.15)"/>
+                      <text x="385" y="25" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">42&#176; sun</text>
+                      <circle cx="88" cy="128" r="4" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="88" y1="132" x2="88" y2="148" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="88" y1="148" x2="83" y2="160" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="88" y1="148" x2="93" y2="160" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="82" y1="138" x2="94" y2="138" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <text x="60" y="173" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">1.75m scale</text>
+                      <path d="M 70 42 Q 95 38 120 50" stroke="#FFB600" stroke-width="1.2"/>
+                      <polygon points="123,51 115,48 118,54" fill="#FFB600" stroke="none"/>
+                      <text x="15" y="38" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11.5" stroke="none">1.2m cantilever eaves</text>
+                      <path d="M 395 168 Q 360 170 325 156" stroke="#FFB600" stroke-width="1.2"/>
+                      <polygon points="322,155 330,154 328,160" fill="#FFB600" stroke="none"/>
+                      <text x="340" y="182" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11.5" stroke="none">+450mm floating plinth</text>
+                    </svg>
+                  </div>
+                  <div class="note-arch__palette">
+                    <div class="note-arch__item"><span class="note-arch__item-bullet">&bull;</span> charred yakisugi cypress posts</div>
+                    <div class="note-arch__item"><span class="note-arch__item-bullet">&bull;</span> handmade translucent washi paper screens</div>
+                    <div class="note-arch__item"><span class="note-arch__item-bullet">&bull;</span> raw blackened steel pivot hardware</div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Page 3: Person 3 (Student / Traveler - Cabin Packing List) -->
+            <!-- Page 3: Person 3 (Artisan Baker — Process Formula & Timeline Log, STRUCTURED) -->
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">lake cabin trip &middot; nov 2-4</span>
-                  <span class="hero__page-header-field">packing list</span>
+                  <span class="hero__page-header-field">log #42 &middot; country sourdough</span>
+                  <span class="hero__page-header-field">78% hydration &middot; 24&deg;c</span>
                 </div>
-                <h3 class="hero__page-hand-title">Cabin Prep &amp; Gear</h3>
-                <div class="hero__page-check hero__page-check--done">
-                  <span class="hero__page-box">[&#10003;]</span> wool socks &amp; trail boots
-                </div>
-                <div class="hero__page-check hero__page-check--done">
-                  <span class="hero__page-box">[&#10003;]</span> polaroid camera &amp; 3 packs of film
-                </div>
-                <div class="hero__page-check hero__page-check--done">
-                  <span class="hero__page-box">[&#10003;]</span> download offline map for route 9
-                </div>
-                <div class="hero__page-check">
-                  <span class="hero__page-box">[ &nbsp; ]</span> fresh sourdough &amp; espresso beans
-                </div>
-                <div class="hero__page-check">
-                  <span class="hero__page-box">[ &nbsp; ]</span> grab firewood bundle from Mike's
-                </div>
-                <div class="hero__page-scribble">
-                  * bridge on route 9 closed &rarr; take old sawmill road instead (+15m)
+                <h3 class="hero__page-hand-title">Batch Log &amp; Proofing Curve</h3>
+                <div class="note-baker">
+                  <table class="note-table">
+                    <thead>
+                      <tr>
+                        <th>Ingredient</th>
+                        <th>Weight</th>
+                        <th>Baker's %</th>
+                        <th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Bread Flour</td>
+                        <td>450g</td>
+                        <td>90%</td>
+                        <td>12.7% protein</td>
+                      </tr>
+                      <tr>
+                        <td>Stoneground Rye</td>
+                        <td>50g</td>
+                        <td>10%</td>
+                        <td>whole grain</td>
+                      </tr>
+                      <tr>
+                        <td>Warm Water (30&deg;C)</td>
+                        <td>390g</td>
+                        <td>78%</td>
+                        <td>filtered</td>
+                      </tr>
+                      <tr>
+                        <td>Active Levain</td>
+                        <td>100g</td>
+                        <td>20%</td>
+                        <td>peak rise</td>
+                      </tr>
+                      <tr>
+                        <td>Fine Sea Salt</td>
+                        <td>10g</td>
+                        <td>2%</td>
+                        <td>dissolved</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="note-baker__timeline-wrap">
+                    <svg width="480" height="120" viewBox="0 0 480 120" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="25" y1="35" x2="455" y2="35" stroke="rgba(226,215,202,0.4)" stroke-width="2"/>
+                      <circle cx="35" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="15" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">08:00</text>
+                      <text x="12" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Autolyse</text>
+                      <circle cx="135" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="115" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">09:30</text>
+                      <text x="108" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Coil Folds &#215;4</text>
+                      <circle cx="245" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="225" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">13:00</text>
+                      <text x="218" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">+40% Rise</text>
+                      <circle cx="355" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="335" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">14:00</text>
+                      <text x="332" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Shape/Banneton</text>
+                      <circle cx="445" cy="35" r="5" fill="rgba(255,182,0,0.4)" stroke="#FFB600" stroke-width="2"/>
+                      <text x="420" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Overnight</text>
+                      <text x="422" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">4&#176;C Retard</text>
+                      <path d="M 60 108 Q 120 75 190 108" stroke="rgba(226,215,202,0.6)" stroke-width="1.8" fill="rgba(255,182,0,0.05)"/>
+                      <path d="M 105 87 L 125 76" stroke="#FFB600" stroke-width="2"/>
+                      <path d="M 120 78 Q 130 84 135 90" stroke="#FFB600" stroke-width="1.5" stroke-dasharray="2 2"/>
+                      <text x="205" y="98" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11.5" stroke="none">45&#176; blade angle &#8594; 30mm ear expansion</text>
+                    </svg>
+                  </div>
+                  <div class="note-baker__obs">
+                    <strong>Bake note:</strong> Oven preheated to <del>500&deg;F</del> 475&deg;F Dutch oven &middot; 20m lid on + steam &rarr; crisp blistering!
+                  </div>
                 </div>
               </div>
             </div>
@@ -136,18 +263,54 @@
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">sunday morning &middot; blue bottle</span>
-                  <span class="hero__page-header-field">ideas // v2</span>
+                  <span class="hero__page-header-field">bio 102 &middot; neurobiology</span>
+                  <span class="hero__page-header-field">lecture 14 &middot; oct 22</span>
                 </div>
-                <h3 class="hero__page-hand-title">Things that actually matter</h3>
-                <ul class="hero__page-list">
-                  <li><span class="hero__page-bullet">&ndash;</span> completely distraction-free workspace</li>
-                  <li><span class="hero__page-bullet">&ndash;</span> zero popups, zero marketing notifications</li>
-                  <li><span class="hero__page-bullet">&ndash;</span> instant search that finds thoughts in &lt;10ms</li>
-                  <li><span class="hero__page-bullet">&ndash;</span> markdown &amp; plain text export whenever</li>
-                </ul>
-                <div class="hero__page-scribble">
-                  * call dad about his birthday dinner next weekend
+                <h3 class="hero__page-hand-title">Action Potential &amp; Synapse</h3>
+                <div class="note-cornell">
+                  <div class="note-cornell__cues">
+                    <span class="note-cornell__cue">resting V_m</span>
+                    <span class="note-cornell__cue">threshold?</span>
+                    <span class="note-cornell__cue">Na+/K+ flux</span>
+                    <span class="note-cornell__cue">synapse 20nm</span>
+                  </div>
+                  <div class="note-cornell__main">
+                    <p class="note-cornell__p">Resting potential maintained @ -70mV via Na+/K+ ATPase pump (3 Na+ out / 2 K+ in).</p>
+                    <div class="note-cornell__sketch">
+                      <svg width="380" height="130" viewBox="0 0 380 130" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Axes -->
+                        <line x1="35" y1="15" x2="35" y2="115" stroke="rgba(226,215,202,0.4)"/>
+                        <line x1="35" y1="100" x2="235" y2="100" stroke="rgba(226,215,202,0.4)"/>
+                        <text x="5" y="25" fill="rgba(226,215,202,0.7)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">+35</text>
+                        <text x="8" y="78" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">-55</text>
+                        <text x="8" y="103" fill="rgba(226,215,202,0.7)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">-70</text>
+                        <line x1="35" y1="75" x2="230" y2="75" stroke="#FFB600" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+                        <!-- Spike Curve -->
+                        <path d="M 35 100 L 65 100 Q 80 100 85 75 Q 100 15 108 20 Q 116 25 125 108 Q 135 115 150 100 L 225 100" stroke="#FFB600" stroke-width="2" fill="none"/>
+                        <path d="M 108 18 L 135 12" stroke="#E2D7CA" stroke-width="1"/>
+                        <text x="140" y="15" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Na+ influx</text>
+                        <path d="M 125 70 L 155 60" stroke="#E2D7CA" stroke-width="1"/>
+                        <text x="160" y="63" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">K+ efflux</text>
+                        <text x="60" y="122" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">0ms</text>
+                        <text x="130" y="122" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">2ms</text>
+                        <text x="210" y="122" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">4ms</text>
+                        <!-- Synaptic Cleft Doodle -->
+                        <path d="M 260 20 C 280 20 295 40 295 65 C 295 90 280 110 260 110" stroke="#E2D7CA" stroke-width="1.6"/>
+                        <circle cx="278" cy="45" r="5" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.2)"/>
+                        <circle cx="284" cy="62" r="5" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.2)"/>
+                        <circle cx="280" cy="80" r="5" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.2)"/>
+                        <path d="M 312 20 C 322 35 325 65 325 85 C 325 98 320 110 312 110" stroke="rgba(226,215,202,0.5)" stroke-width="1.6"/>
+                        <circle cx="302" cy="52" r="1.5" fill="#FFB600" stroke="none"/>
+                        <circle cx="305" cy="65" r="1.5" fill="#FFB600" stroke="none"/>
+                        <circle cx="303" cy="78" r="1.5" fill="#FFB600" stroke="none"/>
+                        <text x="270" y="124" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">20nm cleft</text>
+                      </svg>
+                    </div>
+                    <p class="note-cornell__p">Threshold reached at -55mV &rarr; all-or-none voltage spike. Inactivation gates close at peak.</p>
+                  </div>
+                </div>
+                <div class="note-cornell__summary">
+                  <strong>Summary:</strong> Rapid electrical pulse down axon &rarr; triggers Ca2+ channels at bouton &rarr; vesicle fusion &amp; chemical release across synapse.
                 </div>
               </div>
             </div>
@@ -156,19 +319,57 @@
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">oct 14 &middot; evening reading</span>
-                  <span class="hero__page-header-field">journal</span>
+                  <span class="hero__page-header-field">studio archive &middot; book 3</span>
+                  <span class="hero__page-header-field">kyoto pavilion &middot; p.88</span>
                 </div>
-                <h3 class="hero__page-hand-title">Notes from Calvino</h3>
-                <div class="hero__page-quote">
-                  <p>&ldquo;You take delight not in a city's seven or seventy wonders, but in the answer it gives to a question of yours.&rdquo;</p>
-                  <span class="hero__page-quote-cite">&mdash; Italo Calvino, Invisible Cities</span>
-                </div>
-                <p class="hero__page-hand">
-                  Good tools feel the same way. Not eighty cluttered features, just a quiet room where your thoughts have room to breathe.
-                </p>
-                <div class="hero__page-scribble">
-                  next up: A Month in the Country &middot; J.L. Carr
+                <h3 class="hero__page-hand-title">Tea Pavilion No. 4</h3>
+                <div class="note-arch">
+                  <div class="note-arch__sketch-wrap">
+                    <svg width="480" height="200" viewBox="0 0 480 200" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="40" y1="160" x2="440" y2="160" stroke="rgba(226,215,202,0.3)" stroke-dasharray="4 4"/>
+                      <polygon points="120,150 290,150 360,135 190,135" stroke="#E2D7CA" stroke-width="1.6" fill="rgba(255,182,0,0.06)"/>
+                      <line x1="120" y1="150" x2="120" y2="158" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="290" y1="150" x2="290" y2="158" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="360" y1="135" x2="360" y2="143" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="120" y1="158" x2="290" y2="158" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="290" y1="158" x2="360" y2="143" stroke="#E2D7CA" stroke-width="1.5"/>
+                      <line x1="135" y1="148" x2="135" y2="60" stroke="#E2D7CA" stroke-width="2"/>
+                      <line x1="275" y1="148" x2="275" y2="60" stroke="#E2D7CA" stroke-width="2"/>
+                      <line x1="200" y1="135" x2="200" y2="50" stroke="#E2D7CA" stroke-width="1.8" stroke-dasharray="2 2"/>
+                      <line x1="345" y1="135" x2="345" y2="50" stroke="#E2D7CA" stroke-width="2"/>
+                      <polygon points="105,65 295,65 375,40 185,40" stroke="#FFB600" stroke-width="2" fill="rgba(255,182,0,0.12)"/>
+                      <line x1="145" y1="65" x2="225" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="185" y1="65" x2="265" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="225" y1="65" x2="305" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="265" y1="65" x2="345" y2="40" stroke="rgba(255,182,0,0.4)" stroke-width="1"/>
+                      <line x1="275" y1="75" x2="345" y2="65" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="90" x2="345" y2="80" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="105" x2="345" y2="95" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="120" x2="345" y2="110" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <line x1="275" y1="135" x2="345" y2="125" stroke="rgba(226,215,202,0.35)" stroke-width="1"/>
+                      <path d="M 420 15 L 360 70" stroke="#FFB600" stroke-width="1" stroke-dasharray="3 3"/>
+                      <path d="M 440 30 L 380 85" stroke="#FFB600" stroke-width="1" stroke-dasharray="3 3"/>
+                      <circle cx="435" cy="18" r="10" stroke="#FFB600" stroke-width="1.4" fill="rgba(255,182,0,0.15)"/>
+                      <text x="385" y="25" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">42&#176; sun</text>
+                      <circle cx="88" cy="128" r="4" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="88" y1="132" x2="88" y2="148" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="88" y1="148" x2="83" y2="160" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="88" y1="148" x2="93" y2="160" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <line x1="82" y1="138" x2="94" y2="138" stroke="#E2D7CA" stroke-width="1.2"/>
+                      <text x="60" y="173" fill="rgba(226,215,202,0.6)" font-family="'Homemade Apple', cursive" font-size="10" stroke="none">1.75m scale</text>
+                      <path d="M 70 42 Q 95 38 120 50" stroke="#FFB600" stroke-width="1.2"/>
+                      <polygon points="123,51 115,48 118,54" fill="#FFB600" stroke="none"/>
+                      <text x="15" y="38" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11.5" stroke="none">1.2m cantilever eaves</text>
+                      <path d="M 395 168 Q 360 170 325 156" stroke="#FFB600" stroke-width="1.2"/>
+                      <polygon points="322,155 330,154 328,160" fill="#FFB600" stroke="none"/>
+                      <text x="340" y="182" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11.5" stroke="none">+450mm floating plinth</text>
+                    </svg>
+                  </div>
+                  <div class="note-arch__palette">
+                    <div class="note-arch__item"><span class="note-arch__item-bullet">&bull;</span> charred yakisugi cypress posts</div>
+                    <div class="note-arch__item"><span class="note-arch__item-bullet">&bull;</span> handmade translucent washi paper screens</div>
+                    <div class="note-arch__item"><span class="note-arch__item-bullet">&bull;</span> raw blackened steel pivot hardware</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -177,27 +378,80 @@
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">lake cabin trip &middot; nov 2-4</span>
-                  <span class="hero__page-header-field">packing list</span>
+                  <span class="hero__page-header-field">log #42 &middot; country sourdough</span>
+                  <span class="hero__page-header-field">78% hydration &middot; 24&deg;c</span>
                 </div>
-                <h3 class="hero__page-hand-title">Cabin Prep &amp; Gear</h3>
-                <div class="hero__page-check hero__page-check--done">
-                  <span class="hero__page-box">[&#10003;]</span> wool socks &amp; trail boots
-                </div>
-                <div class="hero__page-check hero__page-check--done">
-                  <span class="hero__page-box">[&#10003;]</span> polaroid camera &amp; 3 packs of film
-                </div>
-                <div class="hero__page-check hero__page-check--done">
-                  <span class="hero__page-box">[&#10003;]</span> download offline map for route 9
-                </div>
-                <div class="hero__page-check">
-                  <span class="hero__page-box">[ &nbsp; ]</span> fresh sourdough &amp; espresso beans
-                </div>
-                <div class="hero__page-check">
-                  <span class="hero__page-box">[ &nbsp; ]</span> grab firewood bundle from Mike's
-                </div>
-                <div class="hero__page-scribble">
-                  * bridge on route 9 closed &rarr; take old sawmill road instead (+15m)
+                <h3 class="hero__page-hand-title">Batch Log &amp; Proofing Curve</h3>
+                <div class="note-baker">
+                  <table class="note-table">
+                    <thead>
+                      <tr>
+                        <th>Ingredient</th>
+                        <th>Weight</th>
+                        <th>Baker's %</th>
+                        <th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Bread Flour</td>
+                        <td>450g</td>
+                        <td>90%</td>
+                        <td>12.7% protein</td>
+                      </tr>
+                      <tr>
+                        <td>Stoneground Rye</td>
+                        <td>50g</td>
+                        <td>10%</td>
+                        <td>whole grain</td>
+                      </tr>
+                      <tr>
+                        <td>Warm Water (30&deg;C)</td>
+                        <td>390g</td>
+                        <td>78%</td>
+                        <td>filtered</td>
+                      </tr>
+                      <tr>
+                        <td>Active Levain</td>
+                        <td>100g</td>
+                        <td>20%</td>
+                        <td>peak rise</td>
+                      </tr>
+                      <tr>
+                        <td>Fine Sea Salt</td>
+                        <td>10g</td>
+                        <td>2%</td>
+                        <td>dissolved</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="note-baker__timeline-wrap">
+                    <svg width="480" height="120" viewBox="0 0 480 120" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="25" y1="35" x2="455" y2="35" stroke="rgba(226,215,202,0.4)" stroke-width="2"/>
+                      <circle cx="35" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="15" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">08:00</text>
+                      <text x="12" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Autolyse</text>
+                      <circle cx="135" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="115" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">09:30</text>
+                      <text x="108" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Coil Folds &#215;4</text>
+                      <circle cx="245" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="225" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">13:00</text>
+                      <text x="218" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">+40% Rise</text>
+                      <circle cx="355" cy="35" r="5" fill="#FFB600" stroke="#FFB600" stroke-width="2"/>
+                      <text x="335" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">14:00</text>
+                      <text x="332" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Shape/Banneton</text>
+                      <circle cx="445" cy="35" r="5" fill="rgba(255,182,0,0.4)" stroke="#FFB600" stroke-width="2"/>
+                      <text x="420" y="18" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">Overnight</text>
+                      <text x="422" y="58" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="11" stroke="none">4&#176;C Retard</text>
+                      <path d="M 60 108 Q 120 75 190 108" stroke="rgba(226,215,202,0.6)" stroke-width="1.8" fill="rgba(255,182,0,0.05)"/>
+                      <path d="M 105 87 L 125 76" stroke="#FFB600" stroke-width="2"/>
+                      <path d="M 120 78 Q 130 84 135 90" stroke="#FFB600" stroke-width="1.5" stroke-dasharray="2 2"/>
+                      <text x="205" y="98" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="11.5" stroke="none">45&#176; blade angle &#8594; 30mm ear expansion</text>
+                    </svg>
+                  </div>
+                  <div class="note-baker__obs">
+                    <strong>Bake note:</strong> Oven preheated to <del>500&deg;F</del> 475&deg;F Dutch oven &middot; 20m lid on + steam &rarr; crisp blistering!
+                  </div>
                 </div>
               </div>
             </div>
