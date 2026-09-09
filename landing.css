@@ -83,7 +83,10 @@
   --font-serif: 'Apple Garamond', 'EB Garamond', serif;
   --font-apple-garamond: 'Apple Garamond', serif;
   --font-apple-garamond-light: 'Apple Garamond Light', 'Apple Garamond', serif;
-  --font-handwriting: 'Homemade Apple', 'Apple Garamond', cursive;
+  --font-handwriting: 'Caveat', 'Homemade Apple', cursive;
+  --font-handwriting-neat: 'Kalam', 'Patrick Hand', cursive;
+  --font-handwriting-print: 'Patrick Hand', 'Caveat', cursive;
+  --font-code: 'Fira Code', monospace;
 }
 
 * {
@@ -245,163 +248,436 @@ input {
   }
 }
 
-/* Rectangle 30 / 31 / 32
-   Figma: each 616×831, background: #191919 */
+/* =========================================================================
+   AUTHENTIC NOTEBOOK PAGES (HERO CAROUSEL)
+   Figma: each 616×831, background: authentic dark paper texture
+   ========================================================================= */
+
 .hero__page {
+  position: relative;
   flex: 0 0 616px;
   width: 616px;
   height: 831px;
-  background: #191919;
-  border: 1px solid rgba(226, 215, 202, 0.12);
-  border-radius: 4px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
   user-select: none;
   pointer-events: none;
   overflow: hidden;
   box-sizing: border-box;
 }
 
+/* Variant 1: College Ruled Notebook Paper */
+.hero__page--ruled {
+  background-color: #161619;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    rgba(226, 215, 202, 0.055) 27px,
+    rgba(226, 215, 202, 0.055) 28px
+  );
+  background-position: 0 54px;
+  box-shadow: 
+    inset 68px 0 0 0 transparent,
+    inset 69px 0 0 0 rgba(235, 87, 87, 0.35),
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(226, 215, 202, 0.12);
+}
+
+/* Variant 2: Moleskine Dot-Grid Notebook Paper */
+.hero__page--grid {
+  background-color: #151518;
+  background-image: radial-gradient(circle, rgba(226, 215, 202, 0.12) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  background-position: 12px 12px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(226, 215, 202, 0.12);
+}
+
+/* Variant 3: Technical Engineering Blueprint Grid Paper */
+.hero__page--engineering {
+  background-color: #121418;
+  background-image: 
+    linear-gradient(rgba(70, 130, 220, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(70, 130, 220, 0.075) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(70, 130, 220, 0.2);
+}
+
+/* Binder Punch Holes along Left Edge */
+.hero__page-binder {
+  position: absolute;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 85px 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.hero__page-punch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #08080a;
+  border: 1px solid rgba(226, 215, 202, 0.18);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+/* Main Content Layout */
 .hero__page-content {
-  padding: 44px 38px;
+  position: relative;
+  padding: 34px 34px 34px 50px;
   height: 100%;
   display: flex;
   flex-direction: column;
   color: #E2D7CA;
   box-sizing: border-box;
-  opacity: 0.68;
+  opacity: 0.98;
 }
 
-.hero__page-meta {
-  font-family: monospace;
+/* Realistic Printed Header Area */
+.hero__page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid rgba(226, 215, 202, 0.18);
+  margin-bottom: 18px;
+  width: 100%;
+}
+
+.hero__page-header-field {
+  font-family: 'Patrick Hand', 'Fira Code', monospace;
   font-size: 13px;
   letter-spacing: 0.08em;
-  color: rgba(226, 215, 202, 0.45);
+  color: rgba(226, 215, 202, 0.55);
   text-transform: uppercase;
-  margin-bottom: 14px;
 }
 
+.hero__page-header-field strong {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: #FFF2E2;
+  font-weight: 700;
+  margin-left: 6px;
+  letter-spacing: normal;
+}
+
+/* Handwritten Titles & Body */
 .hero__page-hand-title {
-  font-family: var(--font-handwriting), cursive;
-  font-weight: 400;
-  font-size: 25px;
-  line-height: 1.4;
-  color: #E2D7CA;
-  margin: 0 0 16px 0;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.25;
+  color: #FFFFFF;
+  margin: 0 0 12px 0;
 }
 
 .hero__page-hand {
-  font-family: var(--font-handwriting), cursive;
-  font-size: 19px;
-  line-height: 1.7;
-  color: #E2D7CA;
-  opacity: 0.92;
-  margin: 0 0 16px 0;
-}
-
-.hero__page-margin-note {
-  font-family: var(--font-handwriting), cursive;
-  font-size: 17px;
-  color: #FFB600;
-  margin: 8px 0 14px 4px;
-  transform: rotate(-1.5deg);
-  display: inline-block;
-}
-
-.hero__page-sketch {
-  margin: 12px 0 16px 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.hero__page-checklist-hand {
-  font-family: var(--font-handwriting), cursive;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #E2D7CA;
-  margin: 12px 0;
-}
-
-.hero__page-checklist-hand p {
-  margin: 6px 0;
-}
-
-.hero__page-title {
-  font-family: var(--font-apple-garamond), serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.25;
-  color: #E2D7CA;
-  margin: 0 0 16px 0;
-}
-
-.hero__page-divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(226, 215, 202, 0.12);
-  margin: 12px 0 20px 0;
-}
-
-.hero__page-text {
-  font-family: var(--font-apple-garamond-light), serif;
+  font-family: 'Caveat', cursive;
   font-size: 20px;
-  line-height: 1.5;
-  color: #DFD5C7;
-  opacity: 0.88;
-  margin: 0 0 16px 0;
+  line-height: 1.55;
+  color: #E6DCD0;
+  margin: 0 0 10px 0;
+  font-weight: 500;
 }
 
-.hero__page-quote {
-  font-family: var(--font-apple-garamond), serif;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 1.4;
-  color: #E3DACD;
-  border-left: 2px solid rgba(226, 215, 202, 0.4);
-  padding-left: 16px;
-  margin: 16px 0;
+/* Realistic Highlighters */
+.note-hl {
+  display: inline;
+  padding: 2px 8px;
+  border-radius: 3px;
+  color: #FFFFFF;
+  font-weight: 700;
 }
 
-.hero__page-math {
-  font-family: monospace;
-  font-size: 18px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(226, 215, 202, 0.15);
+.note-hl--amber {
+  background: rgba(255, 182, 0, 0.28);
+  box-shadow: 0 0 14px rgba(255, 182, 0, 0.18);
+}
+
+.note-hl--yellow {
+  background: rgba(255, 214, 10, 0.24);
+  box-shadow: 0 0 14px rgba(255, 214, 10, 0.16);
+}
+
+.note-hl--green {
+  background: rgba(46, 204, 113, 0.25);
+  box-shadow: 0 0 14px rgba(46, 204, 113, 0.16);
+}
+
+.note-hl--cyan {
+  background: rgba(52, 152, 219, 0.26);
+  box-shadow: 0 0 14px rgba(52, 152, 219, 0.16);
+}
+
+.note-underline {
+  border-bottom: 2px solid #FFB600;
+  padding-bottom: 1px;
+}
+
+/* Sticky Note (Post-It) */
+.note-postit {
+  position: absolute;
+  right: 22px;
+  top: 48px;
+  width: 178px;
+  background: #252219;
+  border: 1px solid rgba(255, 200, 80, 0.25);
+  border-radius: 2px 2px 14px 2px;
+  padding: 14px 12px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.4);
+  transform: rotate(2.5deg);
+  z-index: 5;
+}
+
+.note-postit-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 58px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.note-postit-heading {
+  font-family: 'Patrick Hand', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #FFB600;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.note-postit-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #EFE6D8;
+}
+
+.note-postit-list li {
+  margin: 3px 0;
+}
+
+/* Margin Alert Callout */
+.note-margin-alert {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 13px;
+  color: #FF5A5A;
+  background: rgba(255, 90, 90, 0.12);
+  border: 1px dashed rgba(255, 90, 90, 0.35);
+  padding: 3px 8px;
   border-radius: 4px;
-  padding: 12px 16px;
-  color: #E2D7CA;
-  margin: 14px 0;
   display: inline-block;
+  transform: rotate(-1.5deg);
+  margin-bottom: 8px;
+  width: fit-content;
+}
+
+/* Callout Bar */
+.hero__page-callout {
+  border-left: 3px solid #FFB600;
+  background: rgba(255, 182, 0, 0.08);
+  border-radius: 0 4px 4px 0;
+  padding: 8px 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  line-height: 1.4;
+  color: #FFF;
+  margin: 8px 0;
+}
+
+.note-badge-star {
+  font-family: 'Patrick Hand', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: #FFB600;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* Formula Card */
+.note-formula-card {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(226, 215, 202, 0.18);
+  border-radius: 6px;
+  padding: 10px 16px;
+  margin: 8px 0;
+}
+
+.note-formula-title {
+  font-family: 'Patrick Hand', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(226, 215, 202, 0.55);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.note-formula-math {
+  font-family: 'Fira Code', monospace;
+  font-size: 16px;
+  color: #FFF2E2;
+  font-weight: 500;
   letter-spacing: 0.04em;
 }
 
-.hero__page-code {
-  font-family: monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  background: #0D0D0D;
-  border: 1px solid rgba(226, 215, 202, 0.12);
-  border-radius: 4px;
-  padding: 16px;
-  color: #DFD5C7;
-  margin: 14px 0;
-  overflow: hidden;
+.note-formula-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 5px;
+  font-family: 'Caveat', cursive;
+  font-size: 15px;
+  color: #FFB600;
 }
 
-.hero__page-list,
-.hero__page-checklist {
-  font-family: var(--font-apple-garamond-light), serif;
-  font-size: 19px;
-  line-height: 1.6;
-  color: #DFD5C7;
-  opacity: 0.88;
-  margin: 8px 0 16px 20px;
+/* Code Snippet Card */
+.note-code-card {
+  background: #0d0e11;
+  border: 1px solid rgba(226, 215, 202, 0.15);
+  border-radius: 6px;
+  margin: 10px 0;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.note-code-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(226, 215, 202, 0.1);
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: rgba(226, 215, 202, 0.5);
+}
+
+.note-code-card pre {
+  margin: 0;
+  padding: 12px 14px;
+  font-family: 'Fira Code', monospace;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #E2D7CA;
+  overflow-x: auto;
+}
+
+.c-keyword { color: #e77c7c; }
+.c-func { color: #e6b450; }
+.c-comment { color: #6a737d; font-style: italic; }
+.c-num { color: #79b8ff; }
+
+/* Quotes & Marginalia */
+.note-quote {
+  border-left: 3px solid rgba(226, 215, 202, 0.35);
+  padding: 6px 0 6px 14px;
+  margin: 10px 0;
+}
+
+.note-quote p {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.45;
+  color: #FFF2E2;
+  margin: 0;
+}
+
+.note-checklist-box {
+  margin: 8px 0;
+}
+
+.note-check-item {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  line-height: 1.45;
+  color: #E2D7CA;
+  margin: 6px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.note-check-mark {
+  color: #2ecc71;
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.note-principles-list {
+  list-style: none;
+  margin: 8px 0;
   padding: 0;
 }
 
-.hero__page-checklist p {
-  margin: 8px 0;
+.note-principles-list li {
+  font-family: 'Kalam', cursive;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #E2D7CA;
+  margin: 7px 0;
+}
+
+.note-principles-list li strong {
+  color: #FFF;
+}
+
+.note-bullet {
+  color: #4a9eff;
+  margin-right: 6px;
+}
+
+.note-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px dashed rgba(70, 130, 220, 0.35);
+  background: rgba(70, 130, 220, 0.08);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  color: #D2E4FF;
+  margin-top: 6px;
+}
+
+.note-stamp {
+  font-family: 'Patrick Hand', monospace;
+  font-size: 12px;
+  color: #60a5fa;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.note-marginalia {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  font-style: italic;
+  color: #FFB600;
+  margin-top: auto;
+  padding-top: 8px;
+  text-align: right;
+  opacity: 0.88;
 }
 
 /* "notes 101" Image Title — LAYER 6 (z:1, behind pages)
