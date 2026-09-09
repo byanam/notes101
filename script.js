@@ -242,9 +242,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const editorEl = document.getElementById('document-editor');
             if (!editorEl) return;
 
+            const getLastContentNode = (parent) => {
+                let child = parent.lastChild;
+                while (child && child.nodeType === Node.ELEMENT_NODE && child.classList.contains('drawing-layer')) {
+                    child = child.previousSibling;
+                }
+                return child;
+            };
+
+            const getFirstContentNode = (parent) => {
+                let child = parent.firstChild;
+                while (child && child.nodeType === Node.ELEMENT_NODE && child.classList.contains('drawing-layer')) {
+                    child = child.nextSibling;
+                }
+                return child;
+            };
+
             const pages = Array.from(editorEl.querySelectorAll('.a4-page'));
             const hasOverflow = pages.some(p => p.scrollHeight > p.clientHeight);
-            const hasEmptyAutoPage = pages.some((p, idx) => idx > 0 && p.childNodes.length === 0 && p.dataset.autoPage === '1');
+            const hasEmptyAutoPage = pages.some((p, idx) => idx > 0 && getFirstContentNode(p) === null && p.dataset.autoPage === '1');
 
             // Skip reflow and selection manipulation if no pages overflow
             if (!hasOverflow && !hasEmptyAutoPage) {
@@ -262,22 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     preCaretRange.setEnd(range.startContainer, range.startOffset);
                     cursorOffset = preCaretRange.toString().length;
                 } catch (_) { }
-            }
-
-            function getLastContentNode(parent) {
-                let child = parent.lastChild;
-                while (child && child.nodeType === Node.ELEMENT_NODE && child.classList.contains('drawing-layer')) {
-                    child = child.previousSibling;
-                }
-                return child;
-            }
-
-            function getFirstContentNode(parent) {
-                let child = parent.firstChild;
-                while (child && child.nodeType === Node.ELEMENT_NODE && child.classList.contains('drawing-layer')) {
-                    child = child.nextSibling;
-                }
-                return child;
             }
 
             // Forward flow: while a page overflows, push its last content child to the next page
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Remove empty auto-created pages
-                if (next.childNodes.length === 0 && next.dataset.autoPage === '1') {
+                if (getFirstContentNode(next) === null && next.dataset.autoPage === '1') {
                     const deadId = next.id;
                     next.remove();
                     pages.splice(i + 1, 1);
