@@ -264,14 +264,6 @@ input {
   overflow: hidden;
   box-sizing: border-box;
   background-color: #161619;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent,
-    transparent 27px,
-    rgba(226, 215, 202, 0.055) 27px,
-    rgba(226, 215, 202, 0.055) 28px
-  );
-  background-position: 0 54px;
   box-shadow: 
     0 25px 60px rgba(0, 0, 0, 0.75),
     0 0 0 1px rgba(226, 215, 202, 0.12);
