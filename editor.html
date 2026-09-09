@@ -7,7 +7,8 @@
   <script>
     (function () {
       var forceDesktop = (window.sessionStorage && window.sessionStorage.getItem('forceDesktop') === 'true') || (window.location.search && window.location.search.includes('desktop=1'));
-      if (forceDesktop) return;
+      var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if (forceDesktop || isLocal) return;
       var ua = navigator.userAgent || '';
       var isMobileUA = /iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) || (/Android/i.test(ua) && /Mobile/i.test(ua));
       var isDesktopOS = /Macintosh|Windows|X11|Linux x86_64/i.test(ua) && !/Android|iPhone|iPad/i.test(ua);

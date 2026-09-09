@@ -54,13 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!user) {
-            console.log("[App] No active session found. Redirecting to landing page...");
-            if (typeof window.clearNotesData === 'function') {
-                window.clearNotesData();
-            }
-            const path = window.location.pathname;
-            if (path !== '/' && path !== '' && !path.endsWith('/index.html') && !path.endsWith('/')) {
-                window.location.href = 'index.html';
+            console.log("[App] No active Firebase session found. Running in Local / Guest Mode...");
+            currentUser = null;
+            if (userName) userName.textContent = 'Guest User';
+            if (userEmail) userEmail.textContent = 'Local Storage Only';
+            updateSyncStatus('Saved Locally (Guest)', 'demo');
+            if (logoutBtn) {
+                logoutBtn.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Home`;
+                logoutBtn.title = 'Return to Home';
             }
             return;
         }
@@ -152,11 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
     async function handleLogout(e) {
         if (e) e.preventDefault();
         
-        if (isDemoMode) {
+        if (isDemoMode || !currentUser) {
             sessionStorage.removeItem('demoMode');
-            if (typeof window.clearNotesData === 'function') {
-                window.clearNotesData();
-            }
             window.location.href = 'index.html';
             return;
         }
