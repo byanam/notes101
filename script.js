@@ -5,7 +5,7 @@ window.navigateToHome = function (e) {
     container.style.transition = 'opacity 0.25s ease-out';
     container.style.opacity = '0';
     setTimeout(() => {
-        window.location.href = '/';
+        window.location.href = 'index.html';
     }, 250);
 };
 
