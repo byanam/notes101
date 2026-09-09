@@ -426,7 +426,7 @@ function initAuthUI() {
 
                 setTimeout(() => {
                     if (!window.location.pathname.endsWith('editor.html') && !window.location.href.includes('editor.html')) {
-                        window.location.href = '/editor.html';
+                        window.location.href = 'editor.html';
                     }
                 }, 300);
             }
@@ -452,14 +452,14 @@ function initAuthUI() {
         if (response.success) {
             isRedirecting = true;
             setLoading(true, 'Redirecting...');
-            window.location.href = '/editor.html';
+            window.location.href = 'editor.html';
         } else if (response.redirecting) {
             setLoading(true, 'Redirecting...');
         } else if (response.isUnconfigured) {
             showAuthToast("Firebase credentials required! Add your Firebase details in firebase/firebase-config.js. Entering Preview Mode...", false);
             setLoading(true, 'Preview Mode...');
             setTimeout(() => {
-                window.location.href = '/editor.html';
+                window.location.href = 'editor.html';
             }, 1800);
         } else {
             setLoading(false);
