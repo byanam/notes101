@@ -83,9 +83,9 @@
   --font-serif: 'Apple Garamond', 'EB Garamond', serif;
   --font-apple-garamond: 'Apple Garamond', serif;
   --font-apple-garamond-light: 'Apple Garamond Light', 'Apple Garamond', serif;
-  --font-handwriting: 'Caveat', 'Homemade Apple', cursive;
-  --font-handwriting-neat: 'Kalam', 'Patrick Hand', cursive;
-  --font-handwriting-print: 'Patrick Hand', 'Caveat', cursive;
+  --font-handwriting: 'Homemade Apple', cursive;
+  --font-handwriting-neat: 'Homemade Apple', cursive;
+  --font-handwriting-print: 'Homemade Apple', cursive;
   --font-code: 'Fira Code', monospace;
 }
 
@@ -309,31 +309,31 @@ input {
 }
 
 .hero__page-header-field strong {
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 15px;
   color: #FFF2E2;
-  font-weight: 700;
+  font-weight: 400;
   margin-left: 6px;
   letter-spacing: normal;
 }
 
 /* Handwritten Titles & Body */
 .hero__page-hand-title {
-  font-family: 'Caveat', cursive;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 1.25;
+  font-family: 'Homemade Apple', cursive;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 1.45;
   color: #FFFFFF;
   margin: 0 0 16px 0;
 }
 
 .hero__page-hand {
-  font-family: 'Caveat', cursive;
-  font-size: 21px;
-  line-height: 1.6;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 17px;
+  line-height: 1.85;
   color: #E6DCD0;
   margin: 0 0 14px 0;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 
@@ -382,8 +382,8 @@ input {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 8px;
-  font-family: 'Caveat', cursive;
-  font-size: 16px;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 14px;
   color: #FFB600;
 }
 
@@ -408,9 +408,9 @@ input {
 }
 
 .note-check-item {
-  font-family: 'Caveat', cursive;
-  font-size: 20px;
-  line-height: 1.5;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 16px;
+  line-height: 1.8;
   color: #E2D7CA;
   margin: 10px 0;
   display: flex;
@@ -431,9 +431,9 @@ input {
 }
 
 .note-principles-list li {
-  font-family: 'Kalam', cursive;
-  font-size: 17px;
-  line-height: 1.6;
+  font-family: 'Homemade Apple', cursive;
+  font-size: 15px;
+  line-height: 1.8;
   color: #E2D7CA;
   margin: 12px 0;
 }
