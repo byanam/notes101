@@ -2509,4 +2509,286 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ─── 5. PHOTOPEA / PHOTOSHOP DESKTOP DOCK CONTROLLER ───────────────────
+    (function initPhotopeaDock() {
+        const rightDock = document.getElementById('ps-right-dock');
+        const railToggle = document.getElementById('ps-rail-toggle');
+        const railButtons = document.querySelectorAll('.ps-rail-btn[data-panel]');
+        
+        const topTabsContainer = document.getElementById('ps-top-tabs');
+        const topTabs = document.querySelectorAll('#ps-panel-top .ps-tab');
+        const topViews = document.querySelectorAll('#ps-top-panel-content .ps-tab-view');
+        const topMinBtn = document.getElementById('ps-top-minimize-btn');
+        const topPanelContent = document.getElementById('ps-top-panel-content');
+        
+        const bottomTabs = document.querySelectorAll('#ps-panel-bottom .ps-tab');
+        const bottomViews = document.querySelectorAll('#ps-panel-bottom .ps-tab-view');
+        const bottomMinBtn = document.getElementById('ps-bottom-minimize-btn');
+        const bottomPanelContent = document.querySelector('#ps-panel-bottom .ps-panel-content');
+        
+        const historyList = document.getElementById('ps-history-list');
+        const layersList = document.getElementById('ps-layers-list');
+
+        // Collapse / Expand Entire Right Dock
+        if (railToggle && rightDock) {
+            railToggle.addEventListener('click', () => {
+                rightDock.classList.toggle('collapsed');
+                const isCollapsed = rightDock.classList.contains('collapsed');
+                const icon = railToggle.querySelector('i');
+                if (icon) {
+                    icon.className = isCollapsed ? 'fa-solid fa-angles-left' : 'fa-solid fa-angles-right';
+                }
+            });
+        }
+
+        // Switch Top Panel View
+        function showTopView(viewId, tabLabel = null) {
+            // Expand dock if collapsed
+            if (rightDock && rightDock.classList.contains('collapsed')) {
+                rightDock.classList.remove('collapsed');
+                const icon = railToggle && railToggle.querySelector('i');
+                if (icon) icon.className = 'fa-solid fa-angles-right';
+            }
+
+            topViews.forEach(v => v.classList.remove('active'));
+            const targetView = document.getElementById(viewId);
+            if (targetView) targetView.classList.add('active');
+
+            // Handle tabs
+            topTabs.forEach(t => t.classList.remove('active'));
+            const matchingTab = Array.from(topTabs).find(t => t.getAttribute('data-tab') === viewId.replace('view-', ''));
+            if (matchingTab) {
+                matchingTab.classList.add('active');
+            } else if (tabLabel) {
+                let dynamicTab = document.getElementById('tab-btn-tool');
+                if (!dynamicTab) {
+                    dynamicTab = document.createElement('button');
+                    dynamicTab.type = 'button';
+                    dynamicTab.className = 'ps-tab';
+                    dynamicTab.id = 'tab-btn-tool';
+                    if (topTabsContainer) topTabsContainer.appendChild(dynamicTab);
+                }
+                dynamicTab.textContent = tabLabel;
+                dynamicTab.style.display = '';
+                dynamicTab.classList.add('active');
+            }
+        }
+
+        // Top Tabs Click Handlers
+        topTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+                if (targetTab === 'history') {
+                    showTopView('view-history');
+                    railButtons.forEach(b => b.classList.remove('active'));
+                } else if (targetTab === 'swatches') {
+                    showTopView('view-swatches');
+                    railButtons.forEach(b => b.classList.remove('active'));
+                } else if (targetTab === 'char') {
+                    showTopView('view-char', 'Character');
+                    highlightRailBtn('char');
+                }
+            });
+        });
+
+        function highlightRailBtn(panelKey) {
+            railButtons.forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-panel') === panelKey);
+            });
+        }
+
+        // Rail Button Click Handlers
+        const panelMapping = {
+            'info': { view: 'view-info', label: 'Info' },
+            'props': { view: 'view-props', label: 'Properties' },
+            'brush': { view: 'view-brush', label: 'Brushes' },
+            'char': { view: 'view-char', label: 'Character' },
+            'para': { view: 'view-para', label: 'Paragraph' },
+            'css': { view: 'view-css', label: 'CSS / Export' }
+        };
+
+        railButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const panel = btn.getAttribute('data-panel');
+                if (panel === 'image') {
+                    const imgInput = document.getElementById('image-upload-input');
+                    if (imgInput) imgInput.click();
+                    return;
+                }
+
+                if (panelMapping[panel]) {
+                    showTopView(panelMapping[panel].view, panelMapping[panel].label);
+                    highlightRailBtn(panel);
+                    // Ensure top panel is not minimized
+                    if (topPanelContent) topPanelContent.style.display = '';
+                }
+            });
+        });
+
+        // Bottom Tabs Click Handlers (Layers, Channels, Paths)
+        bottomTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.getAttribute('data-tab');
+                bottomTabs.forEach(t => t.classList.remove('active'));
+                bottomViews.forEach(v => v.classList.remove('active'));
+                tab.classList.add('active');
+                const targetView = document.getElementById(`view-${targetTab}`);
+                if (targetView) targetView.classList.add('active');
+                if (bottomPanelContent) bottomPanelContent.style.display = '';
+            });
+        });
+
+        // Minimize Buttons
+        if (topMinBtn && topPanelContent) {
+            topMinBtn.addEventListener('click', () => {
+                const isHidden = topPanelContent.style.display === 'none';
+                topPanelContent.style.display = isHidden ? '' : 'none';
+                const icon = topMinBtn.querySelector('i');
+                if (icon) icon.className = isHidden ? 'fa-solid fa-minus' : 'fa-regular fa-square';
+            });
+        }
+
+        if (bottomMinBtn && bottomPanelContent) {
+            bottomMinBtn.addEventListener('click', () => {
+                const isHidden = bottomPanelContent.style.display === 'none';
+                bottomPanelContent.style.display = isHidden ? '' : 'none';
+                const icon = bottomMinBtn.querySelector('i');
+                if (icon) icon.className = isHidden ? 'fa-solid fa-minus' : 'fa-regular fa-square';
+            });
+        }
+
+        // Swatches Grid Click -> Sets Text Color
+        const swatches = document.querySelectorAll('.ps-swatch');
+        swatches.forEach(swatch => {
+            swatch.addEventListener('click', () => {
+                const color = swatch.getAttribute('data-color');
+                if (color) {
+                    document.execCommand('foreColor', false, color);
+                    const trigger = document.getElementById('text-color-spectrum-trigger');
+                    if (trigger) trigger.style.backgroundColor = color;
+                    logHistoryAction(`Color: ${color}`);
+                }
+            });
+        });
+
+        // History Logger
+        function logHistoryAction(name) {
+            if (!historyList) return;
+            const item = document.createElement('div');
+            item.className = 'ps-history-item';
+            item.innerHTML = `
+                <i class="fa-solid fa-clock-rotate-left ps-history-icon"></i>
+                <span class="ps-history-text">${name}</span>
+            `;
+            item.addEventListener('click', () => {
+                historyList.querySelectorAll('.ps-history-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+            historyList.appendChild(item);
+            historyList.scrollTop = historyList.scrollHeight;
+
+            if (historyList.children.length > 30) {
+                historyList.removeChild(historyList.children[1]);
+            }
+        }
+        window.logHistoryAction = logHistoryAction;
+
+        // Dynamic Layers Stack Synchronizer
+        function syncLayersList() {
+            if (!layersList) return;
+            const pages = document.querySelectorAll('.a4-page');
+            layersList.innerHTML = '';
+
+            if (pages.length === 0) {
+                layersList.innerHTML = '<div class="ps-empty-note">No pages available.</div>';
+                return;
+            }
+
+            Array.from(pages).reverse().forEach((page, revIdx) => {
+                const actualIdx = pages.length - 1 - revIdx;
+                const pageNum = actualIdx + 1;
+                const pageId = page.id || `note-page-${pageNum}`;
+                const pageTitle = pageNum === 1 ? 'Background' : `Page ${pageNum}`;
+                const isActive = page.classList.contains('active-page') || revIdx === 0;
+
+                const layerRow = document.createElement('div');
+                layerRow.className = `ps-layer-item ${isActive ? 'active' : ''}`;
+                layerRow.setAttribute('data-page-id', pageId);
+
+                const computedBg = window.getComputedStyle(page).backgroundColor || '#ffffff';
+
+                layerRow.innerHTML = `
+                    <button type="button" class="ps-layer-eye" title="Toggle Visibility">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                    <div class="ps-layer-thumb" style="background-color: ${computedBg};">
+                        <div class="ps-thumb-preview"></div>
+                    </div>
+                    <span class="ps-layer-title">${pageTitle}</span>
+                    <i class="fa-solid fa-lock ps-layer-lock"></i>
+                `;
+
+                const eyeBtn = layerRow.querySelector('.ps-layer-eye');
+                if (eyeBtn) {
+                    eyeBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const isHidden = page.style.visibility === 'hidden';
+                        page.style.visibility = isHidden ? 'visible' : 'hidden';
+                        eyeBtn.classList.toggle('hidden', !isHidden);
+                        const icon = eyeBtn.querySelector('i');
+                        if (icon) icon.className = isHidden ? 'fa-solid fa-eye' : 'fa-regular fa-eye-slash';
+                    });
+                }
+
+                layerRow.addEventListener('click', () => {
+                    layersList.querySelectorAll('.ps-layer-item').forEach(l => l.classList.remove('active'));
+                    layerRow.classList.add('active');
+                    pages.forEach(p => p.classList.remove('active-page'));
+                    page.classList.add('active-page');
+                    page.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    logHistoryAction(`Select ${pageTitle}`);
+                });
+
+                layersList.appendChild(layerRow);
+            });
+        }
+
+        syncLayersList();
+        const editorContainer = document.querySelector('.editor-sheet-container') || document.querySelector('.main-content');
+        if (editorContainer) {
+            const observer = new MutationObserver(() => {
+                syncLayersList();
+            });
+            observer.observe(editorContainer, { childList: true, subtree: true });
+        }
+
+        const addPageBtn = document.getElementById('add-page-btn');
+        if (addPageBtn) {
+            addPageBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    syncLayersList();
+                    logHistoryAction('New Page');
+                }, 120);
+            });
+        }
+
+        const deletePageBtn = document.getElementById('delete-page-btn');
+        if (deletePageBtn) {
+            deletePageBtn.addEventListener('click', () => {
+                setTimeout(() => {
+                    syncLayersList();
+                    logHistoryAction('Delete Page');
+                }, 120);
+            });
+        }
+
+        document.querySelectorAll('.draw-tool-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tool = btn.getAttribute('data-tool');
+                if (tool) logHistoryAction(`${tool.charAt(0).toUpperCase() + tool.slice(1)} Tool`);
+            });
+        });
+    })();
+
 });
+

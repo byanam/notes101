@@ -101,56 +101,98 @@
       </div>
 
       <!-- Right Sidebar (Studio Tool Inspector) -->
-      <aside class="sidebar sidebar-right">
-        <!-- User Profile Card Header & Logout -->
-        <div class="sidebar-profile-card">
-          <div class="profile-left-wrap">
-            <img
-              src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23888888'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>"
-              alt="User Avatar" class="profile-avatar" id="user-profile-avatar">
-            <div class="profile-info">
-              <div class="profile-name" id="user-profile-name">User Account</div>
-              <div class="profile-last-edited" id="user-profile-email">Loading session...</div>
-              <div id="cloud-sync-status" class="cloud-sync-status">
-                <i class="fa-solid fa-cloud-arrow-up"></i> Connected
-              </div>
-            </div>
-          </div>
-          <button type="button" id="logoutBtn" class="logout-btn" title="Log out">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
+            <!-- Right Sidebar (Photopea / Photoshop Professional Dock) -->
+      <aside class="sidebar sidebar-right ps-dock" id="ps-right-dock">
+        <!-- Column 1: Left Narrow Icon Rail (~34px) -->
+        <div class="ps-icon-rail" id="ps-icon-rail" aria-label="Tool Panels">
+          <button type="button" class="ps-rail-btn ps-rail-toggle" id="ps-rail-toggle" title="Expand / Collapse Panels">
+            <i class="fa-solid fa-angles-right" id="ps-rail-toggle-icon"></i>
+          </button>
+          <div class="ps-rail-divider"></div>
+          <button type="button" class="ps-rail-btn" data-panel="info" id="ps-rail-info" title="Info &amp; Account">
+            <i class="fa-solid fa-circle-info"></i>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="props" id="ps-rail-props" title="Canvas &amp; Document Properties">
+            <i class="fa-solid fa-sliders"></i>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="brush" id="ps-rail-brush" title="Brushes &amp; Drawing Tools">
+            <i class="fa-solid fa-paintbrush"></i>
+          </button>
+          <button type="button" class="ps-rail-btn active" data-panel="char" id="ps-rail-char" title="Character &amp; Typography">
+            <span class="ps-rail-char-t">T</span>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="para" id="ps-rail-para" title="Paragraph &amp; Formatting">
+            <span class="ps-rail-char-p">&para;</span>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="css" id="ps-rail-css" title="Export &amp; Insert (CSS)">
+            <span class="ps-rail-badge-css">CSS</span>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="image" id="ps-rail-image" title="Insert Image">
+            <i class="fa-solid fa-image"></i>
           </button>
         </div>
 
-        <!-- Top Ribbon Header (Search Bar) -->
-        <div class="sidebar-toolbar">
-          <div class="sidebar-search-container">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="sidebar-doc-search" class="sidebar-search-input" placeholder="Search notes..."
-              autocomplete="off" spellcheck="false" aria-label="Search notes">
-            <span id="search-count-badge" class="search-count-badge" style="display: none;">0/0</span>
-            <button type="button" id="search-prev-btn" class="search-nav-btn" title="Previous match"
-              aria-label="Previous match" style="display: none;"><i class="fa-solid fa-chevron-up"></i></button>
-            <button type="button" id="search-next-btn" class="search-nav-btn" title="Next match"
-              aria-label="Next match" style="display: none;"><i class="fa-solid fa-chevron-down"></i></button>
-            <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear search"
-              aria-label="Clear search" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
-          </div>
-        </div>
+        <!-- Column 2: Main Dock Panels (~260px) -->
+        <div class="ps-dock-body" id="ps-dock-body">
+          <!-- =======================================================
+               TOP PANEL BOX (History, Swatches, Character, etc.)
+               ======================================================= -->
+          <div class="ps-panel-box ps-panel-top" id="ps-panel-top">
+            <div class="ps-tab-bar">
+              <div class="ps-tabs" id="ps-top-tabs">
+                <button type="button" class="ps-tab" data-tab="history" id="tab-btn-history">History</button>
+                <button type="button" class="ps-tab" data-tab="swatches" id="tab-btn-swatches">Swatches</button>
+                <button type="button" class="ps-tab active" data-tab="char" id="tab-btn-char">Character</button>
+              </div>
+              <div class="ps-tab-actions">
+                <button type="button" class="ps-tab-action-btn" id="ps-top-minimize-btn" title="Minimize Panel">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+              </div>
+            </div>
 
-        <!-- Section 1: Text & Typography -->
-        <div class="studio-section">
-          <div class="studio-section-title">
-            <i class="fa-solid fa-font"></i> TEXT & TYPOGRAPHY
-          </div>
+            <div class="ps-panel-content" id="ps-top-panel-content">
+              <!-- View 1: History -->
+              <div class="ps-tab-view" id="view-history">
+                <div class="ps-history-list" id="ps-history-list">
+                  <div class="ps-history-item active" data-step="open">
+                    <i class="fa-solid fa-file-lines ps-history-icon"></i>
+                    <span class="ps-history-text">Open</span>
+                  </div>
+                </div>
+              </div>
 
-          <div class="studio-row font-box">
-            <span class="studio-select-label">FONT</span>
-            <div class="dropdown-menu" id="font-box-trigger" style="position: relative;">
-              <span class="dropdown-text" id="font-box-text"
-                style="font-family: 'Sumana', serif; font-size: 11px;">Sumana</span>
-              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-              <!-- Custom Font Dropdown Menu -->
-              <div class="custom-font-menu" id="custom-font-menu">
+              <!-- View 2: Swatches -->
+              <div class="ps-tab-view" id="view-swatches">
+                <div class="ps-swatches-container">
+                  <div class="ps-swatches-title">COLOR SWATCHES</div>
+                  <div class="ps-swatches-grid" id="ps-swatches-grid">
+                    <div class="ps-swatch" style="background-color: #000000;" data-color="#000000" title="Black"></div>
+                    <div class="ps-swatch" style="background-color: #ffffff;" data-color="#ffffff" title="White"></div>
+                    <div class="ps-swatch" style="background-color: #e04040;" data-color="#e04040" title="Red"></div>
+                    <div class="ps-swatch" style="background-color: #ffb600;" data-color="#ffb600" title="Amber"></div>
+                    <div class="ps-swatch" style="background-color: #4080e0;" data-color="#4080e0" title="Blue"></div>
+                    <div class="ps-swatch" style="background-color: #2ecc71;" data-color="#2ecc71" title="Green"></div>
+                    <div class="ps-swatch" style="background-color: #9b59b6;" data-color="#9b59b6" title="Purple"></div>
+                    <div class="ps-swatch" style="background-color: #e67e22;" data-color="#e67e22" title="Orange"></div>
+                    <div class="ps-swatch" style="background-color: #1abc9c;" data-color="#1abc9c" title="Teal"></div>
+                    <div class="ps-swatch" style="background-color: #e2d7ca;" data-color="#e2d7ca" title="Parchment"></div>
+                    <div class="ps-swatch" style="background-color: #fcf5e5;" data-color="#fcf5e5" title="Warm Ivory"></div>
+                    <div class="ps-swatch" style="background-color: #191919;" data-color="#191919" title="Dark Slate"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 3: Character (T) - Active by default -->
+              <div class="ps-tab-view active" id="view-char">
+                <div class="ps-control-group">
+                  <!-- Font family row -->
+                  <div class="ps-row font-box">
+                    <span class="ps-label">Font</span>
+                    <div class="dropdown-menu ps-select-trigger" id="font-box-trigger">
+                      <span class="dropdown-text" id="font-box-text" style="font-family: 'Sumana', serif; font-size: 11px;">Sumana</span>
+                      <i class="fa-solid fa-caret-down dropdown-arrow"></i>
+                      <div class="custom-font-menu" id="custom-font-menu">
                 <div class="font-menu-item" data-font="Homemade Apple" style="font-family: 'Homemade Apple', cursive;">
                   Homemade Apple</div>
                 <div class="font-menu-item active" data-font="Sumana" style="font-family: 'Sumana', serif;">Sumana</div>
@@ -237,69 +279,69 @@
                 <div class="font-menu-item" data-font="Times New Roman" style="font-family: 'Times New Roman', serif;">
                   Times New Roman</div>
               </div>
-            </div>
-          </div>
+                    </div>
+                  </div>
 
-          <div class="studio-row size-box">
-            <span class="studio-select-label">SIZE</span>
-            <div class="dropdown-menu" id="size-box-trigger" style="position: relative;">
-              <span class="dropdown-text" id="size-box-text">Medium</span>
-              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-              <div class="custom-size-menu" id="custom-size-menu">
+                  <!-- Size row -->
+                  <div class="ps-row size-box">
+                    <span class="ps-label">Size</span>
+                    <div class="dropdown-menu ps-select-trigger" id="size-box-trigger">
+                      <span class="dropdown-text" id="size-box-text">Medium</span>
+                      <i class="fa-solid fa-caret-down dropdown-arrow"></i>
+                      <div class="custom-size-menu" id="custom-size-menu">
                 <div class="size-menu-item" data-size="Small" data-value="13px" style="font-size: 11.5px;">Small</div>
                 <div class="size-menu-item active" data-size="Medium" data-value="18px" style="font-size: 13px;">Medium
                 </div>
                 <div class="size-menu-item" data-size="Large" data-value="26px" style="font-size: 15px;">Large</div>
               </div>
-            </div>
-          </div>
+                    </div>
+                  </div>
 
-          <div class="studio-row text-colour-box size-colour-box">
-            <span class="studio-select-label">TEXT COLOR</span>
-            <div class="studio-swatch-group" id="text-color-swatch-group" style="position: relative;">
-              <div class="studio-swatch-ring active color-swatch spectrum-box-trigger" id="text-color-spectrum-trigger"
-                style="background-color: #e04040; position: relative;" title="Click for Color Spectrum">
-              </div>
-              <button type="button" class="studio-swatch-ring color-swatch text-color-preset"
-                style="background-color: #4080e0;" data-color="#4080e0" title="Blue Text"></button>
-              <button type="button" class="studio-swatch-ring color-swatch text-color-preset"
-                style="background-color: #ffffff;" data-color="#ffffff" title="White Text"></button>
+                  <!-- Text Color Row -->
+                  <div class="ps-row text-colour-box size-colour-box">
+                    <span class="ps-label">Color</span>
+                    <div class="studio-swatch-group" id="text-color-swatch-group">
+                      <div class="studio-swatch-ring active color-swatch spectrum-box-trigger" id="text-color-spectrum-trigger"
+                        style="background-color: #e04040; position: relative;" title="Click for Color Spectrum">
+                      </div>
+                      <button type="button" class="studio-swatch-ring color-swatch text-color-preset"
+                        style="background-color: #4080e0;" data-color="#4080e0" title="Blue Text"></button>
+                      <button type="button" class="studio-swatch-ring color-swatch text-color-preset"
+                        style="background-color: #ffffff;" data-color="#ffffff" title="White Text"></button>
 
-              <div class="custom-spectrum-menu" id="text-color-spectrum-menu">
-                <div class="spectrum-header"
-                  style="font-size: 11px; font-weight: 700; color: #888; letter-spacing: 0.5px; margin-bottom: 6px;">
-                  COLOR SPECTRUM</div>
-                <div class="spectrum-canvas-container" style="position: relative;">
-                  <canvas id="text-color-spectrum-canvas" width="160" height="95"
-                    style="border-radius: 2px; cursor: crosshair; width: 100%; display: block;"></canvas>
-                </div>
-                <div class="hue-slider-container" style="margin-top: 8px;">
-                  <input type="range" id="text-color-hue-slider" min="0" max="360" value="0" class="hue-range-input"
-                    style="width: 100%; cursor: pointer;">
-                </div>
-                <div class="spectrum-footer"
-                  style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
-                  <div class="color-hex-badge" id="text-color-hex-badge"
-                    style="font-family: monospace; font-size: 11px; color: #e0e0e0; background: #222; padding: 2px 4px; border: 1px solid #333; border-radius: 2px;">
-                    #E04040</div>
-                  <input type="color" id="text-color-native-input" value="#e04040"
-                    style="width: 24px; height: 22px; border: 1px solid #333; background: transparent; cursor: pointer; padding: 0;">
-                </div>
-              </div>
-            </div>
-          </div>
+                      <div class="custom-spectrum-menu" id="text-color-spectrum-menu">
+                        <div class="spectrum-header">COLOR SPECTRUM</div>
+                        <div class="spectrum-canvas-container" style="position: relative;">
+                          <canvas id="text-color-spectrum-canvas" width="160" height="95"
+                            style="border-radius: 2px; cursor: crosshair; width: 100%; display: block;"></canvas>
+                        </div>
+                        <div class="hue-slider-container" style="margin-top: 8px;">
+                          <input type="range" id="text-color-hue-slider" min="0" max="360" value="0" class="hue-range-input"
+                            style="width: 100%; cursor: pointer;">
+                        </div>
+                        <div class="spectrum-footer"
+                          style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+                          <div class="color-hex-badge" id="text-color-hex-badge"
+                            style="font-family: monospace; font-size: 11px; color: #e0e0e0; background: #222; padding: 2px 4px; border: 1px solid #333; border-radius: 2px;">
+                            #E04040</div>
+                          <input type="color" id="text-color-native-input" value="#e04040"
+                            style="width: 24px; height: 22px; border: 1px solid #333; background: transparent; cursor: pointer; padding: 0;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-          <div class="studio-row highlight-box">
-            <span class="studio-select-label">HIGHLIGHT</span>
-            <div class="dropdown-menu" id="highlight-box-trigger" style="position: relative;">
-              <div
-                style="display: flex; align-items: center; gap: 7px; overflow: hidden; pointer-events: none; flex: 1;">
-                <span id="highlight-color-preview"
-                  style="width: 14px; height: 14px; border-radius: 50%; background-color: #ffe066; border: 1.5px solid rgba(255,255,255,0.3); display: inline-block; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.4);"></span>
-                <span class="dropdown-text" id="highlight-box-text">Yellow</span>
-              </div>
-              <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
-              <div class="custom-highlight-menu" id="custom-highlight-menu">
+                  <!-- Highlight Row -->
+                  <div class="ps-row highlight-box">
+                    <span class="ps-label">Highlight</span>
+                    <div class="dropdown-menu ps-select-trigger" id="highlight-box-trigger">
+                      <div style="display: flex; align-items: center; gap: 7px; overflow: hidden; pointer-events: none; flex: 1;">
+                        <span id="highlight-color-preview"
+                          style="width: 12px; height: 12px; border-radius: 50%; background-color: #ffe066; border: 1.5px solid rgba(255,255,255,0.3); display: inline-block; flex-shrink: 0;"></span>
+                        <span class="dropdown-text" id="highlight-box-text">Yellow</span>
+                      </div>
+                      <i class="fa-solid fa-caret-down dropdown-arrow"></i>
+                      <div class="custom-highlight-menu" id="custom-highlight-menu">
                 <div class="highlight-menu-item active" data-color="#ffe066" style="background-color: #ffe066;"
                   title="Yellow"></div>
                 <div class="highlight-menu-item" data-color="#a8ffb2" style="background-color: #a8ffb2;" title="Green">
@@ -325,162 +367,301 @@
                 <div class="highlight-menu-item" data-color="#99ffe6" style="background-color: #99ffe6;" title="Mint">
                 </div>
               </div>
-            </div>
-          </div>
+                    </div>
+                  </div>
 
-          <div class="tool-pill-row">
-            <div class="tool-pill-group bold-italic-box">
-              <button type="button" class="tool-pill-btn text-format-button" title="Bold"><strong>B</strong></button>
-              <button type="button" class="tool-pill-btn text-format-button" title="Italic"><em>I</em></button>
-              <button type="button" class="tool-pill-btn text-format-button" title="Underline"><u>U</u></button>
-            </div>
-
-            <div class="tool-pill-group alignment-box">
-              <button type="button" class="tool-pill-btn icon-button active" title="Align Left"><i
-                  class="fa-solid fa-align-left"></i></button>
-              <button type="button" class="tool-pill-btn icon-button" title="Align Center"><i
-                  class="fa-solid fa-align-center"></i></button>
-              <button type="button" class="tool-pill-btn icon-button" title="Align Right"><i
-                  class="fa-solid fa-align-right"></i></button>
-            </div>
-          </div>
-
-          <div class="tool-pill-group lists-box line-spacing-box">
-            <button type="button" class="tool-pill-btn icon-button" title="Line Spacing"><i
-                class="fa-solid fa-text-height"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" title="Bullet List"><i
-                class="fa-solid fa-list-ul"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" title="Numbered List"><i
-                class="fa-solid fa-list-ol"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" title="Checklist"><i
-                class="fa-solid fa-list-check"></i></button>
-          </div>
-        </div>
-
-        <!-- Section 2: Drawing & Canvas -->
-        <div class="studio-section">
-          <div class="studio-section-title">
-            <i class="fa-solid fa-paintbrush"></i> DRAWING & CANVAS
-          </div>
-
-          <div class="tool-pill-group draw-tools-box">
-            <button type="button" class="tool-pill-btn active draw-tool-btn" title="Text Mode / Type"
-              data-tool="text"><i class="fa-solid fa-i-cursor"></i></button>
-            <button type="button" class="tool-pill-btn draw-tool-btn" title="Fountain Pen" data-tool="pen"><i
-                class="fa-solid fa-pen-nib"></i></button>
-            <button type="button" class="tool-pill-btn draw-tool-btn" title="Pencil" data-tool="pencil"><i
-                class="fa-solid fa-pencil"></i></button>
-            <button type="button" class="tool-pill-btn draw-tool-btn" title="Art Brush" data-tool="brush"><i
-                class="fa-solid fa-paint-brush"></i></button>
-            <button type="button" class="tool-pill-btn draw-tool-btn" title="Eraser" data-tool="eraser"><i
-                class="fa-solid fa-eraser"></i></button>
-          </div>
-
-          <div class="tool-pill-group draw-size-box">
-            <button type="button" class="tool-pill-btn active draw-size-btn" style="font-size: 10px; font-weight: 700;"
-              data-size="2">FINE</button>
-            <button type="button" class="tool-pill-btn draw-size-btn" style="font-size: 10px; font-weight: 700;"
-              data-size="6">MEDIUM</button>
-            <button type="button" class="tool-pill-btn draw-size-btn" style="font-size: 10px; font-weight: 700;"
-              data-size="14">THICK</button>
-          </div>
-
-          <div class="studio-row draw-options-box">
-            <span class="studio-select-label">INK COLOR</span>
-            <div class="studio-swatch-group" id="ink-color-swatch-group" style="position: relative;">
-              <div class="studio-swatch-ring active color-swatch spectrum-box-trigger" id="ink-color-spectrum-trigger"
-                style="background-color: #ffffff; position: relative;" title="Click for Ink Color Spectrum">
-              </div>
-              <button type="button" class="studio-swatch-ring color-swatch draw-ink-btn recent-ink-btn"
-                id="recent-ink-1" style="background-color: #e04040;" data-ink="#e04040"
-                title="Recent Ink: #e04040"></button>
-              <button type="button" class="studio-swatch-ring color-swatch draw-ink-btn recent-ink-btn"
-                id="recent-ink-2" style="background-color: #4080e0;" data-ink="#4080e0"
-                title="Recent Ink: #4080e0"></button>
-
-              <div class="custom-spectrum-menu" id="ink-color-spectrum-menu">
-                <div class="spectrum-header"
-                  style="font-size: 11px; font-weight: 700; color: #888; letter-spacing: 0.5px; margin-bottom: 6px;">
-                  INK COLOR SPECTRUM</div>
-                <div class="spectrum-canvas-container" style="position: relative;">
-                  <canvas id="ink-color-spectrum-canvas" width="160" height="95"
-                    style="border-radius: 2px; cursor: crosshair; width: 100%; display: block;"></canvas>
-                </div>
-                <div class="hue-slider-container" style="margin-top: 8px;">
-                  <input type="range" id="ink-color-hue-slider" min="0" max="360" value="0" class="hue-range-input"
-                    style="width: 100%; cursor: pointer;">
-                </div>
-                <div class="spectrum-footer"
-                  style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
-                  <div class="color-hex-badge" id="ink-color-hex-badge"
-                    style="font-family: monospace; font-size: 11px; color: #e0e0e0; background: #222; padding: 2px 4px; border: 1px solid #333; border-radius: 2px;">
-                    #FFFFFF</div>
-                  <input type="color" id="ink-color-native-input" value="#ffffff"
-                    style="width: 24px; height: 22px; border: 1px solid #333; background: transparent; cursor: pointer; padding: 0;">
+                  <!-- Format Buttons Row (Bold, Italic, Underline) -->
+                  <div class="ps-format-row bold-italic-box">
+                    <button type="button" class="ps-format-btn text-format-button" title="Bold"><strong>B</strong></button>
+                    <button type="button" class="ps-format-btn text-format-button" title="Italic"><em>I</em></button>
+                    <button type="button" class="ps-format-btn text-format-button" title="Underline"><u>U</u></button>
+                    <button type="button" class="ps-format-btn icon-button" id="line-spacing-btn" title="Line Spacing">
+                      <i class="fa-solid fa-text-height"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
+
+              <!-- View 4: Paragraph (¶) -->
+              <div class="ps-tab-view" id="view-para">
+                <div class="ps-control-group">
+                  <div class="ps-section-subtitle">ALIGNMENT</div>
+                  <div class="ps-btn-group alignment-box">
+                    <button type="button" class="ps-format-btn icon-button active" title="Align Left"><i class="fa-solid fa-align-left"></i></button>
+                    <button type="button" class="ps-format-btn icon-button" title="Align Center"><i class="fa-solid fa-align-center"></i></button>
+                    <button type="button" class="ps-format-btn icon-button" title="Align Right"><i class="fa-solid fa-align-right"></i></button>
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 10px;">LISTS &amp; TASKS</div>
+                  <div class="ps-btn-group lists-box line-spacing-box">
+                    <button type="button" class="ps-format-btn icon-button" title="Bullet List"><i class="fa-solid fa-list-ul"></i></button>
+                    <button type="button" class="ps-format-btn icon-button" title="Numbered List"><i class="fa-solid fa-list-ol"></i></button>
+                    <button type="button" class="ps-format-btn icon-button" title="Checklist"><i class="fa-solid fa-list-check"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 5: Brush / Drawing -->
+              <div class="ps-tab-view" id="view-brush">
+                <div class="ps-control-group">
+                  <div class="ps-section-subtitle">TOOL SELECTION</div>
+                  <div class="ps-btn-group draw-tools-box">
+                    <button type="button" class="ps-format-btn active draw-tool-btn" title="Type / Text" data-tool="text"><i class="fa-solid fa-i-cursor"></i></button>
+                    <button type="button" class="ps-format-btn draw-tool-btn" title="Fountain Pen" data-tool="pen"><i class="fa-solid fa-pen-nib"></i></button>
+                    <button type="button" class="ps-format-btn draw-tool-btn" title="Pencil" data-tool="pencil"><i class="fa-solid fa-pencil"></i></button>
+                    <button type="button" class="ps-format-btn draw-tool-btn" title="Art Brush" data-tool="brush"><i class="fa-solid fa-paint-brush"></i></button>
+                    <button type="button" class="ps-format-btn draw-tool-btn" title="Eraser" data-tool="eraser"><i class="fa-solid fa-eraser"></i></button>
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 10px;">STROKE WEIGHT</div>
+                  <div class="ps-btn-group draw-size-box">
+                    <button type="button" class="ps-format-btn active draw-size-btn" style="font-size: 10px; font-weight: 700;" data-size="2">FINE</button>
+                    <button type="button" class="ps-format-btn draw-size-btn" style="font-size: 10px; font-weight: 700;" data-size="6">MED</button>
+                    <button type="button" class="ps-format-btn draw-size-btn" style="font-size: 10px; font-weight: 700;" data-size="14">THICK</button>
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 10px;">INK COLOR</div>
+                  <div class="ps-row draw-options-box">
+                    <span class="ps-label">Ink</span>
+                    <div class="studio-swatch-group" id="ink-color-swatch-group">
+                      <div class="studio-swatch-ring active color-swatch spectrum-box-trigger" id="ink-color-spectrum-trigger"
+                        style="background-color: #ffffff; position: relative;" title="Click for Ink Color Spectrum">
+                      </div>
+                      <button type="button" class="studio-swatch-ring color-swatch draw-ink-btn recent-ink-btn"
+                        id="recent-ink-1" style="background-color: #e04040;" data-ink="#e04040"
+                        title="Recent Ink: #e04040"></button>
+                      <button type="button" class="studio-swatch-ring color-swatch draw-ink-btn recent-ink-btn"
+                        id="recent-ink-2" style="background-color: #4080e0;" data-ink="#4080e0"
+                        title="Recent Ink: #4080e0"></button>
+
+                      <div class="custom-spectrum-menu" id="ink-color-spectrum-menu">
+                        <div class="spectrum-header">INK COLOR SPECTRUM</div>
+                        <div class="spectrum-canvas-container" style="position: relative;">
+                          <canvas id="ink-color-spectrum-canvas" width="160" height="95"
+                            style="border-radius: 2px; cursor: crosshair; width: 100%; display: block;"></canvas>
+                        </div>
+                        <div class="hue-slider-container" style="margin-top: 8px;">
+                          <input type="range" id="ink-color-hue-slider" min="0" max="360" value="0" class="hue-range-input"
+                            style="width: 100%; cursor: pointer;">
+                        </div>
+                        <div class="spectrum-footer"
+                          style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+                          <div class="color-hex-badge" id="ink-color-hex-badge"
+                            style="font-family: monospace; font-size: 11px; color: #e0e0e0; background: #222; padding: 2px 4px; border: 1px solid #333; border-radius: 2px;">
+                            #FFFFFF</div>
+                          <input type="color" id="ink-color-native-input" value="#ffffff"
+                            style="width: 24px; height: 22px; border: 1px solid #333; background: transparent; cursor: pointer; padding: 0;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 6: Properties (Sliders) -->
+              <div class="ps-tab-view" id="view-props">
+                <div class="ps-control-group">
+                  <div class="ps-section-subtitle">CANVAS BACKGROUND</div>
+                  <div class="ps-row page-colour-box">
+                    <span class="ps-label">Paper</span>
+                    <div class="studio-swatch-group" id="canvas-swatch-group">
+                      <div class="studio-swatch-ring active color-swatch spectrum-box-trigger" id="canvas-spectrum-trigger"
+                        style="background-color: #191919; position: relative;" title="Click for Canvas Spectrum">
+                      </div>
+                      <button type="button" class="studio-swatch-ring color-swatch recent-canvas-btn" id="recent-canvas-1"
+                        style="background-color: #ffffff;" data-color="#ffffff" title="Recent Canvas: Pure White"></button>
+                      <button type="button" class="studio-swatch-ring color-swatch recent-canvas-btn" id="recent-canvas-2"
+                        style="background-color: #fcf5e5;" data-color="#fcf5e5" title="Recent Canvas: Warm Ivory"></button>
+
+                      <div class="custom-spectrum-menu" id="canvas-spectrum-menu">
+                        <div class="spectrum-header">CANVAS SPECTRUM</div>
+                        <div class="spectrum-canvas-container" style="position: relative;">
+                          <canvas id="canvas-spectrum-canvas" width="160" height="95"
+                            style="border-radius: 2px; cursor: crosshair; width: 100%; display: block;"></canvas>
+                        </div>
+                        <div class="hue-slider-container" style="margin-top: 8px;">
+                          <input type="range" id="canvas-hue-slider" min="0" max="360" value="0" class="hue-range-input"
+                            style="width: 100%; cursor: pointer;">
+                        </div>
+                        <div class="spectrum-footer"
+                          style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
+                          <div class="color-hex-badge" id="canvas-hex-badge"
+                            style="font-family: monospace; font-size: 11px; color: #e0e0e0; background: #222; padding: 2px 4px; border: 1px solid #333; border-radius: 2px;">
+                            #191919</div>
+                          <input type="color" id="canvas-native-input" value="#191919"
+                            style="width: 24px; height: 22px; border: 1px solid #333; background: transparent; cursor: pointer; padding: 0;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 12px;">PAGE SPECS</div>
+                  <div class="ps-meta-readout">
+                    <div>Format: <strong>A4 Ruled</strong></div>
+                    <div>Dimensions: <strong>794 &times; 1123 px</strong></div>
+                    <div>DPI: <strong>300 (Print Ready)</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 7: Info & Search (i) -->
+              <div class="ps-tab-view" id="view-info">
+                <div class="ps-control-group">
+                  <!-- User Profile Card -->
+                  <div class="sidebar-profile-card ps-profile-card">
+                    <div class="profile-left-wrap">
+                      <img
+                        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23888888'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>"
+                        alt="User Avatar" class="profile-avatar" id="user-profile-avatar">
+                      <div class="profile-info">
+                        <div class="profile-name" id="user-profile-name">User Account</div>
+                        <div class="profile-last-edited" id="user-profile-email">Loading session...</div>
+                        <div id="cloud-sync-status" class="cloud-sync-status">
+                          <i class="fa-solid fa-cloud-arrow-up"></i> Connected
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" id="logoutBtn" class="logout-btn" title="Log out">
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 12px;">SEARCH DOCUMENT</div>
+                  <div class="sidebar-search-container ps-search-wrap">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="sidebar-doc-search" class="sidebar-search-input" placeholder="Search notes..."
+                      autocomplete="off" spellcheck="false" aria-label="Search notes">
+                    <span id="search-count-badge" class="search-count-badge" style="display: none;">0/0</span>
+                    <button type="button" id="search-prev-btn" class="search-nav-btn" title="Previous match"
+                      aria-label="Previous match" style="display: none;"><i class="fa-solid fa-chevron-up"></i></button>
+                    <button type="button" id="search-next-btn" class="search-nav-btn" title="Next match"
+                      aria-label="Next match" style="display: none;"><i class="fa-solid fa-chevron-down"></i></button>
+                    <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear search"
+                      aria-label="Clear search" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 8: CSS / Export -->
+              <div class="ps-tab-view" id="view-css">
+                <div class="ps-control-group">
+                  <div class="ps-section-subtitle">INSERT TOOLS</div>
+                  <div class="ps-btn-group insert-box">
+                    <button type="button" class="ps-format-btn icon-button" id="insert-image-btn" title="Insert Image">
+                      <i class="fa-solid fa-image"></i>
+                    </button>
+                    <button type="button" class="ps-format-btn icon-button" id="insert-table-btn" title="Insert Table">
+                      <i class="fa-solid fa-table"></i>
+                    </button>
+                    <button type="button" class="ps-format-btn icon-button" id="share-link-btn" title="Share Note Link">
+                      <i class="fa-solid fa-share-nodes"></i>
+                    </button>
+                    <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 12px;">EXPORT ACTIONS</div>
+                  <div class="ps-btn-group page-export-box">
+                    <button type="button" class="ps-format-btn icon-button" id="export-pdf-btn" title="Export PDF">
+                      <i class="fa-solid fa-file-pdf"></i> Export PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="studio-row page-colour-box">
-            <span class="studio-select-label">CANVAS</span>
-            <div class="studio-swatch-group" id="canvas-swatch-group" style="position: relative;">
-              <div class="studio-swatch-ring active color-swatch spectrum-box-trigger" id="canvas-spectrum-trigger"
-                style="background-color: #191919; position: relative;" title="Click for Canvas Spectrum">
+          <!-- =======================================================
+               BOTTOM PANEL BOX (Layers, Channels, Paths)
+               ======================================================= -->
+          <div class="ps-panel-box ps-panel-bottom" id="ps-panel-bottom">
+            <div class="ps-tab-bar">
+              <div class="ps-tabs" id="ps-bottom-tabs">
+                <button type="button" class="ps-tab active" data-tab="layers" id="tab-btn-layers">Layers</button>
+                <button type="button" class="ps-tab" data-tab="channels" id="tab-btn-channels">Channels</button>
+                <button type="button" class="ps-tab" data-tab="paths" id="tab-btn-paths">Paths</button>
               </div>
-              <button type="button" class="studio-swatch-ring color-swatch recent-canvas-btn" id="recent-canvas-1"
-                style="background-color: #ffffff;" data-color="#ffffff" title="Recent Canvas: Pure White"></button>
-              <button type="button" class="studio-swatch-ring color-swatch recent-canvas-btn" id="recent-canvas-2"
-                style="background-color: #fcf5e5;" data-color="#fcf5e5" title="Recent Canvas: Warm Ivory"></button>
-
-              <div class="custom-spectrum-menu" id="canvas-spectrum-menu">
-                <div class="spectrum-header"
-                  style="font-size: 11px; font-weight: 700; color: #888; letter-spacing: 0.5px; margin-bottom: 6px;">
-                  CANVAS SPECTRUM</div>
-                <div class="spectrum-canvas-container" style="position: relative;">
-                  <canvas id="canvas-spectrum-canvas" width="160" height="95"
-                    style="border-radius: 2px; cursor: crosshair; width: 100%; display: block;"></canvas>
-                </div>
-                <div class="hue-slider-container" style="margin-top: 8px;">
-                  <input type="range" id="canvas-hue-slider" min="0" max="360" value="0" class="hue-range-input"
-                    style="width: 100%; cursor: pointer;">
-                </div>
-                <div class="spectrum-footer"
-                  style="display: flex; align-items: center; justify-content: space-between; margin-top: 8px;">
-                  <div class="color-hex-badge" id="canvas-hex-badge"
-                    style="font-family: monospace; font-size: 11px; color: #e0e0e0; background: #222; padding: 2px 4px; border: 1px solid #333; border-radius: 2px;">
-                    #191919</div>
-                  <input type="color" id="canvas-native-input" value="#191919"
-                    style="width: 24px; height: 22px; border: 1px solid #333; background: transparent; cursor: pointer; padding: 0;">
-                </div>
+              <div class="ps-tab-actions">
+                <button type="button" class="ps-tab-action-btn" id="ps-bottom-minimize-btn" title="Minimize Panel">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Section 3: Insert & Export -->
-        <div class="studio-section">
-          <div class="studio-section-title">
-            <i class="fa-solid fa-layer-group"></i> INSERT & EXPORT
-          </div>
+            <div class="ps-panel-content">
+              <!-- View 1: Layers (Active) -->
+              <div class="ps-tab-view active" id="view-layers">
+                <!-- Toolbar Row 1: Blend Mode & Opacity -->
+                <div class="ps-layers-toolbar-row">
+                  <div class="ps-blend-select-wrap">
+                    <select class="ps-blend-select" id="ps-blend-select">
+                      <option value="normal" selected>Normal</option>
+                      <option value="multiply">Multiply</option>
+                      <option value="screen">Screen</option>
+                      <option value="overlay">Overlay</option>
+                      <option value="darken">Darken</option>
+                      <option value="lighten">Lighten</option>
+                    </select>
+                  </div>
+                  <div class="ps-opacity-wrap">
+                    <span class="ps-opacity-label">Opacity:</span>
+                    <span class="ps-opacity-val" id="ps-opacity-val">100%</span>
+                    <i class="fa-solid fa-caret-down ps-dropdown-caret"></i>
+                  </div>
+                </div>
 
-          <div class="tool-pill-group insert-box">
-            <button type="button" class="tool-pill-btn icon-button" id="insert-image-btn" title="Insert Image"><i
-                class="fa-solid fa-image"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" id="insert-table-btn" title="Insert Table"><i
-                class="fa-solid fa-table"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" id="share-link-btn" title="Share Note Link"><i
-                class="fa-solid fa-share-nodes"></i></button>
-            <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
-          </div>
+                <!-- Toolbar Row 2: Lock Controls & Fill -->
+                <div class="ps-layers-toolbar-row ps-layers-lock-row">
+                  <div class="ps-lock-group">
+                    <span class="ps-lock-label">Lock:</span>
+                    <button type="button" class="ps-lock-btn" title="Lock transparent pixels"><i class="fa-solid fa-chess-board"></i></button>
+                    <button type="button" class="ps-lock-btn" title="Lock image pixels / brush"><i class="fa-solid fa-paintbrush"></i></button>
+                    <button type="button" class="ps-lock-btn" title="Lock position"><i class="fa-solid fa-up-down-left-right"></i></button>
+                    <button type="button" class="ps-lock-btn" title="Lock all"><i class="fa-solid fa-lock"></i></button>
+                  </div>
+                  <div class="ps-fill-wrap">
+                    <span class="ps-fill-label">Fill:</span>
+                    <span class="ps-fill-val">100%</span>
+                    <i class="fa-solid fa-caret-down ps-dropdown-caret"></i>
+                  </div>
+                </div>
 
-          <div class="tool-pill-group page-export-box">
-            <button type="button" class="tool-pill-btn icon-button" id="add-page-btn" title="Add New Page"><i
-                class="fa-solid fa-file-circle-plus"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" id="delete-page-btn" title="Delete Page"><i
-                class="fa-solid fa-trash-can"></i></button>
-            <button type="button" class="tool-pill-btn icon-button" id="export-pdf-btn" title="Export PDF"><i
-                class="fa-solid fa-file-pdf"></i></button>
+                <!-- Layers List Stack (Pages represented as Photoshop Layers) -->
+                <div class="ps-layers-list" id="ps-layers-list">
+                  <div class="ps-layer-item active" data-page="note-page-1">
+                    <button type="button" class="ps-layer-eye" title="Toggle Visibility"><i class="fa-solid fa-eye"></i></button>
+                    <div class="ps-layer-thumb"><div class="ps-thumb-preview"></div></div>
+                    <span class="ps-layer-title">Background</span>
+                    <i class="fa-solid fa-lock ps-layer-lock"></i>
+                  </div>
+                </div>
+
+                <!-- Layers Panel Footer Toolbar -->
+                <div class="ps-layers-footer">
+                  <button type="button" class="ps-footer-btn" title="Link Layers"><i class="fa-solid fa-link"></i></button>
+                  <button type="button" class="ps-footer-btn ps-footer-fx" title="Add Layer Style">fx</button>
+                  <button type="button" class="ps-footer-btn" title="Add Layer Mask"><i class="fa-regular fa-square"></i></button>
+                  <button type="button" class="ps-footer-btn" title="New Adjustment Layer"><i class="fa-solid fa-circle-half-stroke"></i></button>
+                  <button type="button" class="ps-footer-btn" title="New Folder Group"><i class="fa-regular fa-folder"></i></button>
+                  <button type="button" class="ps-footer-btn" id="add-page-btn" title="New Layer (Add Page)"><i class="fa-regular fa-file"></i></button>
+                  <button type="button" class="ps-footer-btn" id="delete-page-btn" title="Delete Layer (Delete Page)"><i class="fa-regular fa-trash-can"></i></button>
+                </div>
+              </div>
+
+              <!-- View 2: Channels -->
+              <div class="ps-tab-view" id="view-channels">
+                <div class="ps-channel-list">
+                  <div class="ps-channel-item active"><i class="fa-solid fa-eye"></i><span>RGB</span></div>
+                  <div class="ps-channel-item"><i class="fa-solid fa-eye"></i><span>Red</span></div>
+                  <div class="ps-channel-item"><i class="fa-solid fa-eye"></i><span>Green</span></div>
+                  <div class="ps-channel-item"><i class="fa-solid fa-eye"></i><span>Blue</span></div>
+                </div>
+              </div>
+
+              <!-- View 3: Paths -->
+              <div class="ps-tab-view" id="view-paths">
+                <div class="ps-empty-note">No paths in current document.</div>
+              </div>
+            </div>
           </div>
         </div>
       </aside>
