@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const chapter = { id, title, content: safeContent };
             this.chapters.set(id, chapter);
 
-            const numericPart = parseInt(id.match(/\d+/)?.[0]);
+            const numericPart = parseInt(id.match(/\d+/)?.[0], 10);
             if (numericPart && numericPart >= this.nextChapterId) {
                 this.nextChapterId = numericPart + 1;
             }
@@ -98,6 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
             this.chapters.delete(id);
             if (this.activeChapterId === id) {
                 this.activeChapterId = null;
+            }
+            if (window.pageDrawingsMap && window.pageDrawingsMap[id]) {
+                delete window.pageDrawingsMap[id];
             }
         }
 
@@ -1493,7 +1496,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = targetElement.querySelector('.sidebar-text').innerText;
             const match = text.match(/Page (\d+)/);
             if (match) {
-                deleteVirtualPage(parseInt(match[1]));
+                deleteVirtualPage(parseInt(match[1], 10));
                 // No manual remove needed, updatePagination reflows sidebar
             }
         }
