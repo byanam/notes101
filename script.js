@@ -568,7 +568,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        localStorage.setItem('aiNoteData', JSON.stringify(data));
+        try {
+            localStorage.setItem('aiNoteData', JSON.stringify(data));
+        } catch (storageErr) {
+            console.warn('[Storage] Could not persist to localStorage (quota exceeded or private mode):', storageErr);
+        }
         if (typeof window.onNotesStateChanged === 'function') {
             window.onNotesStateChanged(data);
         }
