@@ -16,7 +16,7 @@ import {
  * @param {Object} user - Firebase Auth User Object
  */
 export async function saveUserProfile(user) {
-    if (!user) return;
+    if (!user || !user.uid) return;
 
     try {
         const userRef = doc(db, "users", user.uid);
@@ -69,7 +69,8 @@ export async function saveUserNotes(uid, notesData) {
         return { success: true };
     } catch (error) {
         console.error("[Firestore] Error saving user notes:", error);
-        return { success: false, error: error.message };
+        const errMsg = error.code ? `[${error.code}] ${error.message}` : (error.message || "Failed to save notes to Firestore");
+        return { success: false, error: errMsg, code: error.code };
     }
 }
 
