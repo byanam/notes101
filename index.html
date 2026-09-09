@@ -62,313 +62,143 @@
         <!-- Layer 7 (bottom): moving pages track with authentic student notes & sketches -->
         <div class="hero__pages" id="heroPages" aria-label="Notebook page previews">
           <div class="hero__pages-track">
-            <!-- Page 1: ConvNets Class Notes -->
+            <!-- Page 1: Person 1 (Creative / Freelancer - Thoughts & Ideas) -->
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">COURSE: <strong>CS 231n &middot; DEEP LEARNING</strong></span>
-                  <span class="hero__page-header-field">DATE: <strong>OCT 14</strong> &middot; PG <strong>18</strong></span>
+                  <span class="hero__page-header-field">sunday morning &middot; blue bottle</span>
+                  <span class="hero__page-header-field">ideas // v2</span>
                 </div>
-                <h3 class="hero__page-hand-title">Convolutional Networks (CNNs)</h3>
-                <p class="hero__page-hand">Dense layers flatten 2D image matrices into 1D vectors &rarr; <span class="note-underline">destroys spatial geometry &amp; explodes parameters!</span></p>
-                <p class="hero__page-hand">Solution: <span class="note-underline">Parameter Sharing</span>. Slide a small <em>K &times; K</em> kernel across input space to extract local features.</p>
-                
-                <div class="hero__page-sketch" aria-hidden="true">
-                  <svg width="490" height="96" viewBox="0 0 490 96" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Input 5x5 image patch -->
-                    <rect x="15" y="12" width="70" height="70" rx="3" stroke-dasharray="2 2" stroke="rgba(226,215,202,0.4)"/>
-                    <line x1="29" y1="12" x2="29" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="43" y1="12" x2="43" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="57" y1="12" x2="57" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="71" y1="12" x2="71" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="26" x2="85" y2="26" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="40" x2="85" y2="40" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="54" x2="85" y2="54" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="68" x2="85" y2="68" stroke="rgba(226,215,202,0.2)"/>
-                    <!-- 3x3 receptive field -->
-                    <rect x="15" y="12" width="42" height="42" fill="rgba(255, 182, 0, 0.22)" stroke="#FFB600" stroke-width="2"/>
-                    <text x="22" y="90" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="12" stroke="none">3&times;3 Kernel</text>
-
-                    <!-- Arrow to Feature Map -->
-                    <path d="M 105 47 L 165 47" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 157 41 L 167 47 L 157 53" fill="#E2D7CA"/>
-                    <text x="108" y="36" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="15" stroke="none">dot product + b</text>
-
-                    <!-- Output Feature Map 3x3 -->
-                    <rect x="180" y="20" width="54" height="54" rx="3" stroke="rgba(226,215,202,0.6)"/>
-                    <line x1="198" y1="20" x2="198" y2="74" stroke="rgba(226,215,202,0.3)"/>
-                    <line x1="216" y1="20" x2="216" y2="74" stroke="rgba(226,215,202,0.3)"/>
-                    <line x1="180" y1="38" x2="234" y2="38" stroke="rgba(226,215,202,0.3)"/>
-                    <line x1="180" y1="56" x2="234" y2="56" stroke="rgba(226,215,202,0.3)"/>
-                    <rect x="180" y="20" width="18" height="18" fill="rgba(255, 182, 0, 0.35)" stroke="#FFB600"/>
-                    <text x="182" y="90" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="12" stroke="none">Feature Map</text>
-
-                    <!-- Explanation Label -->
-                    <text x="270" y="44" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="17" stroke="none">&bull; Weights shared across</text>
-                    <text x="270" y="66" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="17" stroke="none">the entire input space!</text>
-                  </svg>
-                </div>
-
-                <div class="note-formula-card">
-                  <span class="note-formula-title">Feature Map Output Dimension:</span>
-                  <div class="note-formula-math">Output = &lfloor; (W - K + 2P) / S &rfloor; + 1</div>
-                  <div class="note-formula-legend">
-                    <span>W = input size</span>
-                    <span>K = filter size</span>
-                    <span>P = padding</span>
-                    <span>S = stride</span>
-                  </div>
-                </div>
-
-                <p class="hero__page-hand" style="margin-top: 14px;"><strong style="color: #FFB600;">Key Takeaway:</strong> Pooling layers have no learnable weights &mdash; they strictly downsample spatial resolution to prevent overfitting.</p>
-              </div>
-            </div>
-
-            <!-- Page 2: Late Night Scratchpad & Studio Design -->
-            <div class="hero__page" aria-hidden="true">
-              <div class="hero__page-content">
-                <div class="hero__page-header">
-                  <span class="hero__page-header-field">NOTEBOOK: <strong>STUDIO JOURNAL // 01</strong></span>
-                  <span class="hero__page-header-field">ENTRY: <strong>#42 &middot; 2:40 AM</strong></span>
-                </div>
-
-                <h3 class="hero__page-hand-title">The Anatomy of a Quiet Workspace</h3>
-                <p class="hero__page-hand">Every modern application tries to be a corporate CRM with notifications, popups, and subscription locks.</p>
-                <p class="hero__page-hand">Physical paper has a quiet dignity. It never interrupts, pings, or demands your attention.</p>
-                
-                <blockquote class="note-quote">
-                  <p>&ldquo;Software should feel like fine stationery &mdash; patient, tactile, and invisible until called upon.&rdquo;</p>
-                </blockquote>
-
-                <!-- Fountain Pen Hand-Drawn SVG -->
-                <div class="hero__page-sketch" aria-hidden="true">
-                  <svg width="420" height="70" viewBox="0 0 420 70" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round">
-                    <!-- Nib outline -->
-                    <path d="M 20 35 L 70 16 L 130 18 L 130 52 L 70 54 Z" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 20 35 L 65 35" stroke="#FFB600" stroke-width="2"/>
-                    <circle cx="68" cy="35" r="3.5" fill="#FFB600"/>
-                    <path d="M 80 22 L 80 48 M 95 20 L 95 50 M 110 19 L 110 51" stroke="rgba(226,215,202,0.25)"/>
-                    <!-- Ink drop -->
-                    <path d="M 12 35 Q 5 35 5 39 Q 5 43 10 43 Q 15 43 15 39 Z" fill="#FFB600" stroke="none"/>
-                    <!-- Ink flow line -->
-                    <path d="M 145 35 Q 185 18 225 35 Q 265 52 305 35" stroke="#FFB600" stroke-width="1.8" stroke-dasharray="3 3"/>
-                    <text x="155" y="60" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="16" stroke="none">Custom 0.4mm ink pressure curve</text>
-                  </svg>
-                </div>
-
-                <div class="note-checklist-box">
-                  <p class="note-check-item"><span class="note-check-mark">&check;</span> <strong>Analog Structure:</strong> Continuous pages give ideas tangible boundaries.</p>
-                  <p class="note-check-item"><span class="note-check-mark">&check;</span> <strong>Pure Expression:</strong> Real fountain ink feel paired with 100+ typography specimens.</p>
-                  <p class="note-check-item"><span class="note-check-mark">&check;</span> <strong>Complete Sovereignty:</strong> Zero telemetry, zero cloud locks. Your notes stay entirely yours.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Page 3: Webnotes Architecture Notes -->
-            <div class="hero__page" aria-hidden="true">
-              <div class="hero__page-content">
-                <div class="hero__page-header">
-                  <span class="hero__page-header-field">SYSTEMS SPEC: <strong>RFC-104 // NOTES 101</strong></span>
-                  <span class="hero__page-header-field">MODULE: <strong>SYNC PIPELINE &middot; REV 2.4</strong></span>
-                </div>
-
-                <h3 class="hero__page-hand-title">Local-First Optimistic Sync Pipeline</h3>
-
-                <!-- Architecture Flow Diagram SVG -->
-                <div class="hero__page-sketch" aria-hidden="true">
-                  <svg width="490" height="74" viewBox="0 0 490 74" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round">
-                    <!-- Node 1: DOM Input -->
-                    <rect x="8" y="10" width="94" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(0,0,0,0.5)"/>
-                    <text x="18" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Caret / DOM</text>
-                    <text x="18" y="44" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">0ms latency</text>
-
-                    <!-- Arrow 1 -->
-                    <path d="M 106 31 L 136 31" stroke="#FFB600" stroke-width="2"/>
-                    <path d="M 128 26 L 138 31 L 128 36" fill="#FFB600"/>
-
-                    <!-- Node 2: Local Cache -->
-                    <rect x="140" y="10" width="102" height="42" rx="5" stroke="#FFB600" fill="rgba(255,182,0,0.1)"/>
-                    <text x="148" y="28" fill="#FFB600" font-family="'Fira Code', monospace" font-size="11" stroke="none">LocalStorage</text>
-                    <text x="148" y="44" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">instant snapshot</text>
-
-                    <!-- Arrow 2 -->
-                    <path d="M 246 31 L 276 31" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 268 26 L 278 31 L 268 36" fill="#E2D7CA"/>
-
-                    <!-- Node 3: Firestore Cloud -->
-                    <rect x="280" y="10" width="102" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(255,255,255,0.05)"/>
-                    <text x="290" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Firestore DB</text>
-                    <text x="290" y="44" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">cloud persistence</text>
-
-                    <!-- Arrow 3: Realtime stream -->
-                    <path d="M 386 31 L 416 31" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 408 26 L 418 31 L 408 36" fill="#E2D7CA"/>
-
-                    <!-- Node 4: Replicas -->
-                    <rect x="420" y="10" width="64" height="42" rx="5" stroke="rgba(226,215,202,0.6)" fill="rgba(0,0,0,0.5)"/>
-                    <text x="428" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Tabs</text>
-                    <text x="428" y="44" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">sync &check;</text>
-                  </svg>
-                </div>
-
-                <ul class="note-principles-list">
-                  <li><span class="note-bullet">&bull;</span> <strong>Non-blocking UI:</strong> Key input mutates local memory synchronously &mdash; zero wait for remote cloud round-trips.</li>
-                  <li><span class="note-bullet">&bull;</span> <strong>Debounced Batching:</strong> Rapid keystrokes coalesce into a single 500ms cloud commit to conserve network quota.</li>
-                  <li><span class="note-bullet">&bull;</span> <strong>Per-User Namespaces:</strong> Local storage keys are cleanly isolated by authenticated UID.</li>
-                  <li><span class="note-bullet">&bull;</span> <strong>Offline Resilient:</strong> Editing never stutters during network dropouts; state automatically syncs when online.</li>
+                <h3 class="hero__page-hand-title">Things that actually matter</h3>
+                <ul class="hero__page-list">
+                  <li><span class="hero__page-bullet">&ndash;</span> completely distraction-free workspace</li>
+                  <li><span class="hero__page-bullet">&ndash;</span> zero popups, zero marketing notifications</li>
+                  <li><span class="hero__page-bullet">&ndash;</span> instant search that finds thoughts in &lt;10ms</li>
+                  <li><span class="hero__page-bullet">&ndash;</span> markdown &amp; plain text export whenever</li>
                 </ul>
-
-                <p class="hero__page-hand" style="margin-top: 16px; font-size: 19px; color: #FFB600;">&starf; 60 FPS verified with complex ink paths and continuous text flow.</p>
-              </div>
-            </div>
-
-            <!-- Page 4: Loop repeat of Page 1 (for seamless -1998px infinite scroll) -->
-            <div class="hero__page" aria-hidden="true">
-              <div class="hero__page-content">
-                <div class="hero__page-header">
-                  <span class="hero__page-header-field">COURSE: <strong>CS 231n &middot; DEEP LEARNING</strong></span>
-                  <span class="hero__page-header-field">DATE: <strong>OCT 14</strong> &middot; PG <strong>18</strong></span>
-                </div>
-                <h3 class="hero__page-hand-title">Convolutional Networks (CNNs)</h3>
-                <p class="hero__page-hand">Dense layers flatten 2D image matrices into 1D vectors &rarr; <span class="note-underline">destroys spatial geometry &amp; explodes parameters!</span></p>
-                <p class="hero__page-hand">Solution: <span class="note-underline">Parameter Sharing</span>. Slide a small <em>K &times; K</em> kernel across input space to extract local features.</p>
-                
-                <div class="hero__page-sketch" aria-hidden="true">
-                  <svg width="490" height="96" viewBox="0 0 490 96" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Input 5x5 image patch -->
-                    <rect x="15" y="12" width="70" height="70" rx="3" stroke-dasharray="2 2" stroke="rgba(226,215,202,0.4)"/>
-                    <line x1="29" y1="12" x2="29" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="43" y1="12" x2="43" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="57" y1="12" x2="57" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="71" y1="12" x2="71" y2="82" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="26" x2="85" y2="26" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="40" x2="85" y2="40" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="54" x2="85" y2="54" stroke="rgba(226,215,202,0.2)"/>
-                    <line x1="15" y1="68" x2="85" y2="68" stroke="rgba(226,215,202,0.2)"/>
-                    <!-- 3x3 receptive field -->
-                    <rect x="15" y="12" width="42" height="42" fill="rgba(255, 182, 0, 0.22)" stroke="#FFB600" stroke-width="2"/>
-                    <text x="22" y="90" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="12" stroke="none">3&times;3 Kernel</text>
-
-                    <!-- Arrow to Feature Map -->
-                    <path d="M 105 47 L 165 47" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 157 41 L 167 47 L 157 53" fill="#E2D7CA"/>
-                    <text x="108" y="36" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="15" stroke="none">dot product + b</text>
-
-                    <!-- Output Feature Map 3x3 -->
-                    <rect x="180" y="20" width="54" height="54" rx="3" stroke="rgba(226,215,202,0.6)"/>
-                    <line x1="198" y1="20" x2="198" y2="74" stroke="rgba(226,215,202,0.3)"/>
-                    <line x1="216" y1="20" x2="216" y2="74" stroke="rgba(226,215,202,0.3)"/>
-                    <line x1="180" y1="38" x2="234" y2="38" stroke="rgba(226,215,202,0.3)"/>
-                    <line x1="180" y1="56" x2="234" y2="56" stroke="rgba(226,215,202,0.3)"/>
-                    <rect x="180" y="20" width="18" height="18" fill="rgba(255, 182, 0, 0.35)" stroke="#FFB600"/>
-                    <text x="182" y="90" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="12" stroke="none">Feature Map</text>
-
-                    <!-- Explanation Label -->
-                    <text x="270" y="44" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="17" stroke="none">&bull; Weights shared across</text>
-                    <text x="270" y="66" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="17" stroke="none">the entire input space!</text>
-                  </svg>
-                </div>
-
-                <div class="note-formula-card">
-                  <span class="note-formula-title">Feature Map Output Dimension:</span>
-                  <div class="note-formula-math">Output = &lfloor; (W - K + 2P) / S &rfloor; + 1</div>
-                  <div class="note-formula-legend">
-                    <span>W = input size</span>
-                    <span>K = filter size</span>
-                    <span>P = padding</span>
-                    <span>S = stride</span>
-                  </div>
-                </div>
-
-                <p class="hero__page-hand" style="margin-top: 14px;"><strong style="color: #FFB600;">Key Takeaway:</strong> Pooling layers have no learnable weights &mdash; they strictly downsample spatial resolution to prevent overfitting.</p>
-              </div>
-            </div>
-
-            <!-- Page 5: Loop repeat of Page 2 -->
-            <div class="hero__page" aria-hidden="true">
-              <div class="hero__page-content">
-                <div class="hero__page-header">
-                  <span class="hero__page-header-field">NOTEBOOK: <strong>STUDIO JOURNAL // 01</strong></span>
-                  <span class="hero__page-header-field">ENTRY: <strong>#42 &middot; 2:40 AM</strong></span>
-                </div>
-
-                <h3 class="hero__page-hand-title">The Anatomy of a Quiet Workspace</h3>
-                <p class="hero__page-hand">Every modern application tries to be a corporate CRM with notifications, popups, and subscription locks.</p>
-                <p class="hero__page-hand">Physical paper has a quiet dignity. It never interrupts, pings, or demands your attention.</p>
-                
-                <blockquote class="note-quote">
-                  <p>&ldquo;Software should feel like fine stationery &mdash; patient, tactile, and invisible until called upon.&rdquo;</p>
-                </blockquote>
-
-                <!-- Fountain Pen Hand-Drawn SVG -->
-                <div class="hero__page-sketch" aria-hidden="true">
-                  <svg width="420" height="70" viewBox="0 0 420 70" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round">
-                    <path d="M 20 35 L 70 16 L 130 18 L 130 52 L 70 54 Z" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 20 35 L 65 35" stroke="#FFB600" stroke-width="2"/>
-                    <circle cx="68" cy="35" r="3.5" fill="#FFB600"/>
-                    <path d="M 80 22 L 80 48 M 95 20 L 95 50 M 110 19 L 110 51" stroke="rgba(226,215,202,0.25)"/>
-                    <path d="M 12 35 Q 5 35 5 39 Q 5 43 10 43 Q 15 43 15 39 Z" fill="#FFB600" stroke="none"/>
-                    <path d="M 145 35 Q 185 18 225 35 Q 265 52 305 35" stroke="#FFB600" stroke-width="1.8" stroke-dasharray="3 3"/>
-                    <text x="155" y="60" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="16" stroke="none">Custom 0.4mm ink pressure curve</text>
-                  </svg>
-                </div>
-
-                <div class="note-checklist-box">
-                  <p class="note-check-item"><span class="note-check-mark">&check;</span> <strong>Analog Structure:</strong> Continuous pages give ideas tangible boundaries.</p>
-                  <p class="note-check-item"><span class="note-check-mark">&check;</span> <strong>Pure Expression:</strong> Real fountain ink feel paired with 100+ typography specimens.</p>
-                  <p class="note-check-item"><span class="note-check-mark">&check;</span> <strong>Complete Sovereignty:</strong> Zero telemetry, zero cloud locks. Your notes stay entirely yours.</p>
+                <div class="hero__page-scribble">
+                  * call dad about his birthday dinner next weekend
                 </div>
               </div>
             </div>
 
-            <!-- Page 6: Loop repeat of Page 3 -->
+            <!-- Page 2: Person 2 (Book Lover / Philosophy - Reading Journal) -->
             <div class="hero__page" aria-hidden="true">
               <div class="hero__page-content">
                 <div class="hero__page-header">
-                  <span class="hero__page-header-field">SYSTEMS SPEC: <strong>RFC-104 // NOTES 101</strong></span>
-                  <span class="hero__page-header-field">MODULE: <strong>SYNC PIPELINE &middot; REV 2.4</strong></span>
+                  <span class="hero__page-header-field">oct 14 &middot; evening reading</span>
+                  <span class="hero__page-header-field">journal</span>
                 </div>
-
-                <h3 class="hero__page-hand-title">Local-First Optimistic Sync Pipeline</h3>
-
-                <!-- Architecture Flow Diagram SVG -->
-                <div class="hero__page-sketch" aria-hidden="true">
-                  <svg width="490" height="74" viewBox="0 0 490 74" fill="none" stroke="#E2D7CA" stroke-width="1.5" stroke-linecap="round">
-                    <rect x="8" y="10" width="94" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(0,0,0,0.5)"/>
-                    <text x="18" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Caret / DOM</text>
-                    <text x="18" y="44" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">0ms latency</text>
-
-                    <path d="M 106 31 L 136 31" stroke="#FFB600" stroke-width="2"/>
-                    <path d="M 128 26 L 138 31 L 128 36" fill="#FFB600"/>
-
-                    <rect x="140" y="10" width="102" height="42" rx="5" stroke="#FFB600" fill="rgba(255,182,0,0.1)"/>
-                    <text x="148" y="28" fill="#FFB600" font-family="'Fira Code', monospace" font-size="11" stroke="none">LocalStorage</text>
-                    <text x="148" y="44" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">instant snapshot</text>
-
-                    <path d="M 246 31 L 276 31" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 268 26 L 278 31 L 268 36" fill="#E2D7CA"/>
-
-                    <rect x="280" y="10" width="102" height="42" rx="5" stroke="rgba(226,215,202,0.7)" fill="rgba(255,255,255,0.05)"/>
-                    <text x="290" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Firestore DB</text>
-                    <text x="290" y="44" fill="#E2D7CA" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">cloud persistence</text>
-
-                    <path d="M 386 31 L 416 31" stroke="#E2D7CA" stroke-width="1.8"/>
-                    <path d="M 408 26 L 418 31 L 408 36" fill="#E2D7CA"/>
-
-                    <rect x="420" y="10" width="64" height="42" rx="5" stroke="rgba(226,215,202,0.6)" fill="rgba(0,0,0,0.5)"/>
-                    <text x="428" y="28" fill="#FFF" font-family="'Fira Code', monospace" font-size="11" stroke="none">Tabs</text>
-                    <text x="428" y="44" fill="#FFB600" font-family="'Homemade Apple', cursive" font-size="13" stroke="none">sync &check;</text>
-                  </svg>
+                <h3 class="hero__page-hand-title">Notes from Calvino</h3>
+                <div class="hero__page-quote">
+                  <p>&ldquo;You take delight not in a city's seven or seventy wonders, but in the answer it gives to a question of yours.&rdquo;</p>
+                  <span class="hero__page-quote-cite">&mdash; Italo Calvino, Invisible Cities</span>
                 </div>
+                <p class="hero__page-hand">
+                  Good tools feel the same way. Not eighty cluttered features, just a quiet room where your thoughts have room to breathe.
+                </p>
+                <div class="hero__page-scribble">
+                  next up: A Month in the Country &middot; J.L. Carr
+                </div>
+              </div>
+            </div>
 
-                <ul class="note-principles-list">
-                  <li><span class="note-bullet">&bull;</span> <strong>Non-blocking UI:</strong> Key input mutates local memory synchronously &mdash; zero wait for remote cloud round-trips.</li>
-                  <li><span class="note-bullet">&bull;</span> <strong>Debounced Batching:</strong> Rapid keystrokes coalesce into a single 500ms cloud commit to conserve network quota.</li>
-                  <li><span class="note-bullet">&bull;</span> <strong>Per-User Namespaces:</strong> Local storage keys are cleanly isolated by authenticated UID.</li>
-                  <li><span class="note-bullet">&bull;</span> <strong>Offline Resilient:</strong> Editing never stutters during network dropouts; state automatically syncs when online.</li>
+            <!-- Page 3: Person 3 (Student / Traveler - Cabin Packing List) -->
+            <div class="hero__page" aria-hidden="true">
+              <div class="hero__page-content">
+                <div class="hero__page-header">
+                  <span class="hero__page-header-field">lake cabin trip &middot; nov 2-4</span>
+                  <span class="hero__page-header-field">packing list</span>
+                </div>
+                <h3 class="hero__page-hand-title">Cabin Prep &amp; Gear</h3>
+                <div class="hero__page-check hero__page-check--done">
+                  <span class="hero__page-box">[&#10003;]</span> wool socks &amp; trail boots
+                </div>
+                <div class="hero__page-check hero__page-check--done">
+                  <span class="hero__page-box">[&#10003;]</span> polaroid camera &amp; 3 packs of film
+                </div>
+                <div class="hero__page-check hero__page-check--done">
+                  <span class="hero__page-box">[&#10003;]</span> download offline map for route 9
+                </div>
+                <div class="hero__page-check">
+                  <span class="hero__page-box">[ &nbsp; ]</span> fresh sourdough &amp; espresso beans
+                </div>
+                <div class="hero__page-check">
+                  <span class="hero__page-box">[ &nbsp; ]</span> grab firewood bundle from Mike's
+                </div>
+                <div class="hero__page-scribble">
+                  * bridge on route 9 closed &rarr; take old sawmill road instead (+15m)
+                </div>
+              </div>
+            </div>
+
+            <!-- Page 4: Loop Duplicate of Page 1 (for seamless infinite carousel) -->
+            <div class="hero__page" aria-hidden="true">
+              <div class="hero__page-content">
+                <div class="hero__page-header">
+                  <span class="hero__page-header-field">sunday morning &middot; blue bottle</span>
+                  <span class="hero__page-header-field">ideas // v2</span>
+                </div>
+                <h3 class="hero__page-hand-title">Things that actually matter</h3>
+                <ul class="hero__page-list">
+                  <li><span class="hero__page-bullet">&ndash;</span> completely distraction-free workspace</li>
+                  <li><span class="hero__page-bullet">&ndash;</span> zero popups, zero marketing notifications</li>
+                  <li><span class="hero__page-bullet">&ndash;</span> instant search that finds thoughts in &lt;10ms</li>
+                  <li><span class="hero__page-bullet">&ndash;</span> markdown &amp; plain text export whenever</li>
                 </ul>
+                <div class="hero__page-scribble">
+                  * call dad about his birthday dinner next weekend
+                </div>
+              </div>
+            </div>
 
-                <p class="hero__page-hand" style="margin-top: 16px; font-size: 19px; color: #FFB600;">&starf; 60 FPS verified with complex ink paths and continuous text flow.</p>
+            <!-- Page 5: Loop Duplicate of Page 2 (for seamless infinite carousel) -->
+            <div class="hero__page" aria-hidden="true">
+              <div class="hero__page-content">
+                <div class="hero__page-header">
+                  <span class="hero__page-header-field">oct 14 &middot; evening reading</span>
+                  <span class="hero__page-header-field">journal</span>
+                </div>
+                <h3 class="hero__page-hand-title">Notes from Calvino</h3>
+                <div class="hero__page-quote">
+                  <p>&ldquo;You take delight not in a city's seven or seventy wonders, but in the answer it gives to a question of yours.&rdquo;</p>
+                  <span class="hero__page-quote-cite">&mdash; Italo Calvino, Invisible Cities</span>
+                </div>
+                <p class="hero__page-hand">
+                  Good tools feel the same way. Not eighty cluttered features, just a quiet room where your thoughts have room to breathe.
+                </p>
+                <div class="hero__page-scribble">
+                  next up: A Month in the Country &middot; J.L. Carr
+                </div>
+              </div>
+            </div>
+
+            <!-- Page 6: Loop Duplicate of Page 3 (for seamless infinite carousel) -->
+            <div class="hero__page" aria-hidden="true">
+              <div class="hero__page-content">
+                <div class="hero__page-header">
+                  <span class="hero__page-header-field">lake cabin trip &middot; nov 2-4</span>
+                  <span class="hero__page-header-field">packing list</span>
+                </div>
+                <h3 class="hero__page-hand-title">Cabin Prep &amp; Gear</h3>
+                <div class="hero__page-check hero__page-check--done">
+                  <span class="hero__page-box">[&#10003;]</span> wool socks &amp; trail boots
+                </div>
+                <div class="hero__page-check hero__page-check--done">
+                  <span class="hero__page-box">[&#10003;]</span> polaroid camera &amp; 3 packs of film
+                </div>
+                <div class="hero__page-check hero__page-check--done">
+                  <span class="hero__page-box">[&#10003;]</span> download offline map for route 9
+                </div>
+                <div class="hero__page-check">
+                  <span class="hero__page-box">[ &nbsp; ]</span> fresh sourdough &amp; espresso beans
+                </div>
+                <div class="hero__page-check">
+                  <span class="hero__page-box">[ &nbsp; ]</span> grab firewood bundle from Mike's
+                </div>
+                <div class="hero__page-scribble">
+                  * bridge on route 9 closed &rarr; take old sawmill road instead (+15m)
+                </div>
               </div>
             </div>
           </div>

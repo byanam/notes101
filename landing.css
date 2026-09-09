@@ -293,158 +293,133 @@ input {
 .hero__page-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 10px;
-  border-bottom: 1.5px solid rgba(226, 215, 202, 0.18);
-  margin-bottom: 22px;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(226, 215, 202, 0.14);
+  margin-bottom: 28px;
   width: 100%;
 }
 
 .hero__page-header-field {
-  font-family: 'Patrick Hand', 'Fira Code', monospace;
+  font-family: 'Homemade Apple', cursive;
   font-size: 13px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   color: rgba(226, 215, 202, 0.55);
-  text-transform: uppercase;
 }
 
 .hero__page-header-field strong {
   font-family: 'Homemade Apple', cursive;
-  font-size: 15px;
+  font-size: 13px;
   color: #FFF2E2;
   font-weight: 400;
-  margin-left: 6px;
-  letter-spacing: normal;
+  margin-left: 4px;
 }
 
 /* Handwritten Titles & Body */
 .hero__page-hand-title {
   font-family: 'Homemade Apple', cursive;
   font-weight: 400;
-  font-size: 25px;
-  line-height: 1.45;
+  font-size: 22px;
+  line-height: 1.8;
   color: #FFFFFF;
-  margin: 0 0 16px 0;
+  margin: 0 0 24px 0;
 }
 
 .hero__page-hand {
   font-family: 'Homemade Apple', cursive;
-  font-size: 17px;
-  line-height: 1.85;
+  font-size: 15px;
+  line-height: 2.3;
   color: #E6DCD0;
-  margin: 0 0 14px 0;
+  margin: 0 0 20px 0;
   font-weight: 400;
 }
 
-
 .note-underline {
-  border-bottom: 2px solid #FFB600;
-  padding-bottom: 1px;
+  border-bottom: 1.5px solid #FFB600;
+  padding-bottom: 2px;
 }
 
-/* Sketch Container */
-.hero__page-sketch {
-  margin: 16px 0 20px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Authentic Human Lists */
+.hero__page-list {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
 }
 
-/* Clean Formula Callout */
-.note-formula-card {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(226, 215, 202, 0.16);
-  border-radius: 6px;
-  padding: 12px 18px;
-  margin: 16px 0;
-}
-
-.note-formula-title {
-  font-family: 'Patrick Hand', monospace;
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  color: rgba(226, 215, 202, 0.65);
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.note-formula-math {
-  font-family: 'Fira Code', monospace;
-  font-size: 17px;
-  color: #FFF2E2;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-.note-formula-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 8px;
+.hero__page-list li {
   font-family: 'Homemade Apple', cursive;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 2.3;
+  color: #E2D7CA;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.hero__page-bullet {
   color: #FFB600;
+  font-size: 14px;
+  line-height: 1;
 }
 
-/* Quotes */
-.note-quote {
-  border-left: 3px solid rgba(226, 215, 202, 0.35);
-  padding: 8px 0 8px 16px;
-  margin: 18px 0;
+/* Authentic Quotes */
+.hero__page-quote {
+  border-left: 2px solid rgba(255, 182, 0, 0.45);
+  padding: 8px 0 8px 18px;
+  margin: 24px 0 26px 0;
 }
 
-.note-quote p {
+.hero__page-quote p {
   font-family: 'EB Garamond', serif;
   font-style: italic;
-  font-size: 22px;
-  line-height: 1.45;
+  font-size: 20px;
+  line-height: 1.6;
   color: #FFF2E2;
   margin: 0;
 }
 
-.note-checklist-box {
-  margin: 16px 0;
-}
-
-.note-check-item {
+.hero__page-quote-cite {
   font-family: 'Homemade Apple', cursive;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #E2D7CA;
-  margin: 10px 0;
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
+  font-size: 13px;
+  color: #FFB600;
+  margin-top: 10px;
+  display: block;
 }
 
-.note-check-mark {
-  color: #2ecc71;
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.note-principles-list {
-  list-style: none;
-  margin: 16px 0;
-  padding: 0;
-}
-
-.note-principles-list li {
+/* Checkbox Items */
+.hero__page-check {
   font-family: 'Homemade Apple', cursive;
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 2.3;
   color: #E2D7CA;
-  margin: 12px 0;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 }
 
-.note-principles-list li strong {
-  color: #FFF;
+.hero__page-check--done {
+  color: rgba(226, 215, 202, 0.55);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 182, 0, 0.45);
 }
 
-.note-bullet {
+.hero__page-box {
   color: #FFB600;
-  margin-right: 8px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Personal Scribbled Aside */
+.hero__page-scribble {
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(226, 215, 202, 0.15);
+  font-family: 'Homemade Apple', cursive;
+  font-size: 13.5px;
+  line-height: 2.2;
+  color: #FFB600;
 }
 
 /* "notes 101" Image Title — LAYER 6 (z:1, behind pages)
