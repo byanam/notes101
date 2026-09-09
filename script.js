@@ -676,14 +676,24 @@ document.addEventListener('DOMContentLoaded', () => {
         saveData();
         const key = uid ? 'aiNoteData_' + uid : 'aiNoteData';
         const stored = localStorage.getItem(key) || localStorage.getItem('aiNoteData');
-        return stored ? JSON.parse(stored) : null;
+        if (!stored) return null;
+        try {
+            return JSON.parse(stored);
+        } catch (e) {
+            console.error('[Storage] Corrupt note data in localStorage for serialization:', e);
+            return null;
+        }
     };
 
     window.deserializeNotesData = function (data, uid) {
         if (!data) return false;
         const success = loadDataFromObject(data);
         if (success && uid) {
-            localStorage.setItem('aiNoteData_' + uid, JSON.stringify(data));
+            try {
+                localStorage.setItem('aiNoteData_' + uid, JSON.stringify(data));
+            } catch (err) {
+                console.warn('[Storage] Failed to cache user notes in localStorage:', err);
+            }
         }
         return success;
     };
