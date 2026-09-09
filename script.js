@@ -122,6 +122,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (page.id && this.chapters.has(page.id)) {
                     const clone = page.cloneNode(true);
                     clone.querySelectorAll('.drawing-layer').forEach(dl => dl.remove());
+                    // Strip transient search highlight marks so they don't persist into storage
+                    clone.querySelectorAll('mark.doc-search-highlight').forEach(mark => {
+                        const parent = mark.parentNode;
+                        if (parent) {
+                            parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                            parent.normalize();
+                        }
+                    });
+                    // Strip any transient image selection / resize handles if present
+                    clone.querySelectorAll('.image-resize-handle, .image-handle').forEach(h => h.remove());
                     this.chapters.get(page.id).content = clone.innerHTML;
                     if (typeof updatePageThumbnail === 'function') {
                         updatePageThumbnail(page.id);
