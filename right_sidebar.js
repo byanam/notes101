@@ -1486,13 +1486,27 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         }
 
-        canvas.addEventListener('mousedown', (e) => {
-            if (!activeDrawTool || activeDrawTool === 'text') return;
+        function getTouchCoords(e) {
+            const touch = e.touches[0] || e.changedTouches[0];
+            if (!touch) return null;
+            const rect = canvas.getBoundingClientRect();
+            const cssWidth = canvas.clientWidth || (canvas.width / Math.max(2, window.devicePixelRatio || 2));
+            const cssHeight = canvas.clientHeight || (canvas.height / Math.max(2, window.devicePixelRatio || 2));
+
+            const scaleX = rect.width ? (cssWidth / rect.width) : 1;
+            const scaleY = rect.height ? (cssHeight / rect.height) : 1;
+
+            return {
+                x: (touch.clientX - rect.left) * scaleX,
+                y: (touch.clientY - rect.top) * scaleY
+            };
+        }
+
+        function startDrawing(pos) {
+            if (!activeDrawTool || activeDrawTool === 'text' || !pos) return;
             isDrawing = true;
             currentDrawingCanvas = canvas;
             currentDrawingCtx = ctx;
-
-            const pos = getCanvasCoords(e);
             lastPoint = pos;
 
             ctx.lineWidth = activeDrawSize;
@@ -1519,7 +1533,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.globalAlpha = 1.0;
             }
 
-            // Draw smooth initial dot on click
+            // Draw smooth initial dot on click / touch
             ctx.beginPath();
             ctx.arc(pos.x, pos.y, activeDrawSize / 2, 0, Math.PI * 2);
             if (activeDrawTool === 'eraser') {
@@ -1531,41 +1545,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ctx.beginPath();
             ctx.moveTo(pos.x, pos.y);
-        });
+        }
 
-        canvas.addEventListener('mousemove', (e) => {
-            if (!isDrawing || currentDrawingCanvas !== canvas || !lastPoint) return;
-            const currentPoint = getCanvasCoords(e);
-
-            // Smooth stroke with quadratic bezier curves
+        function continueDrawing(pos) {
+            if (!isDrawing || currentDrawingCanvas !== canvas || !lastPoint || !pos) return;
             const midPoint = {
-                x: (lastPoint.x + currentPoint.x) / 2,
-                y: (lastPoint.y + currentPoint.y) / 2
+                x: (lastPoint.x + pos.x) / 2,
+                y: (lastPoint.y + pos.y) / 2
             };
 
             currentDrawingCtx.quadraticCurveTo(lastPoint.x, lastPoint.y, midPoint.x, midPoint.y);
             currentDrawingCtx.stroke();
+            lastPoint = pos;
+        }
 
-            lastPoint = currentPoint;
-        });
-
-        canvas.addEventListener('mouseup', () => {
+        function finishDrawing() {
             if (isDrawing) {
                 isDrawing = false;
                 lastPoint = null;
                 saveCanvasStrokes(canvas, pageEl);
                 triggerEditorSave();
             }
+        }
+
+        canvas.addEventListener('mousedown', (e) => {
+            startDrawing(getCanvasCoords(e));
         });
 
-        canvas.addEventListener('mouseleave', () => {
-            if (isDrawing) {
-                isDrawing = false;
-                lastPoint = null;
-                saveCanvasStrokes(canvas, pageEl);
-                triggerEditorSave();
-            }
+        canvas.addEventListener('mousemove', (e) => {
+            continueDrawing(getCanvasCoords(e));
         });
+
+        canvas.addEventListener('mouseup', finishDrawing);
+        canvas.addEventListener('mouseleave', finishDrawing);
+
+        canvas.addEventListener('touchstart', (e) => {
+            if (!activeDrawTool || activeDrawTool === 'text') return;
+            e.preventDefault();
+            startDrawing(getTouchCoords(e));
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', (e) => {
+            if (!isDrawing) return;
+            e.preventDefault();
+            continueDrawing(getTouchCoords(e));
+        }, { passive: false });
+
+        canvas.addEventListener('touchend', finishDrawing);
+        canvas.addEventListener('touchcancel', finishDrawing);
     }
 
     // Synchronize drawing layers for all pages in editor
