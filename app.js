@@ -134,8 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (res && res.success) {
                 updateSyncStatus('Saved to Cloud ✓', 'success');
                 if (typeof window.deserializeNotesData === 'function') {
-                    // Update user-scoped local storage cache
-                    localStorage.setItem('aiNoteData_' + currentUser.uid, JSON.stringify(data));
+                    // Update user-scoped local storage cache defensively
+                    try {
+                        localStorage.setItem('aiNoteData_' + currentUser.uid, JSON.stringify(data));
+                    } catch (cacheErr) {
+                        console.warn('[App] Local cache quota exceeded for user notes:', cacheErr);
+                    }
                 }
             } else {
                 const errMsg = typeof res?.error === 'string' ? res.error : 'Permission Denied';
