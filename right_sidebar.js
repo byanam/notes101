@@ -1461,11 +1461,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function saveCanvasStrokes(canvas, pageEl) {
         if (!canvas) return;
-        const dataUrl = canvas.toDataURL();
-        canvas.setAttribute('data-drawing-data', dataUrl);
-        const pageId = pageEl ? (pageEl.id || pageEl.getAttribute('data-page-id')) : null;
-        if (pageId) {
-            window.pageDrawingsMap[pageId] = dataUrl;
+        try {
+            const dataUrl = canvas.toDataURL();
+            canvas.setAttribute('data-drawing-data', dataUrl);
+            const pageId = pageEl ? (pageEl.id || pageEl.getAttribute('data-page-id')) : null;
+            if (pageId) {
+                window.pageDrawingsMap[pageId] = dataUrl;
+            }
+        } catch (e) {
+            console.warn('[Drawing] Failed to export canvas strokes:', e);
         }
     }
 
