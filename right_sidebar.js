@@ -2407,32 +2407,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 drawingCanvas.style.visibility = 'visible';
             }
 
-            // Capture visible page directly from DOM at 2x scale
-            const canvas = await html2canvas(pageEl, {
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                backgroundColor: '#191919',
-                logging: false,
-                width: 794,
-                height: 1123,
-                scrollX: 0,
-                scrollY: 0
-            });
+            try {
+                // Capture visible page directly from DOM at 2x scale
+                const canvas = await html2canvas(pageEl, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#191919',
+                    logging: false,
+                    width: 794,
+                    height: 1123,
+                    scrollX: 0,
+                    scrollY: 0
+                });
 
-            // Restore handles, zoom & contenteditable
-            handles.forEach(h => h.style.display = '');
-            pageEl.style.zoom = origZoom;
-            if (wasEditable !== null) {
-                pageEl.setAttribute('contenteditable', wasEditable);
+                // Convert to lossless PNG
+                const imgData = canvas.toDataURL('image/png');
+
+                if (i > 0) pdf.addPage([794, 1123], 'p');
+                // Fit image exactly to (0, 0, 794, 1123) with zero margins
+                pdf.addImage(imgData, 'PNG', 0, 0, 794, 1123, undefined, 'FAST');
+            } finally {
+                // Restore handles, zoom & contenteditable
+                handles.forEach(h => h.style.display = '');
+                pageEl.style.zoom = origZoom;
+                if (wasEditable !== null) {
+                    pageEl.setAttribute('contenteditable', wasEditable);
+                }
             }
-
-            // Convert to lossless PNG
-            const imgData = canvas.toDataURL('image/png');
-
-            if (i > 0) pdf.addPage([794, 1123], 'p');
-            // Fit image exactly to (0, 0, 794, 1123) with zero margins
-            pdf.addImage(imgData, 'PNG', 0, 0, 794, 1123, undefined, 'FAST');
         }
 
         const pdfBlob = pdf.output('blob');
