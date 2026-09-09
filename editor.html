@@ -103,47 +103,46 @@
 
       <!-- Right Sidebar (Studio Tool Inspector) -->
             <!-- Right Sidebar (Photopea / Photoshop Professional Dock) -->
+            <!-- Right Sidebar (Photoshop-Inspired Studio Inspector) -->
       <aside class="sidebar sidebar-right ps-dock" id="ps-right-dock">
-        <!-- Column 1: Left Narrow Icon Rail (~34px) -->
+        <!-- Column 1: Left Narrow Icon Rail (~36px) -->
         <div class="ps-icon-rail" id="ps-icon-rail" aria-label="Tool Panels">
-          <button type="button" class="ps-rail-btn ps-rail-toggle" id="ps-rail-toggle" title="Expand / Collapse Panels">
+          <button type="button" class="ps-rail-btn ps-rail-toggle" id="ps-rail-toggle" title="Expand / Collapse Dock">
             <i class="fa-solid fa-angles-right" id="ps-rail-toggle-icon"></i>
           </button>
           <div class="ps-rail-divider"></div>
-          <button type="button" class="ps-rail-btn" data-panel="info" id="ps-rail-info" title="Info &amp; Account">
-            <i class="fa-solid fa-circle-info"></i>
-          </button>
-          <button type="button" class="ps-rail-btn" data-panel="props" id="ps-rail-props" title="Canvas &amp; Document Properties">
-            <i class="fa-solid fa-sliders"></i>
-          </button>
-          <button type="button" class="ps-rail-btn" data-panel="brush" id="ps-rail-brush" title="Brushes &amp; Drawing Tools">
-            <i class="fa-solid fa-paintbrush"></i>
-          </button>
-          <button type="button" class="ps-rail-btn active" data-panel="char" id="ps-rail-char" title="Character &amp; Typography">
+          <button type="button" class="ps-rail-btn active" data-panel="char" id="ps-rail-char" title="Character & Typography">
             <span class="ps-rail-char-t">T</span>
           </button>
-          <button type="button" class="ps-rail-btn" data-panel="para" id="ps-rail-para" title="Paragraph &amp; Formatting">
-            <span class="ps-rail-char-p">&para;</span>
+          <button type="button" class="ps-rail-btn" data-panel="brush" id="ps-rail-brush" title="Brushes & Drawing">
+            <i class="fa-solid fa-paintbrush"></i>
           </button>
-          <button type="button" class="ps-rail-btn" data-panel="css" id="ps-rail-css" title="Export &amp; Insert (CSS)">
-            <span class="ps-rail-badge-css">CSS</span>
+          <button type="button" class="ps-rail-btn" data-panel="history" id="ps-rail-history" title="History & Actions">
+            <i class="fa-solid fa-clock-rotate-left"></i>
           </button>
-          <button type="button" class="ps-rail-btn" data-panel="image" id="ps-rail-image" title="Insert Image">
-            <i class="fa-solid fa-image"></i>
+          <div class="ps-rail-divider"></div>
+          <button type="button" class="ps-rail-btn" data-panel="layers" id="ps-rail-layers" title="Pages & Layers">
+            <i class="fa-solid fa-layer-group"></i>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="doc" id="ps-rail-doc" title="Document Setup & Tools">
+            <i class="fa-solid fa-file-lines"></i>
+          </button>
+          <button type="button" class="ps-rail-btn" data-panel="info" id="ps-rail-info" title="Account & Cloud Sync">
+            <i class="fa-solid fa-circle-info"></i>
           </button>
         </div>
 
-        <!-- Column 2: Main Dock Panels (~260px) -->
+        <!-- Column 2: Main Dock Panels Body (~260px) -->
         <div class="ps-dock-body" id="ps-dock-body">
           <!-- =======================================================
-               TOP PANEL BOX (History, Swatches, Character, etc.)
+               TOP PANEL BOX (Character, Brushes, History)
                ======================================================= -->
           <div class="ps-panel-box ps-panel-top" id="ps-panel-top">
             <div class="ps-tab-bar">
               <div class="ps-tabs" id="ps-top-tabs">
-                <button type="button" class="ps-tab" data-tab="history" id="tab-btn-history">History</button>
-                <button type="button" class="ps-tab" data-tab="swatches" id="tab-btn-swatches">Swatches</button>
                 <button type="button" class="ps-tab active" data-tab="char" id="tab-btn-char">Character</button>
+                <button type="button" class="ps-tab" data-tab="brush" id="tab-btn-brush">Brushes</button>
+                <button type="button" class="ps-tab" data-tab="history" id="tab-btn-history">History</button>
               </div>
               <div class="ps-tab-actions">
                 <button type="button" class="ps-tab-action-btn" id="ps-top-minimize-btn" title="Minimize Panel">
@@ -153,38 +152,7 @@
             </div>
 
             <div class="ps-panel-content" id="ps-top-panel-content">
-              <!-- View 1: History -->
-              <div class="ps-tab-view" id="view-history">
-                <div class="ps-history-list" id="ps-history-list">
-                  <div class="ps-history-item active" data-step="open">
-                    <i class="fa-solid fa-file-lines ps-history-icon"></i>
-                    <span class="ps-history-text">Open</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- View 2: Swatches -->
-              <div class="ps-tab-view" id="view-swatches">
-                <div class="ps-swatches-container">
-                  <div class="ps-swatches-title">COLOR SWATCHES</div>
-                  <div class="ps-swatches-grid" id="ps-swatches-grid">
-                    <div class="ps-swatch" style="background-color: #000000;" data-color="#000000" title="Black"></div>
-                    <div class="ps-swatch" style="background-color: #ffffff;" data-color="#ffffff" title="White"></div>
-                    <div class="ps-swatch" style="background-color: #e04040;" data-color="#e04040" title="Red"></div>
-                    <div class="ps-swatch" style="background-color: #ffb600;" data-color="#ffb600" title="Amber"></div>
-                    <div class="ps-swatch" style="background-color: #4080e0;" data-color="#4080e0" title="Blue"></div>
-                    <div class="ps-swatch" style="background-color: #2ecc71;" data-color="#2ecc71" title="Green"></div>
-                    <div class="ps-swatch" style="background-color: #9b59b6;" data-color="#9b59b6" title="Purple"></div>
-                    <div class="ps-swatch" style="background-color: #e67e22;" data-color="#e67e22" title="Orange"></div>
-                    <div class="ps-swatch" style="background-color: #1abc9c;" data-color="#1abc9c" title="Teal"></div>
-                    <div class="ps-swatch" style="background-color: #e2d7ca;" data-color="#e2d7ca" title="Parchment"></div>
-                    <div class="ps-swatch" style="background-color: #fcf5e5;" data-color="#fcf5e5" title="Warm Ivory"></div>
-                    <div class="ps-swatch" style="background-color: #191919;" data-color="#191919" title="Dark Slate"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- View 3: Character (T) - Active by default -->
+              <!-- View 1: Character (T) - Active -->
               <div class="ps-tab-view active" id="view-char">
                 <div class="ps-control-group">
                   <!-- Font family row -->
@@ -194,92 +162,59 @@
                       <span class="dropdown-text" id="font-box-text" style="font-family: 'Sumana', serif; font-size: 11px;">Sumana</span>
                       <i class="fa-solid fa-caret-down dropdown-arrow"></i>
                       <div class="custom-font-menu" id="custom-font-menu">
-                <div class="font-menu-item" data-font="Homemade Apple" style="font-family: 'Homemade Apple', cursive;">
-                  Homemade Apple</div>
-                <div class="font-menu-item active" data-font="Sumana" style="font-family: 'Sumana', serif;">Sumana</div>
-                <div class="font-menu-item" data-font="Inter" style="font-family: 'Inter', sans-serif;">Inter</div>
-                <div class="font-menu-item" data-font="Roboto" style="font-family: 'Roboto', sans-serif;">Roboto</div>
-                <div class="font-menu-item" data-font="Playfair Display"
-                  style="font-family: 'Playfair Display', serif;">Playfair Display</div>
-                <div class="font-menu-item" data-font="Montserrat" style="font-family: 'Montserrat', sans-serif;">
-                  Montserrat</div>
-                <div class="font-menu-item" data-font="Lora" style="font-family: 'Lora', serif;">Lora</div>
-                <div class="font-menu-item" data-font="Open Sans" style="font-family: 'Open Sans', sans-serif;">Open
-                  Sans</div>
-                <div class="font-menu-item" data-font="Caveat" style="font-family: 'Caveat', cursive;">Caveat</div>
-                <div class="font-menu-item" data-font="Dancing Script" style="font-family: 'Dancing Script', cursive;">
-                  Dancing Script</div>
-                <div class="font-menu-item" data-font="Pacifico" style="font-family: 'Pacifico', cursive;">Pacifico
-                </div>
-                <div class="font-menu-item" data-font="Courier Prime" style="font-family: 'Courier Prime', monospace;">
-                  Courier Prime</div>
-                <div class="font-menu-item" data-font="Fira Code" style="font-family: 'Fira Code', monospace;">Fira Code
-                </div>
-                <div class="font-menu-item" data-font="Cinzel" style="font-family: 'Cinzel', serif;">Cinzel</div>
-                <div class="font-menu-item" data-font="Oswald" style="font-family: 'Oswald', sans-serif;">Oswald</div>
-                <div class="font-menu-item" data-font="Merriweather" style="font-family: 'Merriweather', serif;">
-                  Merriweather</div>
-                <div class="font-menu-item" data-font="Kalam" style="font-family: 'Kalam', cursive;">Kalam</div>
-                <div class="font-menu-item" data-font="Outfit" style="font-family: 'Outfit', sans-serif;">Outfit</div>
-                <div class="font-menu-item" data-font="Great Vibes" style="font-family: 'Great Vibes', cursive;">Great
-                  Vibes</div>
-                <div class="font-menu-item" data-font="Comfortaa" style="font-family: 'Comfortaa', cursive;">Comfortaa
-                </div>
-                <div class="font-menu-item" data-font="Poppins" style="font-family: 'Poppins', sans-serif;">Poppins
-                </div>
-                <div class="font-menu-item" data-font="Raleway" style="font-family: 'Raleway', sans-serif;">Raleway
-                </div>
-                <div class="font-menu-item" data-font="PT Serif" style="font-family: 'PT Serif', serif;">PT Serif</div>
-                <div class="font-menu-item" data-font="Nunito" style="font-family: 'Nunito', sans-serif;">Nunito</div>
-                <div class="font-menu-item" data-font="EB Garamond" style="font-family: 'EB Garamond', serif;">EB
-                  Garamond</div>
-                <div class="font-menu-item" data-font="Bebas Neue" style="font-family: 'Bebas Neue', display;">Bebas
-                  Neue</div>
-                <div class="font-menu-item" data-font="Sacramento" style="font-family: 'Sacramento', cursive;">
-                  Sacramento</div>
-                <div class="font-menu-item" data-font="Shadows Into Light"
-                  style="font-family: 'Shadows Into Light', cursive;">Shadows Into Light</div>
-                <div class="font-menu-item" data-font="Indie Flower" style="font-family: 'Indie Flower', cursive;">Indie
-                  Flower</div>
-                <div class="font-menu-item" data-font="Amatic SC" style="font-family: 'Amatic SC', cursive;">Amatic SC
-                </div>
-                <div class="font-menu-item" data-font="Lobster" style="font-family: 'Lobster', cursive;">Lobster</div>
-                <div class="font-menu-item" data-font="Abril Fatface" style="font-family: 'Abril Fatface', serif;">Abril
-                  Fatface</div>
-                <div class="font-menu-item" data-font="Quicksand" style="font-family: 'Quicksand', sans-serif;">
-                  Quicksand</div>
-                <div class="font-menu-item" data-font="Work Sans" style="font-family: 'Work Sans', sans-serif;">Work
-                  Sans</div>
-                <div class="font-menu-item" data-font="Syne" style="font-family: 'Syne', sans-serif;">Syne</div>
-                <div class="font-menu-item" data-font="Cormorant Garamond"
-                  style="font-family: 'Cormorant Garamond', serif;">Cormorant Garamond</div>
-                <div class="font-menu-item" data-font="Satisfy" style="font-family: 'Satisfy', cursive;">Satisfy</div>
-                <div class="font-menu-item" data-font="Permanent Marker"
-                  style="font-family: 'Permanent Marker', cursive;">Permanent Marker</div>
-                <div class="font-menu-item" data-font="Space Mono" style="font-family: 'Space Mono', monospace;">Space
-                  Mono</div>
-                <div class="font-menu-item" data-font="JetBrains Mono"
-                  style="font-family: 'JetBrains Mono', monospace;">JetBrains Mono</div>
-                <div class="font-menu-item" data-font="Cinzel Decorative"
-                  style="font-family: 'Cinzel Decorative', serif;">Cinzel Decorative</div>
-                <div class="font-menu-item" data-font="Barlow" style="font-family: 'Barlow', sans-serif;">Barlow</div>
-                <div class="font-menu-item" data-font="Josefin Sans" style="font-family: 'Josefin Sans', sans-serif;">
-                  Josefin Sans</div>
-                <div class="font-menu-item" data-font="Tangerine" style="font-family: 'Tangerine', cursive;">Tangerine
-                </div>
-                <div class="font-menu-item" data-font="Alex Brush" style="font-family: 'Alex Brush', cursive;">Alex
-                  Brush</div>
-                <div class="font-menu-item" data-font="Marck Script" style="font-family: 'Marck Script', cursive;">Marck
-                  Script</div>
-                <div class="font-menu-item" data-font="Zeyada" style="font-family: 'Zeyada', cursive;">Zeyada</div>
-                <div class="font-menu-item" data-font="Allura" style="font-family: 'Allura', cursive;">Allura</div>
-                <div class="font-menu-item" data-font="Parisienne" style="font-family: 'Parisienne', cursive;">
-                  Parisienne</div>
-                <div class="font-menu-item" data-font="Georgia" style="font-family: Georgia, serif;">Georgia</div>
-                <div class="font-menu-item" data-font="Arial" style="font-family: Arial, sans-serif;">Arial</div>
-                <div class="font-menu-item" data-font="Times New Roman" style="font-family: 'Times New Roman', serif;">
-                  Times New Roman</div>
-              </div>
+                        <div class="font-menu-item" data-font="Homemade Apple" style="font-family: 'Homemade Apple', cursive;">Homemade Apple</div>
+                        <div class="font-menu-item active" data-font="Sumana" style="font-family: 'Sumana', serif;">Sumana</div>
+                        <div class="font-menu-item" data-font="Inter" style="font-family: 'Inter', sans-serif;">Inter</div>
+                        <div class="font-menu-item" data-font="Roboto" style="font-family: 'Roboto', sans-serif;">Roboto</div>
+                        <div class="font-menu-item" data-font="Playfair Display" style="font-family: 'Playfair Display', serif;">Playfair Display</div>
+                        <div class="font-menu-item" data-font="Montserrat" style="font-family: 'Montserrat', sans-serif;">Montserrat</div>
+                        <div class="font-menu-item" data-font="Lora" style="font-family: 'Lora', serif;">Lora</div>
+                        <div class="font-menu-item" data-font="Open Sans" style="font-family: 'Open Sans', sans-serif;">Open Sans</div>
+                        <div class="font-menu-item" data-font="Caveat" style="font-family: 'Caveat', cursive;">Caveat</div>
+                        <div class="font-menu-item" data-font="Dancing Script" style="font-family: 'Dancing Script', cursive;">Dancing Script</div>
+                        <div class="font-menu-item" data-font="Pacifico" style="font-family: 'Pacifico', cursive;">Pacifico</div>
+                        <div class="font-menu-item" data-font="Courier Prime" style="font-family: 'Courier Prime', monospace;">Courier Prime</div>
+                        <div class="font-menu-item" data-font="Fira Code" style="font-family: 'Fira Code', monospace;">Fira Code</div>
+                        <div class="font-menu-item" data-font="Cinzel" style="font-family: 'Cinzel', serif;">Cinzel</div>
+                        <div class="font-menu-item" data-font="Oswald" style="font-family: 'Oswald', sans-serif;">Oswald</div>
+                        <div class="font-menu-item" data-font="Merriweather" style="font-family: 'Merriweather', serif;">Merriweather</div>
+                        <div class="font-menu-item" data-font="Kalam" style="font-family: 'Kalam', cursive;">Kalam</div>
+                        <div class="font-menu-item" data-font="Outfit" style="font-family: 'Outfit', sans-serif;">Outfit</div>
+                        <div class="font-menu-item" data-font="Great Vibes" style="font-family: 'Great Vibes', cursive;">Great Vibes</div>
+                        <div class="font-menu-item" data-font="Comfortaa" style="font-family: 'Comfortaa', cursive;">Comfortaa</div>
+                        <div class="font-menu-item" data-font="Poppins" style="font-family: 'Poppins', sans-serif;">Poppins</div>
+                        <div class="font-menu-item" data-font="Raleway" style="font-family: 'Raleway', sans-serif;">Raleway</div>
+                        <div class="font-menu-item" data-font="PT Serif" style="font-family: 'PT Serif', serif;">PT Serif</div>
+                        <div class="font-menu-item" data-font="Nunito" style="font-family: 'Nunito', sans-serif;">Nunito</div>
+                        <div class="font-menu-item" data-font="EB Garamond" style="font-family: 'EB Garamond', serif;">EB Garamond</div>
+                        <div class="font-menu-item" data-font="Bebas Neue" style="font-family: 'Bebas Neue', display;">Bebas Neue</div>
+                        <div class="font-menu-item" data-font="Sacramento" style="font-family: 'Sacramento', cursive;">Sacramento</div>
+                        <div class="font-menu-item" data-font="Shadows Into Light" style="font-family: 'Shadows Into Light', cursive;">Shadows Into Light</div>
+                        <div class="font-menu-item" data-font="Indie Flower" style="font-family: 'Indie Flower', cursive;">Indie Flower</div>
+                        <div class="font-menu-item" data-font="Amatic SC" style="font-family: 'Amatic SC', cursive;">Amatic SC</div>
+                        <div class="font-menu-item" data-font="Lobster" style="font-family: 'Lobster', cursive;">Lobster</div>
+                        <div class="font-menu-item" data-font="Abril Fatface" style="font-family: 'Abril Fatface', serif;">Abril Fatface</div>
+                        <div class="font-menu-item" data-font="Quicksand" style="font-family: 'Quicksand', sans-serif;">Quicksand</div>
+                        <div class="font-menu-item" data-font="Work Sans" style="font-family: 'Work Sans', sans-serif;">Work Sans</div>
+                        <div class="font-menu-item" data-font="Syne" style="font-family: 'Syne', sans-serif;">Syne</div>
+                        <div class="font-menu-item" data-font="Cormorant Garamond" style="font-family: 'Cormorant Garamond', serif;">Cormorant Garamond</div>
+                        <div class="font-menu-item" data-font="Satisfy" style="font-family: 'Satisfy', cursive;">Satisfy</div>
+                        <div class="font-menu-item" data-font="Permanent Marker" style="font-family: 'Permanent Marker', cursive;">Permanent Marker</div>
+                        <div class="font-menu-item" data-font="Space Mono" style="font-family: 'Space Mono', monospace;">Space Mono</div>
+                        <div class="font-menu-item" data-font="JetBrains Mono" style="font-family: 'JetBrains Mono', monospace;">JetBrains Mono</div>
+                        <div class="font-menu-item" data-font="Cinzel Decorative" style="font-family: 'Cinzel Decorative', serif;">Cinzel Decorative</div>
+                        <div class="font-menu-item" data-font="Barlow" style="font-family: 'Barlow', sans-serif;">Barlow</div>
+                        <div class="font-menu-item" data-font="Josefin Sans" style="font-family: 'Josefin Sans', sans-serif;">Josefin Sans</div>
+                        <div class="font-menu-item" data-font="Tangerine" style="font-family: 'Tangerine', cursive;">Tangerine</div>
+                        <div class="font-menu-item" data-font="Alex Brush" style="font-family: 'Alex Brush', cursive;">Alex Brush</div>
+                        <div class="font-menu-item" data-font="Marck Script" style="font-family: 'Marck Script', cursive;">Marck Script</div>
+                        <div class="font-menu-item" data-font="Zeyada" style="font-family: 'Zeyada', cursive;">Zeyada</div>
+                        <div class="font-menu-item" data-font="Allura" style="font-family: 'Allura', cursive;">Allura</div>
+                        <div class="font-menu-item" data-font="Parisienne" style="font-family: 'Parisienne', cursive;">Parisienne</div>
+                        <div class="font-menu-item" data-font="Georgia" style="font-family: Georgia, serif;">Georgia</div>
+                        <div class="font-menu-item" data-font="Arial" style="font-family: Arial, sans-serif;">Arial</div>
+                        <div class="font-menu-item" data-font="Times New Roman" style="font-family: 'Times New Roman', serif;">Times New Roman</div>
+                      </div>
                     </div>
                   </div>
 
@@ -290,11 +225,10 @@
                       <span class="dropdown-text" id="size-box-text">Medium</span>
                       <i class="fa-solid fa-caret-down dropdown-arrow"></i>
                       <div class="custom-size-menu" id="custom-size-menu">
-                <div class="size-menu-item" data-size="Small" data-value="13px" style="font-size: 11.5px;">Small</div>
-                <div class="size-menu-item active" data-size="Medium" data-value="18px" style="font-size: 13px;">Medium
-                </div>
-                <div class="size-menu-item" data-size="Large" data-value="26px" style="font-size: 15px;">Large</div>
-              </div>
+                        <div class="size-menu-item" data-size="Small" data-value="13px" style="font-size: 11.5px;">Small</div>
+                        <div class="size-menu-item active" data-size="Medium" data-value="18px" style="font-size: 13px;">Medium</div>
+                        <div class="size-menu-item" data-size="Large" data-value="26px" style="font-size: 15px;">Large</div>
+                      </div>
                     </div>
                   </div>
 
@@ -343,71 +277,50 @@
                       </div>
                       <i class="fa-solid fa-caret-down dropdown-arrow"></i>
                       <div class="custom-highlight-menu" id="custom-highlight-menu">
-                <div class="highlight-menu-item active" data-color="#ffe066" style="background-color: #ffe066;"
-                  title="Yellow"></div>
-                <div class="highlight-menu-item" data-color="#a8ffb2" style="background-color: #a8ffb2;" title="Green">
-                </div>
-                <div class="highlight-menu-item" data-color="#ffb3d9" style="background-color: #ffb3d9;" title="Pink">
-                </div>
-                <div class="highlight-menu-item" data-color="#99e6ff" style="background-color: #99e6ff;"
-                  title="Cyan Blue"></div>
-                <div class="highlight-menu-item" data-color="#ffd199" style="background-color: #ffd199;" title="Orange">
-                </div>
-                <div class="highlight-menu-item" data-color="#d9b3ff" style="background-color: #d9b3ff;" title="Purple">
-                </div>
-                <div class="highlight-menu-item" data-color="#ff9999" style="background-color: #ff9999;"
-                  title="Soft Red"></div>
-                <div class="highlight-menu-item" data-color="#d4ff80" style="background-color: #d4ff80;" title="Lime">
-                </div>
-                <div class="highlight-menu-item" data-color="#b3c6ff" style="background-color: #b3c6ff;"
-                  title="Lavender"></div>
-                <div class="highlight-menu-item" data-color="#ffe699" style="background-color: #ffe699;" title="Gold">
-                </div>
-                <div class="highlight-menu-item" data-color="#ffb3a7" style="background-color: #ffb3a7;" title="Coral">
-                </div>
-                <div class="highlight-menu-item" data-color="#99ffe6" style="background-color: #99ffe6;" title="Mint">
-                </div>
-              </div>
+                        <div class="highlight-menu-item active" data-color="#ffe066" style="background-color: #ffe066;" title="Yellow"></div>
+                        <div class="highlight-menu-item" data-color="#a8ffb2" style="background-color: #a8ffb2;" title="Green"></div>
+                        <div class="highlight-menu-item" data-color="#ffb3d9" style="background-color: #ffb3d9;" title="Pink"></div>
+                        <div class="highlight-menu-item" data-color="#99e6ff" style="background-color: #99e6ff;" title="Cyan Blue"></div>
+                        <div class="highlight-menu-item" data-color="#ffd199" style="background-color: #ffd199;" title="Orange"></div>
+                        <div class="highlight-menu-item" data-color="#d9b3ff" style="background-color: #d9b3ff;" title="Purple"></div>
+                        <div class="highlight-menu-item" data-color="#ff9999" style="background-color: #ff9999;" title="Soft Red"></div>
+                        <div class="highlight-menu-item" data-color="#d4ff80" style="background-color: #d4ff80;" title="Lime"></div>
+                        <div class="highlight-menu-item" data-color="#b3c6ff" style="background-color: #b3c6ff;" title="Lavender"></div>
+                        <div class="highlight-menu-item" data-color="#ffe699" style="background-color: #ffe699;" title="Gold"></div>
+                        <div class="highlight-menu-item" data-color="#ffb3a7" style="background-color: #ffb3a7;" title="Coral"></div>
+                        <div class="highlight-menu-item" data-color="#99ffe6" style="background-color: #99ffe6;" title="Mint"></div>
+                      </div>
                     </div>
                   </div>
 
-                  <!-- Format Buttons Row (Bold, Italic, Underline) -->
+                  <!-- Format Buttons Row (Bold, Italic, Underline, Strikethrough) -->
                   <div class="ps-format-row bold-italic-box">
                     <button type="button" class="ps-format-btn text-format-button" title="Bold"><strong>B</strong></button>
                     <button type="button" class="ps-format-btn text-format-button" title="Italic"><em>I</em></button>
                     <button type="button" class="ps-format-btn text-format-button" title="Underline"><u>U</u></button>
+                    <button type="button" class="ps-format-btn text-format-button" title="Strikethrough"><s>S</s></button>
                     <button type="button" class="ps-format-btn icon-button" id="line-spacing-btn" title="Line Spacing">
                       <i class="fa-solid fa-text-height"></i>
                     </button>
                   </div>
-                </div>
-              </div>
 
-              <!-- View 4: Paragraph (¶) -->
-              <div class="ps-tab-view" id="view-para">
-                <div class="ps-control-group">
-                  <div class="ps-section-subtitle">ALIGNMENT</div>
-                  <div class="ps-btn-group alignment-box">
+                  <!-- Alignments & Lists Row -->
+                  <div class="ps-format-row alignment-box" style="margin-top: 6px;">
                     <button type="button" class="ps-format-btn icon-button active" title="Align Left"><i class="fa-solid fa-align-left"></i></button>
                     <button type="button" class="ps-format-btn icon-button" title="Align Center"><i class="fa-solid fa-align-center"></i></button>
                     <button type="button" class="ps-format-btn icon-button" title="Align Right"><i class="fa-solid fa-align-right"></i></button>
-                  </div>
-
-                  <div class="ps-section-subtitle" style="margin-top: 10px;">LISTS &amp; TASKS</div>
-                  <div class="ps-btn-group lists-box line-spacing-box">
                     <button type="button" class="ps-format-btn icon-button" title="Bullet List"><i class="fa-solid fa-list-ul"></i></button>
                     <button type="button" class="ps-format-btn icon-button" title="Numbered List"><i class="fa-solid fa-list-ol"></i></button>
-                    <button type="button" class="ps-format-btn icon-button" title="Checklist"><i class="fa-solid fa-list-check"></i></button>
                   </div>
                 </div>
               </div>
 
-              <!-- View 5: Brush / Drawing -->
+              <!-- View 2: Brushes / Drawing -->
               <div class="ps-tab-view" id="view-brush">
                 <div class="ps-control-group">
-                  <div class="ps-section-subtitle">TOOL SELECTION</div>
+                  <div class="ps-section-subtitle">DRAWING INSTRUMENTS</div>
                   <div class="ps-btn-group draw-tools-box">
-                    <button type="button" class="ps-format-btn active draw-tool-btn" title="Type / Text" data-tool="text"><i class="fa-solid fa-i-cursor"></i></button>
+                    <button type="button" class="ps-format-btn active draw-tool-btn" title="Text Typing" data-tool="text"><i class="fa-solid fa-i-cursor"></i></button>
                     <button type="button" class="ps-format-btn draw-tool-btn" title="Fountain Pen" data-tool="pen"><i class="fa-solid fa-pen-nib"></i></button>
                     <button type="button" class="ps-format-btn draw-tool-btn" title="Pencil" data-tool="pencil"><i class="fa-solid fa-pencil"></i></button>
                     <button type="button" class="ps-format-btn draw-tool-btn" title="Art Brush" data-tool="brush"><i class="fa-solid fa-paint-brush"></i></button>
@@ -459,10 +372,82 @@
                 </div>
               </div>
 
-              <!-- View 6: Properties (Sliders) -->
-              <div class="ps-tab-view" id="view-props">
+              <!-- View 3: History -->
+              <div class="ps-tab-view" id="view-history">
+                <div class="ps-history-list" id="ps-history-list">
+                  <div class="ps-history-item active" data-step="open">
+                    <i class="fa-solid fa-file-lines ps-history-icon"></i>
+                    <span class="ps-history-text">Document Ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =======================================================
+               BOTTOM PANEL BOX (Pages / Layers, Document Setup, Account)
+               ======================================================= -->
+          <div class="ps-panel-box ps-panel-bottom" id="ps-panel-bottom">
+            <div class="ps-tab-bar">
+              <div class="ps-tabs" id="ps-bottom-tabs">
+                <button type="button" class="ps-tab active" data-tab="layers" id="tab-btn-layers">Pages</button>
+                <button type="button" class="ps-tab" data-tab="doc" id="tab-btn-doc">Document</button>
+                <button type="button" class="ps-tab" data-tab="info" id="tab-btn-info">Account</button>
+              </div>
+              <div class="ps-tab-actions">
+                <button type="button" class="ps-tab-action-btn" id="ps-bottom-minimize-btn" title="Minimize Panel">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="ps-panel-content" id="ps-bottom-panel-content">
+              <!-- View 1: Pages Stack (Layers) - Active -->
+              <div class="ps-tab-view active" id="view-layers">
+                <div class="ps-layers-header">
+                  <span class="ps-layers-label"><i class="fa-solid fa-layer-group"></i> NOTEBOOK PAGES</span>
+                  <span class="ps-layers-count" id="ps-layers-count">A4 Pages</span>
+                </div>
+
+                <!-- Layers List Stack (Pages represented as Photoshop Layers) -->
+                <div class="ps-layers-list" id="ps-layers-list">
+                  <div class="ps-layer-item active" data-page-id="note-page-1">
+                    <button type="button" class="ps-layer-eye" title="Toggle Visibility"><i class="fa-solid fa-eye"></i></button>
+                    <div class="ps-layer-thumb" style="background-color: #ffffff;"><div class="ps-thumb-preview"></div></div>
+                    <span class="ps-layer-title">Background</span>
+                    <i class="fa-solid fa-lock ps-layer-lock"></i>
+                  </div>
+                </div>
+
+                <!-- Layers Panel Footer Action Toolbar -->
+                <div class="ps-layers-footer">
+                  <button type="button" class="ps-footer-btn" id="add-page-btn" title="New Page">
+                    <i class="fa-solid fa-plus"></i> <span style="font-size: 10px; margin-left: 3px;">Page</span>
+                  </button>
+                  <button type="button" class="ps-footer-btn" id="delete-page-btn" title="Delete Active Page">
+                    <i class="fa-regular fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- View 2: Document Setup & Search -->
+              <div class="ps-tab-view" id="view-doc">
                 <div class="ps-control-group">
-                  <div class="ps-section-subtitle">CANVAS BACKGROUND</div>
+                  <div class="ps-section-subtitle">SEARCH DOCUMENT</div>
+                  <div class="sidebar-search-container ps-search-wrap">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="sidebar-doc-search" class="sidebar-search-input" placeholder="Search notes..."
+                      autocomplete="off" spellcheck="false" aria-label="Search notes">
+                    <span id="search-count-badge" class="search-count-badge" style="display: none;">0/0</span>
+                    <button type="button" id="search-prev-btn" class="search-nav-btn" title="Previous match"
+                      aria-label="Previous match" style="display: none;"><i class="fa-solid fa-chevron-up"></i></button>
+                    <button type="button" id="search-next-btn" class="search-nav-btn" title="Next match"
+                      aria-label="Next match" style="display: none;"><i class="fa-solid fa-chevron-down"></i></button>
+                    <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear search"
+                      aria-label="Clear search" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+
+                  <div class="ps-section-subtitle" style="margin-top: 12px;">CANVAS BACKGROUND</div>
                   <div class="ps-row page-colour-box">
                     <span class="ps-label">Paper</span>
                     <div class="studio-swatch-group" id="canvas-swatch-group">
@@ -496,66 +481,16 @@
                     </div>
                   </div>
 
-                  <div class="ps-section-subtitle" style="margin-top: 12px;">PAGE SPECS</div>
-                  <div class="ps-meta-readout">
-                    <div>Format: <strong>A4 Ruled</strong></div>
-                    <div>Dimensions: <strong>794 &times; 1123 px</strong></div>
-                    <div>DPI: <strong>300 (Print Ready)</strong></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- View 7: Info & Search (i) -->
-              <div class="ps-tab-view" id="view-info">
-                <div class="ps-control-group">
-                  <!-- User Profile Card -->
-                  <div class="sidebar-profile-card ps-profile-card">
-                    <div class="profile-left-wrap">
-                      <img
-                        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23888888'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>"
-                        alt="User Avatar" class="profile-avatar" id="user-profile-avatar">
-                      <div class="profile-info">
-                        <div class="profile-name" id="user-profile-name">User Account</div>
-                        <div class="profile-last-edited" id="user-profile-email">Loading session...</div>
-                        <div id="cloud-sync-status" class="cloud-sync-status">
-                          <i class="fa-solid fa-cloud-arrow-up"></i> Connected
-                        </div>
-                      </div>
-                    </div>
-                    <button type="button" id="logoutBtn" class="logout-btn" title="Log out">
-                      <i class="fa-solid fa-right-from-bracket"></i>
-                    </button>
-                  </div>
-
-                  <div class="ps-section-subtitle" style="margin-top: 12px;">SEARCH DOCUMENT</div>
-                  <div class="sidebar-search-container ps-search-wrap">
-                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" id="sidebar-doc-search" class="sidebar-search-input" placeholder="Search notes..."
-                      autocomplete="off" spellcheck="false" aria-label="Search notes">
-                    <span id="search-count-badge" class="search-count-badge" style="display: none;">0/0</span>
-                    <button type="button" id="search-prev-btn" class="search-nav-btn" title="Previous match"
-                      aria-label="Previous match" style="display: none;"><i class="fa-solid fa-chevron-up"></i></button>
-                    <button type="button" id="search-next-btn" class="search-nav-btn" title="Next match"
-                      aria-label="Next match" style="display: none;"><i class="fa-solid fa-chevron-down"></i></button>
-                    <button type="button" id="search-clear-btn" class="search-clear-btn" title="Clear search"
-                      aria-label="Clear search" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- View 8: CSS / Export -->
-              <div class="ps-tab-view" id="view-css">
-                <div class="ps-control-group">
-                  <div class="ps-section-subtitle">INSERT TOOLS</div>
+                  <div class="ps-section-subtitle" style="margin-top: 12px;">INSERT TOOLS</div>
                   <div class="ps-btn-group insert-box">
                     <button type="button" class="ps-format-btn icon-button" id="insert-image-btn" title="Insert Image">
-                      <i class="fa-solid fa-image"></i>
+                      <i class="fa-solid fa-image"></i> Image
                     </button>
                     <button type="button" class="ps-format-btn icon-button" id="insert-table-btn" title="Insert Table">
-                      <i class="fa-solid fa-table"></i>
+                      <i class="fa-solid fa-table"></i> Table
                     </button>
                     <button type="button" class="ps-format-btn icon-button" id="share-link-btn" title="Share Note Link">
-                      <i class="fa-solid fa-share-nodes"></i>
+                      <i class="fa-solid fa-share-nodes"></i> Share
                     </button>
                     <input type="file" id="image-upload-input" accept="image/*" style="display: none;">
                   </div>
@@ -563,104 +498,40 @@
                   <div class="ps-section-subtitle" style="margin-top: 12px;">EXPORT ACTIONS</div>
                   <div class="ps-btn-group page-export-box">
                     <button type="button" class="ps-format-btn icon-button" id="export-pdf-btn" title="Export PDF">
-                      <i class="fa-solid fa-file-pdf"></i> Export PDF
+                      <i class="fa-solid fa-file-pdf"></i> Export Document to PDF
                     </button>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <!-- =======================================================
-               BOTTOM PANEL BOX (Layers, Channels, Paths)
-               ======================================================= -->
-          <div class="ps-panel-box ps-panel-bottom" id="ps-panel-bottom">
-            <div class="ps-tab-bar">
-              <div class="ps-tabs" id="ps-bottom-tabs">
-                <button type="button" class="ps-tab active" data-tab="layers" id="tab-btn-layers">Layers</button>
-                <button type="button" class="ps-tab" data-tab="channels" id="tab-btn-channels">Channels</button>
-                <button type="button" class="ps-tab" data-tab="paths" id="tab-btn-paths">Paths</button>
-              </div>
-              <div class="ps-tab-actions">
-                <button type="button" class="ps-tab-action-btn" id="ps-bottom-minimize-btn" title="Minimize Panel">
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="ps-panel-content">
-              <!-- View 1: Layers (Active) -->
-              <div class="ps-tab-view active" id="view-layers">
-                <!-- Toolbar Row 1: Blend Mode & Opacity -->
-                <div class="ps-layers-toolbar-row">
-                  <div class="ps-blend-select-wrap">
-                    <select class="ps-blend-select" id="ps-blend-select">
-                      <option value="normal" selected>Normal</option>
-                      <option value="multiply">Multiply</option>
-                      <option value="screen">Screen</option>
-                      <option value="overlay">Overlay</option>
-                      <option value="darken">Darken</option>
-                      <option value="lighten">Lighten</option>
-                    </select>
+              <!-- View 3: Account & Session Info -->
+              <div class="ps-tab-view" id="view-info">
+                <div class="ps-control-group">
+                  <div class="sidebar-profile-card ps-profile-card">
+                    <div class="profile-left-wrap">
+                      <img
+                        src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23888888'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>"
+                        alt="User Avatar" class="profile-avatar" id="user-profile-avatar">
+                      <div class="profile-info">
+                        <div class="profile-name" id="user-profile-name">Local User</div>
+                        <div class="profile-last-edited" id="user-profile-email">Local Storage</div>
+                        <div id="cloud-sync-status" class="cloud-sync-status">
+                          <i class="fa-solid fa-cloud-arrow-up"></i> Local Storage
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" id="logoutBtn" class="logout-btn" title="Return to Home">
+                      <i class="fa-solid fa-arrow-left"></i>
+                    </button>
                   </div>
-                  <div class="ps-opacity-wrap">
-                    <span class="ps-opacity-label">Opacity:</span>
-                    <span class="ps-opacity-val" id="ps-opacity-val">100%</span>
-                    <i class="fa-solid fa-caret-down ps-dropdown-caret"></i>
+
+                  <div class="ps-section-subtitle" style="margin-top: 14px;">WORKSPACE SPECIFICATIONS</div>
+                  <div class="ps-meta-readout">
+                    <div>Document: <strong>Notes 101 Notebook</strong></div>
+                    <div>Page Size: <strong>A4 Portrait (794 &times; 1123 px)</strong></div>
+                    <div>Persistence: <strong>Auto-saved Locally</strong></div>
                   </div>
                 </div>
-
-                <!-- Toolbar Row 2: Lock Controls & Fill -->
-                <div class="ps-layers-toolbar-row ps-layers-lock-row">
-                  <div class="ps-lock-group">
-                    <span class="ps-lock-label">Lock:</span>
-                    <button type="button" class="ps-lock-btn" title="Lock transparent pixels"><i class="fa-solid fa-chess-board"></i></button>
-                    <button type="button" class="ps-lock-btn" title="Lock image pixels / brush"><i class="fa-solid fa-paintbrush"></i></button>
-                    <button type="button" class="ps-lock-btn" title="Lock position"><i class="fa-solid fa-up-down-left-right"></i></button>
-                    <button type="button" class="ps-lock-btn" title="Lock all"><i class="fa-solid fa-lock"></i></button>
-                  </div>
-                  <div class="ps-fill-wrap">
-                    <span class="ps-fill-label">Fill:</span>
-                    <span class="ps-fill-val">100%</span>
-                    <i class="fa-solid fa-caret-down ps-dropdown-caret"></i>
-                  </div>
-                </div>
-
-                <!-- Layers List Stack (Pages represented as Photoshop Layers) -->
-                <div class="ps-layers-list" id="ps-layers-list">
-                  <div class="ps-layer-item active" data-page="note-page-1">
-                    <button type="button" class="ps-layer-eye" title="Toggle Visibility"><i class="fa-solid fa-eye"></i></button>
-                    <div class="ps-layer-thumb"><div class="ps-thumb-preview"></div></div>
-                    <span class="ps-layer-title">Background</span>
-                    <i class="fa-solid fa-lock ps-layer-lock"></i>
-                  </div>
-                </div>
-
-                <!-- Layers Panel Footer Toolbar -->
-                <div class="ps-layers-footer">
-                  <button type="button" class="ps-footer-btn" title="Link Layers"><i class="fa-solid fa-link"></i></button>
-                  <button type="button" class="ps-footer-btn ps-footer-fx" title="Add Layer Style">fx</button>
-                  <button type="button" class="ps-footer-btn" title="Add Layer Mask"><i class="fa-regular fa-square"></i></button>
-                  <button type="button" class="ps-footer-btn" title="New Adjustment Layer"><i class="fa-solid fa-circle-half-stroke"></i></button>
-                  <button type="button" class="ps-footer-btn" title="New Folder Group"><i class="fa-regular fa-folder"></i></button>
-                  <button type="button" class="ps-footer-btn" id="add-page-btn" title="New Layer (Add Page)"><i class="fa-regular fa-file"></i></button>
-                  <button type="button" class="ps-footer-btn" id="delete-page-btn" title="Delete Layer (Delete Page)"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-              </div>
-
-              <!-- View 2: Channels -->
-              <div class="ps-tab-view" id="view-channels">
-                <div class="ps-channel-list">
-                  <div class="ps-channel-item active"><i class="fa-solid fa-eye"></i><span>RGB</span></div>
-                  <div class="ps-channel-item"><i class="fa-solid fa-eye"></i><span>Red</span></div>
-                  <div class="ps-channel-item"><i class="fa-solid fa-eye"></i><span>Green</span></div>
-                  <div class="ps-channel-item"><i class="fa-solid fa-eye"></i><span>Blue</span></div>
-                </div>
-              </div>
-
-              <!-- View 3: Paths -->
-              <div class="ps-tab-view" id="view-paths">
-                <div class="ps-empty-note">No paths in current document.</div>
               </div>
             </div>
           </div>

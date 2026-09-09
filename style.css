@@ -727,17 +727,17 @@ mark.doc-search-highlight.active-match {
    RIGHT SIDEBAR STUDIO CONSOLE DESIGN (Modern Spacing & Soft Cards)
    Minimal, rounded, spacing-driven panel. Same brand palette as the rest
 /* =========================================================================
-   PHOTOPEA / PHOTOSHOP DESKTOP DOCK (RIGHT SIDEBAR REDESIGN)
-   Exact composition, alignment, colors, tabs, and layer stack from reference.
+   PHOTOSHOP-INSPIRED STUDIO INSPECTOR DOCK (RIGHT SIDEBAR)
+   Ergonomics, aesthetics, and reliability inspired by Photoshop for Notes 101.
    ========================================================================= */
 
 .sidebar.sidebar-right,
 .sidebar.sidebar-right.ps-dock {
-  width: 290px;
-  min-width: 290px;
+  width: 300px;
+  min-width: 300px;
   height: 100%;
   max-height: 100vh;
-  border-left: 1px solid #181818;
+  border-left: 1px solid #161616;
   border-right: none;
   background-color: #222222;
   display: flex;
@@ -763,17 +763,17 @@ mark.doc-search-highlight.active-match {
   display: none;
 }
 
-/* ---- 1. LEFT NARROW ICON RAIL (34px) ---- */
+/* ---- 1. LEFT NARROW ICON QUICK-RAIL (36px) ---- */
 .ps-icon-rail {
   width: 36px;
   min-width: 36px;
   height: 100%;
-  background-color: #1e1e1e;
+  background-color: #1a1a1a;
   border-right: 1px solid #141414;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4px;
+  padding-top: 5px;
   box-sizing: border-box;
   gap: 4px;
   z-index: 10;
@@ -789,7 +789,7 @@ mark.doc-search-highlight.active-match {
   background: transparent;
   border: 1px solid transparent;
   border-radius: 3px;
-  color: #999999;
+  color: #8a8a8a;
   cursor: pointer;
   padding: 0;
   transition: all 0.12s ease;
@@ -810,8 +810,8 @@ mark.doc-search-highlight.active-match {
 .ps-rail-divider {
   width: 20px;
   height: 1px;
-  background-color: #2c2c2c;
-  margin: 2px 0;
+  background-color: #2a2a2a;
+  margin: 3px 0;
 }
 
 .ps-rail-char-t {
@@ -821,28 +821,24 @@ mark.doc-search-highlight.active-match {
   line-height: 1;
 }
 
-.ps-rail-char-p {
-  font-family: serif;
-  font-size: 15px;
-  line-height: 1;
-}
-
-.ps-rail-badge-css {
-  font-family: monospace;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
 /* ---- 2. MAIN DOCK BODY (Stacked Panels) ---- */
 .ps-dock-body {
   flex: 1;
   height: 100%;
-  background-color: #282828;
+  background-color: #252525;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   min-width: 0;
+}
+
+/* Prevent dropdown popover clipping */
+.ps-dock:has(.show),
+.ps-dock-body:has(.show),
+.ps-panel-box:has(.show),
+.ps-panel-content:has(.show),
+.ps-tab-view:has(.show) {
+  overflow: visible !important;
 }
 
 /* Panel Boxes */
@@ -853,22 +849,21 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-panel-box.ps-panel-top {
-  flex: 1.1;
-  min-height: 200px;
-  max-height: 48%;
-  border-bottom: 2px solid #181818;
+  flex: 1.15;
+  min-height: 230px;
+  border-bottom: 2px solid #161616;
 }
 
 .ps-panel-box.ps-panel-bottom {
-  flex: 1.4;
-  min-height: 220px;
+  flex: 1.25;
+  min-height: 210px;
 }
 
 /* Tab Bar */
 .ps-tab-bar {
-  height: 26px;
-  background-color: #202020;
-  border-bottom: 1px solid #181818;
+  height: 27px;
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #161616;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -908,9 +903,9 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-tab.active {
-  background-color: #282828;
+  background-color: #252525;
   color: #ffffff;
-  border-top-color: #282828;
+  border-top-color: #4080e0;
 }
 
 .ps-tab-actions {
@@ -923,7 +918,7 @@ mark.doc-search-highlight.active-match {
   border: none;
   color: #777777;
   cursor: pointer;
-  padding: 0 4px;
+  padding: 0 5px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -939,7 +934,7 @@ mark.doc-search-highlight.active-match {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: #282828;
+  background-color: #252525;
   display: flex;
   flex-direction: column;
 }
@@ -956,7 +951,7 @@ mark.doc-search-highlight.active-match {
   display: none;
   flex-direction: column;
   height: 100%;
-  padding: 8px 10px;
+  padding: 9px 11px;
   box-sizing: border-box;
 }
 
@@ -984,11 +979,11 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-history-item:hover {
-  background-color: #333333;
+  background-color: #303030;
 }
 
 .ps-history-item.active {
-  background-color: #3a4149;
+  background-color: #2f3640;
   color: #ffffff;
   font-weight: 500;
 }
@@ -1000,39 +995,6 @@ mark.doc-search-highlight.active-match {
 
 .ps-history-item.active .ps-history-icon {
   color: #4080e0;
-}
-
-/* Swatches View */
-.ps-swatches-container {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.ps-swatches-title {
-  font-size: 10px;
-  font-weight: 700;
-  color: #777777;
-  letter-spacing: 0.5px;
-}
-
-.ps-swatches-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 4px;
-}
-
-.ps-swatch {
-  height: 22px;
-  border: 1px solid #181818;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: transform 0.1s ease, border-color 0.1s ease;
-}
-
-.ps-swatch:hover {
-  transform: scale(1.08);
-  border-color: #ffffff;
 }
 
 /* Character & Tool View Controls */
@@ -1052,15 +1014,16 @@ mark.doc-search-highlight.active-match {
 .ps-label {
   font-size: 11px;
   color: #999999;
-  width: 55px;
+  width: 56px;
   flex-shrink: 0;
+  font-weight: 500;
 }
 
 .ps-select-trigger {
   flex: 1;
-  background-color: #1a1a1a;
-  border: 1px solid #141414;
-  border-radius: 2px;
+  background-color: #1b1b1b;
+  border: 1px solid #303030;
+  border-radius: 3px;
   height: 24px;
   padding: 0 8px;
   display: flex;
@@ -1073,7 +1036,7 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-select-trigger:hover {
-  border-color: #444444;
+  border-color: #484848;
 }
 
 .ps-format-row {
@@ -1087,14 +1050,15 @@ mark.doc-search-highlight.active-match {
   flex: 1;
   height: 24px;
   background-color: #1e1e1e;
-  border: 1px solid #141414;
-  border-radius: 2px;
+  border: 1px solid #2d2d2d;
+  border-radius: 3px;
   color: #cccccc;
   cursor: pointer;
   font-size: 11.5px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.12s ease;
 }
 
 .ps-format-btn:hover {
@@ -1103,7 +1067,7 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-format-btn.active {
-  background-color: #3a4149;
+  background-color: #2f3640;
   border-color: #4080e0;
   color: #ffffff;
 }
@@ -1125,13 +1089,13 @@ mark.doc-search-highlight.active-match {
 .ps-meta-readout {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   font-size: 11px;
   color: #888888;
-  background: #202020;
-  padding: 8px;
-  border-radius: 2px;
-  border: 1px solid #1a1a1a;
+  background: #1e1e1e;
+  padding: 8px 10px;
+  border-radius: 3px;
+  border: 1px solid #161616;
 }
 .ps-meta-readout strong {
   color: #dddddd;
@@ -1140,7 +1104,7 @@ mark.doc-search-highlight.active-match {
 /* Info view profile card styling in dock */
 .ps-profile-card {
   margin: 0 !important;
-  background: #202020 !important;
+  background: #1e1e1e !important;
   border: 1px solid #181818 !important;
   border-radius: 3px !important;
   padding: 8px !important;
@@ -1148,92 +1112,40 @@ mark.doc-search-highlight.active-match {
 
 .ps-search-wrap {
   margin: 0 !important;
-  background: #1a1a1a !important;
-  border: 1px solid #141414 !important;
-  border-radius: 2px !important;
+  background: #1b1b1b !important;
+  border: 1px solid #2e2e2e !important;
+  border-radius: 3px !important;
 }
 
-/* ---- 3. BOTTOM PANEL: LAYERS PALETTE ---- */
-.ps-layers-toolbar-row {
+/* ---- 3. BOTTOM PANEL: PAGES / LAYERS PALETTE ---- */
+.ps-layers-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 6px;
-  background-color: #242424;
-  border-bottom: 1px solid #1c1c1c;
-  font-size: 11px;
-  gap: 8px;
+  padding: 5px 8px;
+  background-color: #202020;
+  border-bottom: 1px solid #161616;
+  flex-shrink: 0;
 }
 
-.ps-layers-lock-row {
-  padding-top: 3px;
-  padding-bottom: 3px;
-}
-
-.ps-blend-select-wrap {
-  flex: 1;
-}
-
-.ps-blend-select {
-  width: 100%;
-  height: 20px;
-  background-color: #1a1a1a;
-  border: 1px solid #121212;
-  border-radius: 2px;
-  color: #cccccc;
-  font-size: 11px;
-  padding: 0 4px;
-  cursor: pointer;
-  outline: none;
-}
-
-.ps-opacity-wrap, .ps-fill-wrap {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  color: #a0a0a0;
-  cursor: pointer;
-}
-
-.ps-opacity-val, .ps-fill-val {
-  color: #ffffff;
-  font-family: monospace;
-  font-size: 11px;
-}
-
-.ps-dropdown-caret {
-  font-size: 9px;
-  color: #777777;
-}
-
-.ps-lock-group {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.ps-lock-label {
-  color: #888888;
-  margin-right: 2px;
-}
-
-.ps-lock-btn {
-  width: 18px;
-  height: 18px;
-  background: transparent;
-  border: none;
-  color: #777777;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.ps-layers-label {
   font-size: 10px;
+  font-weight: 700;
+  color: #888888;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.ps-lock-btn:hover {
-  color: #cccccc;
+.ps-layers-count {
+  font-size: 10px;
+  color: #4080e0;
+  background: #182230;
+  padding: 1px 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(64, 128, 224, 0.3);
+  font-weight: 600;
 }
 
 /* Layers Stack List */
@@ -1243,7 +1155,7 @@ mark.doc-search-highlight.active-match {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  background-color: #262626;
+  background-color: #222222;
 }
 
 .ps-layer-item {
@@ -1253,28 +1165,31 @@ mark.doc-search-highlight.active-match {
   align-items: center;
   padding: 0 8px;
   gap: 8px;
-  border-bottom: 1px solid #202020;
+  border-bottom: 1px solid #1a1a1a;
+  border-left: 3px solid transparent;
   cursor: pointer;
-  transition: background-color 0.1s ease;
+  transition: background-color 0.1s ease, border-color 0.1s ease;
 }
 
 .ps-layer-item:hover {
-  background-color: #303030;
+  background-color: #2c2c2c;
 }
 
 .ps-layer-item.active {
-  background-color: #3a4149;
+  background-color: #2e3540;
+  border-left-color: #4080e0;
 }
 
 .ps-layer-eye {
   background: transparent;
   border: none;
-  color: #999999;
+  color: #888888;
   cursor: pointer;
   padding: 2px;
   font-size: 12px;
   display: flex;
   align-items: center;
+  transition: color 0.12s ease;
 }
 
 .ps-layer-eye:hover {
@@ -1282,16 +1197,16 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-layer-eye.hidden {
-  opacity: 0.2;
+  opacity: 0.25;
 }
 
 .ps-layer-thumb {
-  width: 24px;
-  height: 28px;
-  border: 1px solid #484848;
+  width: 22px;
+  height: 26px;
+  border: 1px solid #444444;
   background: #ffffff;
   border-radius: 1px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1301,13 +1216,13 @@ mark.doc-search-highlight.active-match {
 .ps-thumb-preview {
   width: 100%;
   height: 100%;
-  background: #ffffff;
+  background: inherit;
 }
 
 .ps-layer-title {
   flex: 1;
   font-size: 11.5px;
-  color: #dddddd;
+  color: #cccccc;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1315,20 +1230,21 @@ mark.doc-search-highlight.active-match {
 
 .ps-layer-item.active .ps-layer-title {
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.ps-layer-lock {
+.ps-layer-idx {
   font-size: 10px;
   color: #666666;
+  font-family: monospace;
   margin-left: auto;
 }
 
-/* Layers Footer */
+/* Layers Footer Toolbar */
 .ps-layers-footer {
-  height: 26px;
-  background-color: #222222;
-  border-top: 1px solid #181818;
+  height: 27px;
+  background-color: #1b1b1b;
+  border-top: 1px solid #161616;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -1338,53 +1254,25 @@ mark.doc-search-highlight.active-match {
 }
 
 .ps-footer-btn {
-  width: 22px;
-  height: 22px;
-  background: transparent;
-  border: 1px solid transparent;
+  min-width: 22px;
+  height: 20px;
+  background: #262626;
+  border: 1px solid #333333;
   border-radius: 2px;
-  color: #888888;
-  padding: 0;
+  color: #999999;
+  padding: 0 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 11px;
+  font-size: 10.5px;
+  transition: all 0.12s ease;
 }
 
 .ps-footer-btn:hover {
   color: #ffffff;
   background-color: #333333;
-}
-
-.ps-footer-fx {
-  font-family: serif;
-  font-weight: 700;
-  font-size: 12px;
-  font-style: italic;
-}
-
-/* Channels & Paths */
-.ps-channel-list {
-  display: flex;
-  flex-direction: column;
-}
-
-.ps-channel-item {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  gap: 10px;
-  font-size: 11px;
-  color: #cccccc;
-  border-bottom: 1px solid #222222;
-  cursor: pointer;
-}
-
-.ps-channel-item.active {
-  background-color: #333333;
-  color: #ffffff;
+  border-color: #484848;
 }
 
 .ps-empty-note {

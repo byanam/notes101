@@ -495,6 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // No global editor click/paste handlers needed — pages wire up in renderActiveChapter.
     const setupEditor = () => { };
     const editor = new EditorState();
+    window.editor = editor;
     setupEditor();
 
     // Setup editor input handler
