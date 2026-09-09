@@ -2468,15 +2468,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const cancelBtn = document.getElementById('pdf-cancel-btn');
         const downloadBtn = document.getElementById('pdf-download-btn');
 
-        cancelBtn.addEventListener('click', () => {
+        function closeModal() {
+            window.removeEventListener('keydown', handleKeyDown);
             overlay.remove();
-            URL.revokeObjectURL(pdfBlobUrl);
-        });
+            try {
+                URL.revokeObjectURL(pdfBlobUrl);
+            } catch (_) {}
+        }
+
+        function handleKeyDown(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        cancelBtn.addEventListener('click', closeModal);
 
         overlay.addEventListener('click', (e) => {
             if (e.target === overlay) {
-                overlay.remove();
-                URL.revokeObjectURL(pdfBlobUrl);
+                closeModal();
             }
         });
 
@@ -2489,7 +2501,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.removeChild(a);
 
             showShareToast('PDF Downloaded Successfully!');
-            overlay.remove();
+            closeModal();
         });
     }
 
