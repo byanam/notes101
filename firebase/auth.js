@@ -142,6 +142,12 @@ export function listenToAuthState(callback) {
         if (typeof callback === 'function') callback(null);
         return () => {};
     }
+
+    // Automatically resolve pending redirect sign-in if returning from Google redirect
+    checkRedirectResult().catch(err => {
+        console.warn("[Auth] checkRedirectResult error during auth init:", err);
+    });
+
     return onAuthStateChanged(auth, async (user) => {
         if (user) {
             try {
