@@ -123,7 +123,7 @@
     <p class="mobile-notice">
       Please open this site on a laptop or desktop computer.
     </p>
-    <button class="mobile-btn" onclick="window.location.href='index.html'" style="margin-bottom: 12px; background: rgba(223, 213, 199, 0.12); border-color: #DFD5C7; color: #ffffff;">
+    <button class="mobile-btn" onclick="sessionStorage.setItem('forceDesktop', 'true'); window.location.href='index.html?desktop=1'" style="margin-bottom: 12px; background: rgba(223, 213, 199, 0.12); border-color: #DFD5C7; color: #ffffff;">
       Continue to Website ↗
     </button>
     <button class="mobile-btn" onclick="window.location.href='https://github.com/byanam/Webnotes'">
