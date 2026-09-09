@@ -2520,20 +2520,9 @@ document.addEventListener('DOMContentLoaded', () => {
     (function initPhotoshopDock() {
         const rightDock = document.getElementById('ps-right-dock');
         const railToggle = document.getElementById('ps-rail-toggle');
-        const railButtons = document.querySelectorAll('.ps-rail-btn[data-panel]');
-
-        // Top Panel Elements (Creative Formatting, Drawing, History)
-        const topTabs = document.querySelectorAll('#ps-panel-top .ps-tab');
-        const topViews = document.querySelectorAll('#ps-top-panel-content .ps-tab-view');
-        const topMinBtn = document.getElementById('ps-top-minimize-btn');
-        const topPanelContent = document.getElementById('ps-top-panel-content');
-
-        // Bottom Panel Elements (Layers/Pages, Document Setup, Account)
-        const bottomTabs = document.querySelectorAll('#ps-panel-bottom .ps-tab');
-        const bottomViews = document.querySelectorAll('#ps-bottom-panel-content .ps-tab-view');
-        const bottomMinBtn = document.getElementById('ps-bottom-minimize-btn');
-        const bottomPanelContent = document.getElementById('ps-bottom-panel-content');
-
+        const railToggleIcon = document.getElementById('ps-rail-toggle-icon');
+        const allTabs = document.querySelectorAll('.ps-tab');
+        const allViews = document.querySelectorAll('.ps-dock-content .ps-tab-view, .ps-panel-content .ps-tab-view, .ps-tab-view');
         const historyList = document.getElementById('ps-history-list');
         const layersList = document.getElementById('ps-layers-list');
         const layersCountBadge = document.getElementById('ps-layers-count');
@@ -2557,7 +2546,7 @@ document.addEventListener('DOMContentLoaded', () => {
             historyList.appendChild(item);
             historyList.scrollTop = historyList.scrollHeight;
 
-            if (historyList.children.length > 25) {
+            if (historyList.children.length > 30) {
                 historyList.removeChild(historyList.children[0]);
             }
         }
@@ -2567,224 +2556,78 @@ document.addEventListener('DOMContentLoaded', () => {
         function expandDock() {
             if (rightDock && rightDock.classList.contains('collapsed')) {
                 rightDock.classList.remove('collapsed');
-                if (railToggle) {
-                    const icon = railToggle.querySelector('i');
-                    if (icon) icon.className = 'fa-solid fa-angles-right';
+                if (railToggleIcon) {
+                    railToggleIcon.className = 'fa-solid fa-chevron-right';
                 }
             }
         }
 
-        // Collapse / Expand Dock via Rail Toggle
+        // Collapse / Expand Dock via Toggle Button
         if (railToggle && rightDock) {
             railToggle.addEventListener('click', () => {
                 rightDock.classList.toggle('collapsed');
                 const isCollapsed = rightDock.classList.contains('collapsed');
-                const icon = railToggle.querySelector('i');
-                if (icon) {
-                    icon.className = isCollapsed ? 'fa-solid fa-angles-left' : 'fa-solid fa-angles-right';
+                if (railToggleIcon) {
+                    railToggleIcon.className = isCollapsed ? 'fa-solid fa-chevron-left' : 'fa-solid fa-chevron-right';
                 }
             });
         }
 
-        // Top Panel Tab Switcher (Character, Brushes, History)
-        function switchTopTab(tabKey) {
+        // Unified Photoshop Dock Tab Switcher (Type, Draw, Canvas, History)
+        function switchTab(tabKey) {
             expandDock();
-            if (topPanelContent && topPanelContent.style.display === 'none') {
-                topPanelContent.style.display = '';
-                const icon = topMinBtn && topMinBtn.querySelector('i');
-                if (icon) icon.className = 'fa-solid fa-minus';
-            }
 
-            topTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-tab') === tabKey));
-            topViews.forEach(v => v.classList.toggle('active', v.id === `view-${tabKey}`));
+            // Normalize aliases
+            let normalizedKey = tabKey;
+            if (tabKey === 'char') normalizedKey = 'type';
+            if (tabKey === 'brush') normalizedKey = 'draw';
+            if (tabKey === 'doc' || tabKey === 'layers' || tabKey === 'info') normalizedKey = 'canvas';
 
-            // Synchronize active state on the icon rail for top tools
-            const topRailKeys = ['char', 'brush', 'history'];
-            topRailKeys.forEach(k => {
-                const btn = document.getElementById(`ps-rail-${k}`);
-                if (btn) btn.classList.toggle('active', k === tabKey);
+            allTabs.forEach(tab => {
+                const key = tab.getAttribute('data-tab');
+                const isMatch = (key === tabKey || key === normalizedKey);
+                tab.classList.toggle('active', isMatch);
             });
-        }
-        window.switchTopTab = switchTopTab;
 
-        // Bottom Panel Tab Switcher (Pages, Document, Account)
-        function switchBottomTab(tabKey) {
-            expandDock();
-            if (bottomPanelContent && bottomPanelContent.style.display === 'none') {
-                bottomPanelContent.style.display = '';
-                const icon = bottomMinBtn && bottomMinBtn.querySelector('i');
-                if (icon) icon.className = 'fa-solid fa-minus';
-            }
-
-            bottomTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-tab') === tabKey));
-            bottomViews.forEach(v => v.classList.toggle('active', v.id === `view-${tabKey}`));
-
-            // Synchronize active state on the icon rail for bottom tools
-            const bottomRailKeys = ['layers', 'doc', 'info'];
-            bottomRailKeys.forEach(k => {
-                const btn = document.getElementById(`ps-rail-${k}`);
-                if (btn) btn.classList.toggle('active', k === tabKey);
+            allViews.forEach(view => {
+                const viewId = view.id;
+                const isMatch = (
+                    viewId === `view-${normalizedKey}` ||
+                    viewId === `view-${tabKey}` ||
+                    (normalizedKey === 'type' && (viewId === 'view-char' || viewId === 'view-type')) ||
+                    (normalizedKey === 'draw' && (viewId === 'view-brush' || viewId === 'view-draw')) ||
+                    (normalizedKey === 'canvas' && (viewId === 'view-canvas' || viewId === 'view-doc')) ||
+                    (normalizedKey === 'history' && viewId === 'view-history')
+                );
+                view.classList.toggle('active', isMatch);
             });
-        }
-        window.switchBottomTab = switchBottomTab;
 
-        // Top Tab Click Listeners
-        topTabs.forEach(tab => {
+            logHistoryAction(`${normalizedKey.charAt(0).toUpperCase() + normalizedKey.slice(1)} Mode`);
+        }
+
+        window.switchTab = switchTab;
+        window.switchTopTab = switchTab;
+        window.switchBottomTab = switchTab;
+
+        // Tab Button Click Handlers
+        allTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabKey = tab.getAttribute('data-tab');
-                switchTopTab(tabKey);
+                if (tabKey) switchTab(tabKey);
             });
         });
 
-        // Bottom Tab Click Listeners
-        bottomTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const tabKey = tab.getAttribute('data-tab');
-                switchBottomTab(tabKey);
-            });
-        });
-
-        // Icon Rail Click Listeners
-        railButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const panel = btn.getAttribute('data-panel');
-                if (panel === 'char' || panel === 'brush' || panel === 'history') {
-                    switchTopTab(panel);
-                } else if (panel === 'layers' || panel === 'doc' || panel === 'info') {
-                    switchBottomTab(panel);
-                }
-            });
-        });
-
-        // Minimize / Restore Panel Content
-        if (topMinBtn && topPanelContent) {
-            topMinBtn.addEventListener('click', () => {
-                const isHidden = topPanelContent.style.display === 'none';
-                topPanelContent.style.display = isHidden ? '' : 'none';
-                const icon = topMinBtn.querySelector('i');
-                if (icon) icon.className = isHidden ? 'fa-solid fa-minus' : 'fa-regular fa-square';
-            });
-        }
-
-        if (bottomMinBtn && bottomPanelContent) {
-            bottomMinBtn.addEventListener('click', () => {
-                const isHidden = bottomPanelContent.style.display === 'none';
-                bottomPanelContent.style.display = isHidden ? '' : 'none';
-                const icon = bottomMinBtn.querySelector('i');
-                if (icon) icon.className = isHidden ? 'fa-solid fa-minus' : 'fa-regular fa-square';
-            });
-        }
-
-        // Dynamic Pages / Layers Stack Synchronizer (Photoshop Layers Ergonomics)
-        let isSyncingLayers = false;
-        let lastPageCount = -1;
-
+        // Safe Fallback for syncLayersList if called elsewhere
         function syncLayersList() {
-            if (!layersList || isSyncingLayers) return;
-            isSyncingLayers = true;
-            try {
-                const pages = document.querySelectorAll('#document-editor .a4-page');
-                layersList.innerHTML = '';
-
-                if (layersCountBadge) {
-                    layersCountBadge.textContent = `${pages.length} Page${pages.length === 1 ? '' : 's'}`;
-                }
-
-                if (pages.length === 0) {
-                    layersList.innerHTML = '<div class="ps-empty-note">No pages in notebook.</div>';
-                    return;
-                }
-
-                // Identify if any page is marked active
-                const hasActive = Array.from(pages).some(p => p.classList.contains('active-page'));
-
-                pages.forEach((page, idx) => {
-                    const pageNum = idx + 1;
-                    const pageId = page.id || `note-page-${pageNum}`;
-                    const pageTitle = pageNum === 1 ? 'Page 1 (Cover)' : `Page ${pageNum}`;
-                    const isActive = page.classList.contains('active-page') || (!hasActive && idx === 0);
-                    if (isActive && !page.classList.contains('active-page')) {
-                        page.classList.add('active-page');
-                    }
-
-                    const layerRow = document.createElement('div');
-                    layerRow.className = `ps-layer-item ${isActive ? 'active' : ''}`;
-                    layerRow.setAttribute('data-page-id', pageId);
-
-                    const computedBg = window.getComputedStyle(page).backgroundColor || '#ffffff';
-
-                    layerRow.innerHTML = `
-                        <button type="button" class="ps-layer-eye" title="Toggle Page Visibility">
-                            <i class="fa-solid fa-eye"></i>
-                        </button>
-                        <div class="ps-layer-thumb" style="background-color: ${computedBg};">
-                            <div class="ps-thumb-preview"></div>
-                        </div>
-                        <span class="ps-layer-title">${pageTitle}</span>
-                        <span class="ps-layer-idx" style="font-size: 10px; color: #666; font-family: monospace;">#${pageNum}</span>
-                    `;
-
-                    // Eye visibility toggle
-                    const eyeBtn = layerRow.querySelector('.ps-layer-eye');
-                    if (eyeBtn) {
-                        eyeBtn.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            const isHidden = page.style.display === 'none';
-                            page.style.display = isHidden ? '' : 'none';
-                            eyeBtn.classList.toggle('hidden', !isHidden);
-                            const icon = eyeBtn.querySelector('i');
-                            if (icon) icon.className = isHidden ? 'fa-solid fa-eye' : 'fa-regular fa-eye-slash';
-                            logHistoryAction(`${isHidden ? 'Show' : 'Hide'} ${pageTitle}`);
-                        });
-                    }
-
-                    // Click layer row to jump and highlight page
-                    layerRow.addEventListener('click', () => {
-                        layersList.querySelectorAll('.ps-layer-item').forEach(l => l.classList.remove('active'));
-                        layerRow.classList.add('active');
-                        pages.forEach(p => p.classList.remove('active-page'));
-                        page.classList.add('active-page');
-                        page.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        logHistoryAction(`Select ${pageTitle}`);
-                    });
-
-                    layersList.appendChild(layerRow);
-                });
-            } finally {
-                isSyncingLayers = false;
+            if (!layersList) return;
+            const pages = document.querySelectorAll('#document-editor .a4-page');
+            if (layersCountBadge) {
+                layersCountBadge.textContent = `${pages.length} Page${pages.length === 1 ? '' : 's'}`;
             }
         }
         window.syncLayersList = syncLayersList;
 
-        // Initial sync and MutationObserver on #document-editor
-        syncLayersList();
-        const editorPagesContainer = document.getElementById('document-editor');
-        if (editorPagesContainer) {
-            const observer = new MutationObserver(() => {
-                const currentCount = editorPagesContainer.querySelectorAll('.a4-page').length;
-                if (currentCount !== lastPageCount) {
-                    lastPageCount = currentCount;
-                    syncLayersList();
-                }
-            });
-            observer.observe(editorPagesContainer, { childList: true, subtree: false });
-        }
-
-        // Add Page Button in Layers Footer
-        const addPageBtn = document.getElementById('add-page-btn');
-        if (addPageBtn) {
-            addPageBtn.addEventListener('click', () => {
-                if (typeof window.addNewPageInBook === 'function') {
-                    window.addNewPageInBook('book1');
-                }
-                setTimeout(() => {
-                    syncLayersList();
-                    logHistoryAction('New Page Created');
-                }, 150);
-            });
-        }
-
-        // Delete Page Button in Layers Footer
+        // Delete Page Button handler if present
         const deletePageBtn = document.getElementById('delete-page-btn');
         if (deletePageBtn) {
             deletePageBtn.addEventListener('click', () => {
@@ -2793,28 +2636,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Cannot delete the only page in your notebook.');
                     return;
                 }
-
-                let activePage = document.querySelector('#document-editor .a4-page.active-page');
-                if (!activePage) {
-                    activePage = pages[pages.length - 1];
-                }
-
+                let activePage = document.querySelector('#document-editor .a4-page.active-page') || pages[pages.length - 1];
                 if (activePage) {
                     const targetId = activePage.id;
                     if (window.editor && targetId && typeof window.editor.deleteChapter === 'function') {
                         window.editor.deleteChapter(targetId);
                     }
                     activePage.remove();
-
-                    // Re-activate last remaining page
                     const remainingPages = document.querySelectorAll('#document-editor .a4-page');
                     if (remainingPages.length > 0) {
                         remainingPages[remainingPages.length - 1].classList.add('active-page');
                     }
-
-                    syncLayersList();
                     logHistoryAction('Deleted Page');
-                    triggerEditorSave();
                 }
             });
         }
@@ -2825,6 +2658,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const title = btn.getAttribute('title') || btn.innerText.trim();
                 if (title) logHistoryAction(title);
             });
+        });
+
+        // Quick IDE Search trigger shortcut (Ctrl+F / Cmd+F)
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                const searchInput = document.getElementById('sidebar-doc-search');
+                if (searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                    searchInput.select();
+                }
+            }
         });
     })();
 
