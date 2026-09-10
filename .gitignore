@@ -67,3 +67,11 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# OS metadata & backups
+.DS_Store
+Thumbs.db
+*.backup
+*.bak
+*.tmp
+*.swp
