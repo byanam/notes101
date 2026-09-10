@@ -87,7 +87,7 @@ It is 100% free, has no ads, no subscriptions, and runs directly in your web bro
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/anamrazzaque/ai-note.git
+   git clone https://github.com/byanam/notes101.git
    ```
 2. Run a local server:
    ```bash
