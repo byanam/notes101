@@ -8,7 +8,7 @@
   <!-- High-Aesthetic Live Site Launcher Button -->
   <p align="center">
     <a href="https://notes--101.web.app" target="_blank">
-      <img src="https://img.shields.io/badge/🌐_LIVE_APP-notes--101.web.app-000000?style=for-the-badge&logoColor=FFFFFF&labelColor=111111" alt="Launch Live Site" height="42" />
+      <img src="https://img.shields.io/badge/LIVE_APP-notes--101.web.app-000000?style=for-the-badge&logoColor=FFFFFF&labelColor=111111" alt="Launch Live Site" height="42" />
     </a>
   </p>
 
@@ -27,14 +27,14 @@
   <br>
 
   <p align="center">
-    <a href="https://notes--101.web.app">🌐 <b>Launch Live App</b></a> &nbsp;·&nbsp;
-    <a href="https://notes--101.web.app/editor.html">📁 <b>Open App Desk</b></a> &nbsp;·&nbsp;
-    <a href="https://opensource.org/licenses/MIT">📜 <b>MIT License</b></a>
+    <a href="https://notes--101.web.app"><b>Launch Live App</b></a> &nbsp;·&nbsp;
+    <a href="https://notes--101.web.app/editor.html"><b>Open App Desk</b></a> &nbsp;·&nbsp;
+    <a href="https://opensource.org/licenses/MIT"><b>MIT License</b></a>
   </p>
 
 </div>
 
-<p align="center">─────── 🕇 ───────</p>
+---
 
 ## About
 
@@ -48,18 +48,18 @@ It is 100% free, has no ads, no subscriptions, and runs directly in your web bro
 
 ## Features
 
-- 🔓 **Open Source**: 100% open-source code.
-- 🆓 **Completely Free**: Free to use for everyone.
-- 🚫 **Ad-Free**: Zero advertisements, zero popups, zero data tracking.
-- 🧹 **No Bloat**: Clean and focused. No unnecessary features added.
-- 📄 **Word-Style A4 Editor**: Clean dark studio interface with A4 pages on a desk layout.
-- ✂️ **Automatic Page Splitting**: Dynamic A4 pagination logic that splits pages cleanly when text overflows.
-- 🔤 **100+ Google Fonts**: Switch font styles instantly from the editor sidebar (Sumana, Inter, Fira Code, Caveat, Playfair Display, etc.).
-- 🎨 **Color Spectrum Pickers**: HSL & HEX color pickers for text color, pastel highlights, canvas background shade, and drawing ink.
-- 🖌️ **Canvas Drawing Layer**: Layered freehand pen, pencil, brush, stroke sizes, and eraser directly over note pages.
-- 🔍 **Real-Time Note Search**: Document search bar to scan pages with match counters and highlight markers.
-- 📄 **1-Click PDF Export**: Download formatted note pages as a PDF file with one click.
-- ☁️ **Google Login & Cloud Sync**: Firebase Sign-In with automatic per-user Firestore sync & offline browser backup.
+- **Open Source**: 100% open-source code.
+- **Completely Free**: Free to use for everyone.
+- **Ad-Free**: Zero advertisements, zero popups, zero data tracking.
+- **No Bloat**: Clean and focused. No unnecessary features added.
+- **Word-Style A4 Editor**: Clean dark studio interface with A4 pages on a desk layout.
+- **Automatic Page Splitting**: Dynamic A4 pagination logic that splits pages cleanly when text overflows.
+- **100+ Google Fonts**: Switch font styles instantly from the editor sidebar (Sumana, Inter, Fira Code, Caveat, Playfair Display, etc.).
+- **Color Spectrum Pickers**: HSL & HEX color pickers for text color, pastel highlights, canvas background shade, and drawing ink.
+- **Canvas Drawing Layer**: Layered freehand pen, pencil, brush, stroke sizes, and eraser directly over note pages.
+- **Real-Time Note Search**: Document search bar to scan pages with match counters and highlight markers.
+- **1-Click PDF Export**: Download formatted note pages as a PDF file with one click.
+- **Google Login & Cloud Sync**: Firebase Sign-In with automatic per-user Firestore sync & offline browser backup.
 
 ---
 
