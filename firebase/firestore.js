@@ -26,23 +26,23 @@ export async function saveUserProfile(user) {
             // First time login: Create new user document
             await setDoc(userRef, {
                 uid: user.uid,
-                name: user.displayName || 'Anonymous User',
+                name: (user.displayName || user.email || 'Anonymous User').trim(),
                 email: user.email || '',
                 photoURL: user.photoURL || '',
                 createdAt: serverTimestamp(),
                 lastLoginAt: serverTimestamp()
             });
-            console.log("[Firestore] Created new user profile for UID:", user.uid);
         } else {
             // Returning user: Update last login timestamp
+            const existingData = userSnap.data() || {};
             await setDoc(userRef, {
                 lastLoginAt: serverTimestamp(),
-                photoURL: user.photoURL || userSnap.data().photoURL
+                name: user.displayName || existingData.name || 'Anonymous User',
+                photoURL: user.photoURL || existingData.photoURL || ''
             }, { merge: true });
-            console.log("[Firestore] Updated last login for UID:", user.uid);
         }
     } catch (error) {
-        console.error("[Firestore] Error saving user profile:", error);
+        console.error("[Firestore] Error saving user profile:", error?.message || error);
         throw error;
     }
 }
