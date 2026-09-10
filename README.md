@@ -28,7 +28,7 @@
 
   <p align="center">
     <a href="https://notes--101.web.app">🌐 <b>Launch Live App</b></a> &nbsp;·&nbsp;
-    <a href="/editor.html">📁 <b>Open App Desk</b></a> &nbsp;·&nbsp;
+    <a href="https://notes--101.web.app/editor.html">📁 <b>Open App Desk</b></a> &nbsp;·&nbsp;
     <a href="https://opensource.org/licenses/MIT">📜 <b>MIT License</b></a>
   </p>
 
