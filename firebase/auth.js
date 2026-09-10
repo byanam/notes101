@@ -28,7 +28,6 @@ export function isFirebaseConfigured() {
         firebaseConfig.apiKey !== "YOUR_API_KEY" && 
         !firebaseConfig.apiKey.includes("YOUR_API")
     );
-    console.log("[Auth] isFirebaseConfigured check:", isConfigured, firebaseConfig);
     return isConfigured;
 }
 
